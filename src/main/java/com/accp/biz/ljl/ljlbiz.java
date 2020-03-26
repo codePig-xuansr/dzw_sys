@@ -1,5 +1,5 @@
 package com.accp.biz.ljl;
 
-public class ljl {
+public class ljlbiz {
 
 }

@@ -1,5 +1,5 @@
 package com.accp.pojo.ljl;
 
-public class ljl {
+public class ljlp {
 
 }

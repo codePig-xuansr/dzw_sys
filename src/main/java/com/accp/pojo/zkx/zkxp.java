@@ -1,5 +1,5 @@
 package com.accp.pojo.zkx;
 
-public class zkx {
+public class zkxp {
 
 }

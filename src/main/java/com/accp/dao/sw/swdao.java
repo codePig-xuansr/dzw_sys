@@ -1,5 +1,5 @@
 package com.accp.dao.sw;
 
-public interface sw {
+public interface swdao {
 
 }

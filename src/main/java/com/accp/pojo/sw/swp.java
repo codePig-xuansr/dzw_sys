@@ -1,5 +1,5 @@
 package com.accp.pojo.sw;
 
-public class sw {
+public class swp {
 
 }

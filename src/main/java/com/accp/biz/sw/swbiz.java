@@ -1,5 +1,5 @@
 package com.accp.biz.sw;
 
-public class sw {
+public class swbiz {
 
 }
