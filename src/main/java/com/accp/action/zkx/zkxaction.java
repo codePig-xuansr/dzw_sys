@@ -1,5 +1,5 @@
 package com.accp.action.zkx;
 
-public class zkx {
+public class zkxaction {
 
 }

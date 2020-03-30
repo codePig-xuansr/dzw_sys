@@ -1,5 +1,5 @@
 package com.accp.dao.fzx;
 
-public interface fzx {
+public interface fzxdao {
 
 }

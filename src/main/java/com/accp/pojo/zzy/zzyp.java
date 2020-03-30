@@ -1,5 +1,5 @@
 package com.accp.pojo.zzy;
 
-public class zzy {
+public class zzyp {
 
 }
