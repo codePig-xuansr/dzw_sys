@@ -33,7 +33,7 @@ public class fzxbiz {
 		
 	}
 	/**
-	 * 查询维修记录
+	 * 按车牌号查询维修记录
 	 * @return
 	 */
 	public List<FzxWeixiu> selectWeixiuAll(String carno){

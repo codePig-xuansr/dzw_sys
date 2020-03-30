@@ -20,7 +20,7 @@ public interface fzxdao {
 	 */
 	List<FzxCtcar> selectAll(@Param("carno") String carno);
 	/**
-	 * 查询维修记录
+	 * 按车牌号查询维修记录
 	 * @return
 	 */
 	List<FzxWeixiu> selectWeixiuAll(@Param("carno") String carno);

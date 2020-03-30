@@ -36,7 +36,7 @@ public class fzxaction {
 		}
 	  
 	  /**
-		 * 查询维修记录
+		 * 按车牌号查询维修记录
 		 * @return
 		 */
 	  	@GetMapping("/selectWeixiuAll/{carno}")
