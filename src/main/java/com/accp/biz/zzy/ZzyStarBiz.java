@@ -18,6 +18,13 @@ import com.github.pagehelper.PageInfo;
 public class ZzyStarBiz {
 	@Autowired
 	private IZzyStarDao dao;
+	
+	/**
+	 * 查询状态信息
+	 * @param n
+	 * @param s
+	 * @return
+	 */
 	public PageInfo<ZzyStar> queryStarAll(Integer n,Integer s){
 		PageHelper.startPage(n,s);
 		List<ZzyStar> list = dao.selectList(null);

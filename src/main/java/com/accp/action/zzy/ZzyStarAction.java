@@ -17,7 +17,12 @@ public class ZzyStarAction {
 	
 	@Autowired
 	private ZzyStarBiz biz;
-	
+	 /**
+	  * 查询状态信息
+	  * @param n
+	  * @param s
+	  * @return
+	  */
 	@GetMapping("queryStarAll/{n}/{s}")
 	public PageInfo<ZzyStar> queryStarAll(@PathVariable Integer n,@PathVariable Integer s) {
 		
