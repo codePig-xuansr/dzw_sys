@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.ljl.ILjlFadongjiDao;
 import com.accp.pojo.ljl.LjlFadongji;
+import com.accp.pojo.zkx.ZkxUser;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -40,5 +43,10 @@ public class LjlFadongjiBiz {
 	
 	public int delete(Integer fadongjiid) {
 		return dao.deletefadongji(fadongjiid);
+	}
+	
+	public PageInfo<LjlFadongji> selectLikeName(String fadongjiname) {
+		//QueryWrapper<ZkxUser> qw=Wrappers.query();
+		return new PageInfo<LjlFadongji>(dao.selectLikeName(fadongjiname));
 	}
 }

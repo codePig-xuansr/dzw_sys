@@ -78,4 +78,9 @@ public class LjlFadongjiAction {
 		}
 		return map;
 	}
+	
+	@GetMapping("selectLikeName/{fadongjiname}")
+	public PageInfo<LjlFadongji> selectLikeName(@PathVariable String fadongjiname){
+		return biz.selectLikeName(fadongjiname);
+	}
 }

@@ -16,7 +16,7 @@ public interface ILjlFadongjiDao extends BaseMapper<LjlFadongji>{
 	 * 查询全部
 	 * @return
 	 */
-	public List<LjlFadongji> selectAll();
+	public List<LjlFadongji> selectAll(@Param("name")String name);
 	/**
 	 * 查询数据库最大值的ID
 	 */
@@ -34,5 +34,7 @@ public interface ILjlFadongjiDao extends BaseMapper<LjlFadongji>{
 	public int updateFadongji(@Param("fdj")LjlFadongji fdj);
 	
 	public int deletefadongji(@Param("fadongjiid")Integer fadongjiid);
+	
+	public List<LjlFadongji> selectLikeName(@Param("fadongjiname")String fadongjiname);
 
 }
