@@ -1,5 +1,27 @@
 package com.accp.dao.fzx;
 
-public interface fzxdao {
+import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
+import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.vo.fzx.FzxCtcar;
+import com.accp.vo.fzx.FzxWeixiu;
+
+public interface fzxdao {
+	/**
+	 * 查询车牌号
+	 * @return
+	 */
+	List<FzxCarinfo> selectBy(@Param("carno") String carno);
+	/**
+	 * 根据车牌号查询信息
+	 * @return
+	 */
+	List<FzxCtcar> selectAll(@Param("carno") String carno);
+	/**
+	 * 查询维修记录
+	 * @return
+	 */
+	List<FzxWeixiu> selectWeixiuAll(@Param("carno") String carno);
 }
