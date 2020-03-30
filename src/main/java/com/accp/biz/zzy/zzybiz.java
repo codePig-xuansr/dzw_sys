@@ -1,5 +1,5 @@
 package com.accp.biz.zzy;
 
-public class zzy {
+public class zzybiz {
 
 }

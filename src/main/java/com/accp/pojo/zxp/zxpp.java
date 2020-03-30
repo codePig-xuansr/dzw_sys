@@ -1,5 +1,5 @@
 package com.accp.pojo.zxp;
 
-public class zxp {
+public class zxpp {
 
 }

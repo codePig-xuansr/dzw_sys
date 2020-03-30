@@ -1,5 +1,5 @@
 package com.accp.biz.zxp;
 
-public class zxp {
+public class zxpbiz {
 
 }

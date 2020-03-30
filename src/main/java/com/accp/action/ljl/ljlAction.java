@@ -1,5 +1,5 @@
 package com.accp.action.ljl;
 
-public class ljl {
+public class ljlAction {
 
 }
