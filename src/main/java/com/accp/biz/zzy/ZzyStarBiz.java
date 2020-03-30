@@ -20,7 +20,7 @@ public class ZzyStarBiz {
 	private IZzyStarDao dao;
 	
 	/**
-	 * 查询状态信息
+	 * 分页查询状态信息
 	 * @param n
 	 * @param s
 	 * @return
