@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
@@ -24,4 +25,11 @@ public interface fzxdao {
 	 * @return
 	 */
 	List<FzxWeixiu> selectWeixiuAll(@Param("carno") String carno);
+	
+	/**
+	 * 查询维修服务消息
+	 * @return
+	 */
+	List<FzxWeixiufuwu> selectFw();
+	
 }

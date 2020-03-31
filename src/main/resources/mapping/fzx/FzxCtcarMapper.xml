@@ -3,7 +3,7 @@
 <mapper namespace="com.accp.dao.fzx.fzxdao">
 	<!-- 根据车牌号查询信息 -->
 	<select id="selectAll" resultType="com.accp.vo.fzx.FzxCtcar">
-		SELECT b.kname,a.driver,b.kaddress,b.kphone,a.carpp,a.carxinghao,c.fadongjipp,c.fadongjiid FROM
+		SELECT a.carno,b.kname,a.driver,b.kaddress,b.kphone,a.carpp,a.carxinghao,c.fadongjipp,c.fadongjiid FROM
  carinfo a INNER JOIN kehu b  ON a.kid=b.kid INNER JOIN fadongji c ON a.fadongjiid=c.fadongjiid 
  WHERE a.carno=#{carno} GROUP BY a.carno
 	</select>
@@ -12,7 +12,7 @@
 		SELECT c.recordid,c.jsstatus,c.yewutype,c.carno,b.kname,b.kphone,c.danjutype,c.recorddate,c.yujidate,d.shijidate,e.jsdate FROM
  carinfo a INNER JOIN kehu b  ON a.kid=b.kid INNER JOIN weixiurecord c ON a.carno=c.carno INNER JOIN jgrecord d
  ON c.recordid=d.recordid INNER JOIN jsrecord e ON c.recordid=e.recordid
- WHERE a.carno=#{carno} GROUP BY a.carno
+ WHERE a.carno=#{carno}
 	</select>
-	
+
 </mapper>

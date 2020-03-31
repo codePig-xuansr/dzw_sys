@@ -6,4 +6,9 @@
 		SELECT * FROM carinfo where carno like '%${carno}%'
 	</select>
 	
+	<!-- 查询服务所有 -->
+	<select id="selectFw" resultType="com.accp.pojo.fzx.FzxWeixiufuwu">
+		SELECT * FROM weixiufuwu
+	</select>
+	
 </mapper>

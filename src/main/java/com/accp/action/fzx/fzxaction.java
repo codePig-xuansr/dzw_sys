@@ -1,6 +1,8 @@
 package com.accp.action.fzx;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.fzx.fzxbiz;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
+import com.alibaba.fastjson.JSON;
 
 @RestController
 @RequestMapping("/api/fzx") // 命名空间
@@ -43,5 +47,15 @@ public class fzxaction {
 		public List<FzxWeixiu> selectWeixiuAll(@PathVariable String carno){
 			return biz.selectWeixiuAll(carno);
 		}
+	  	
+	  	/**
+		 * 查询维修服务消息
+		 * @return
+		 */
+	  	@GetMapping("/selectFw")
+		public List<FzxWeixiufuwu> selectFw(){
+			return biz.selectFw();
+		}
+	  	
 	 
 }

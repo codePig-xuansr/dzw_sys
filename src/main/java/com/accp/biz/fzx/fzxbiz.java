@@ -2,11 +2,13 @@ package com.accp.biz.fzx;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.accp.dao.fzx.fzxdao;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
@@ -39,5 +41,12 @@ public class fzxbiz {
 	public List<FzxWeixiu> selectWeixiuAll(String carno){
 		return dao.selectWeixiuAll(carno);
 	}
-	 
+	
+	/**
+	 * 查询维修服务消息
+	 * @return
+	 */
+	public List<FzxWeixiufuwu> selectFw(){
+		return dao.selectFw();
+	}
 }
