@@ -32,4 +32,12 @@ public class ZzyStarBiz {
 		System.out.println(pageInfo);
 		return pageInfo;
 	}
+	/**
+	 * 新增状态表信息
+	 * @param star
+	 * @return
+	 */
+	public int addStar(ZzyStar star) {
+		return dao.insert(star);
+	}
 }

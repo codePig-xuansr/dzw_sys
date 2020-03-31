@@ -22,6 +22,13 @@ public class ZzyStar {
 		this.ticheng = ticheng;
 		this.worktime = worktime;
 	}
+	
+	public ZzyStar(String sname, Float ticheng, int worktime) {
+		super();
+		this.sname = sname;
+		this.ticheng = ticheng;
+		this.worktime = worktime;
+	}
 	public int getSid() {
 		return sid;
 	}
