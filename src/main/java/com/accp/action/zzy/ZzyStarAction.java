@@ -52,18 +52,4 @@ public class ZzyStarAction {
 		return message;
 	}
 	
-	/**
-	 * 新增状态表信息
-	 * @param sname等级名称
-	 * @param ticheng提成权重
-	 * @param worktime时长
-	 * @return
-	 */
-	/*
-	 * @PostMapping("addStar/{sname}/{ticheng}/{worktime}") public String
-	 * addStar(@PathVariable String sname,@PathVariable Float ticheng,@PathVariable
-	 * int worktime) { ZzyStar star=new ZzyStar(sname,ticheng,worktime);
-	 * if(biz.addStar(star)!=0) { return
-	 * "redirect:/zzy/api/class1/queryStarAll/{1}/{3}"; } return ""; }
-	 */
 }
