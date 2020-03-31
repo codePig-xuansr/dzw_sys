@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.sw.IWeixiuDao">
+	<resultMap id="BaseResultMap" type="com.accp.vo.sw.WeixiuVo">
+		<id column="kid" property="kid" jdbcType="INTEGER" />
+		<result column="danjutype" property="danjutype"
+			jdbcType="VARCHAR" />
+		<result column="recordid" property="recordid"
+			jdbcType="VARCHAR" />
+		<result column="carno" property="carno" jdbcType="VARCHAR" />
+		<result column="yewutype" property="yewutype"
+			jdbcType="VARCHAR" />
+		<result column="recorddate" property="recorddate"
+			jdbcType="DATE" />
+		<result column="yujidate" property="yujidate" jdbcType="DATE" />
+		<result column="jsdate" property="jsdate" jdbcType="DATE" />
+		<result column="jsmoney" property="jsmoney" jdbcType="FLOAT" />
+	</resultMap>
+	<select id="queryListById" resultMap="BaseResultMap">
+		SELECT kid,danjutype,w.recordid
+		AS recordid,w.carno AS
+		carno,yewutype,recorddate,yujidate,jsdate,jsmoney
+		FROM weixiurecord w
+		INNER JOIN jsrecord j ON j.recordid=w.recordid
+		INNER JOIN carinfo c ON
+		c.carno=w.carno
+		WHERE w.jsstatus=1 AND c.kid=#{id}
+	</select>
+</mapper>

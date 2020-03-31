@@ -10,7 +10,7 @@ import com.accp.biz.zkx.ZkxUserBiz;
 import com.accp.pojo.zkx.ZkxUser;
 
 @RestController
-@RequestMapping("/zkx/api/user")
+@RequestMapping("/api/zkx/user")
 public class ZkxUserAction {
 
 	@Autowired
