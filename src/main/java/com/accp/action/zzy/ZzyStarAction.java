@@ -44,7 +44,7 @@ public class ZzyStarAction {
 		Map<String, Object> message = new HashMap<String, Object>();
 		if(count!=0) {
 			message.put("code", "200");
-			message.put("msg", "新增成功！");
+			message.put("msg", "新增成功!");
 		}else {
 			message.put("code", "300");
 			message.put("msg", "新增失败！");
