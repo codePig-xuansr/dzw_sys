@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.sw.IKehuDao;
 import com.accp.pojo.sw.Kehu;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -27,6 +29,15 @@ public class KehuBiz {
 	public PageInfo<Kehu> findPage(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<>(dao.selectList(null));
+	}
+
+	/**
+	 * 查询最新新增的客户
+	 * 
+	 * @return
+	 */
+	public Kehu findMaxId() {
+		return dao.queryMaxId();
 	}
 
 	/**

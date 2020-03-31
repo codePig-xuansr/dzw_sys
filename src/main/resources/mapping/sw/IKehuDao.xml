@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.sw.IKehuDao">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.sw.Kehu">
+		<id column="kid" property="kid" jdbcType="INTEGER" />
+		<result column="kname" property="kname" jdbcType="VARCHAR" />
+		<result column="kaddress" property="kaddress"
+			jdbcType="VARCHAR" />
+		<result column="kphone" property="kphone" jdbcType="VARCHAR" />
+		<result column="vipcode" property="vipcode" jdbcType="INTEGER" />
+		<result column="borndate" property="borndate" jdbcType="DATE" />
+	</resultMap>
+	<select id="queryMaxId" resultMap="BaseResultMap">
+		SELECT MAX(kid) as kid FROM kehu
+	</select>
+</mapper>

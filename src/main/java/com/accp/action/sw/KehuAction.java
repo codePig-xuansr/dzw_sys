@@ -47,6 +47,17 @@ public class KehuAction {
 	}
 
 	/**
+	 * 查询最新的客户id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@GetMapping
+	public Kehu queryMaxId() {
+		return biz.findMaxId();
+	}
+
+	/**
 	 * 新增客户
 	 * 
 	 * @param kehu
