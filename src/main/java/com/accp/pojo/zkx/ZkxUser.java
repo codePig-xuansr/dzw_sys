@@ -2,6 +2,7 @@ package com.accp.pojo.zkx;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -16,6 +17,7 @@ public class ZkxUser {
 
     private String username;
 
+    @JSONField(format = "yyyy-MM-dd")
     private Date comedate;
 
     private String address;
