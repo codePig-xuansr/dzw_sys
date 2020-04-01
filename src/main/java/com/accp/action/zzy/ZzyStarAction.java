@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +45,7 @@ public class ZzyStarAction {
 		int count=biz.addStar(star);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if(count!=0) {
-			message.put("code", "200");
+			message.put("code", "ok");
 			message.put("msg", "新增成功!");
 		}else {
 			message.put("code", "300");
@@ -52,5 +53,32 @@ public class ZzyStarAction {
 		}
 		return message;
 	}
+	/**
+	 * 根据状态编码查询状态信息
+	 * @param sid状态编码
+	 * @return
+	 */
+	@GetMapping("queryStarBySid/{sid}")
+	public ZzyStar queryStarBySid(@PathVariable int sid) {
+		return biz.queryStarBySid(sid);
+	}
 	
+	/**
+	 * 修改状态信息
+	 * @param star
+	 * @return
+	 */
+	@PutMapping("modifStar/{star}")
+	public Map<String, Object> modifStar(@RequestBody ZzyStar star) {
+		int count=biz.modifStar(star);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if(count!=0) {
+			message.put("code", "ok");
+			message.put("msg", "修改成功!");
+		}else {
+			message.put("code", "300");
+			message.put("msg", "修改失败！");
+		}
+		return message;
+	}
 }

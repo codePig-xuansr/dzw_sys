@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zzy.IZzyStarDao;
 import com.accp.pojo.zzy.ZzyStar;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -40,5 +42,25 @@ public class ZzyStarBiz {
 	 */
 	public int addStar(ZzyStar star) {
 		return dao.insert(star);
+	}
+	
+	/**
+	 * 根据id查看状态信息
+	 * @param sid状态编码
+	 * @return
+	 */
+	public ZzyStar queryStarBySid(int sid) {
+		QueryWrapper<ZzyStar> qw=Wrappers.query();
+		qw.eq("sid", sid);
+		return dao.selectOne(qw);
+	}
+	
+	/**
+	 * 修改状态信息
+	 * @param star
+	 * @return
+	 */
+	public int modifStar(ZzyStar star) {
+		return dao.updateById(star);
 	}
 }

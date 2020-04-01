@@ -1,9 +1,12 @@
 package com.accp.pojo.zzy;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("star")
 public class ZzyStar {
+	@TableId(value = "sid",type = IdType.AUTO)
 	private int sid;
 	private String sname;
 	private Float ticheng;

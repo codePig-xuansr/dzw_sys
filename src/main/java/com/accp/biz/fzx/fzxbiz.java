@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.accp.dao.fzx.fzxdao;
+import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
@@ -48,5 +49,14 @@ public class fzxbiz {
 	 */
 	public List<FzxWeixiufuwu> selectFw(){
 		return dao.selectFw();
+	}
+	
+	
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	public List<FzxBanzu> selectBz(){
+		return dao.selectBz();
 	}
 }

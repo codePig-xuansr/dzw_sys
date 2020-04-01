@@ -11,4 +11,10 @@
 		SELECT * FROM weixiufuwu
 	</select>
 	
+	<!-- 查询班组 -->
+	<select id="selectBz" resultType="com.accp.pojo.fzx.FzxBanzu">
+		SELECT a.bzid,a.bzname,a.bztype,a.bzcost,b.guzhanginfo,b.guzhangyuanyin FROM 
+banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
+	</select>
+	
 </mapper>
