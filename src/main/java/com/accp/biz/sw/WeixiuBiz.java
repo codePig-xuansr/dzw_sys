@@ -25,8 +25,8 @@ public class WeixiuBiz {
 	 * @param id
 	 * @return
 	 */
-	public PageInfo<WeixiuVo> findPage(Integer pageNum, Integer pageSize, Integer id) {
+	public PageInfo<WeixiuVo> findPage(Integer pageNum, Integer pageSize, Integer id,String carno) {
 		PageHelper.startPage(pageNum, pageSize);
-		return new PageInfo<>(dao.queryListById(id));
+		return new PageInfo<>(dao.queryListById(id,carno));
 	}
 }

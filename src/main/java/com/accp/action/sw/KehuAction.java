@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.sw.KehuBiz;
 import com.accp.pojo.sw.Kehu;
+import com.accp.vo.sw.KehuVo;
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -44,6 +46,17 @@ public class KehuAction {
 	@GetMapping("/{id}")
 	public Kehu queryById(@PathVariable Integer id) {
 		return biz.findById(id);
+	}
+
+	/**
+	 * 根据客户id查询vo
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/vo/{id}")
+	public KehuVo queryByIdVo(@PathVariable Integer id) {
+		return biz.findByIdVo(id);
 	}
 
 	/**

@@ -8,5 +8,5 @@ import com.accp.vo.sw.WeixiuVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 public interface IWeixiuDao {
-	public List<WeixiuVo> queryListById(@Param("id") Integer id);
+	public List<WeixiuVo> queryListById(@Param("id") Integer id,@Param("carno") String carno);
 }

@@ -22,6 +22,10 @@
 		FROM carinfo c INNER JOIN kehu k ON k.kid=c.kid
 		INNER JOIN fadongji f
 		ON f.fadongjiid=c.fadongjiid
-		WHERE c.kid=#{id}
+		<where>
+			<if test="id!=null and id!=''">
+				c.kid=#{id}
+			</if>
+		</where>
 	</select>
 </mapper>

@@ -27,7 +27,20 @@ public class WeixiuAction {
 	@GetMapping("/{pageNum}/{pageSize}/{id}")
 	public PageInfo<WeixiuVo> queryPage(@PathVariable Integer pageNum, @PathVariable Integer pageSize,
 			@PathVariable Integer id) {
-		return biz.findPage(pageNum, pageSize, id);
+		return biz.findPage(pageNum, pageSize, id, null);
 	}
 
+	/**
+	 * 根据车牌查询消费分页并查询
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @param carno
+	 * @return
+	 */
+	@GetMapping("/car/{pageNum}/{pageSize}/{carno}")
+	public PageInfo<WeixiuVo> queryPageCarno(@PathVariable Integer pageNum, @PathVariable Integer pageSize,
+			@PathVariable String carno) {
+		return biz.findPage(pageNum, pageSize, null, carno);
+	}
 }

@@ -24,6 +24,13 @@
 		INNER JOIN jsrecord j ON j.recordid=w.recordid
 		INNER JOIN carinfo c ON
 		c.carno=w.carno
-		WHERE w.jsstatus=1 AND c.kid=#{id}
+		<where>
+			<if test="id!=null and id!=''">
+				w.jsstatus=1 AND c.kid=#{id}
+			</if>
+			<if test="carno!=null and carno!=''">
+				w.jsstatus=1 AND c.carno=#{carno}
+			</if>
+		</where>
 	</select>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.sw.IKehuDao;
 import com.accp.pojo.sw.Kehu;
+import com.accp.vo.sw.KehuVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -48,6 +49,15 @@ public class KehuBiz {
 	 */
 	public Kehu findById(Integer id) {
 		return dao.selectById(id);
+	}
+	/**
+	 * 根据客户id查询vo
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public KehuVo findByIdVo(Integer id) {
+		return dao.queryById(id);
 	}
 
 	/**
