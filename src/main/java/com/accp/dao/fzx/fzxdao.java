@@ -6,7 +6,9 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
@@ -33,6 +35,8 @@ public interface fzxdao {
 	 */
 	List<FzxWeixiufuwu> selectFw();
 	
+
+	
 	/**
 	 * 查询班组
 	 * @return
@@ -44,5 +48,12 @@ public interface fzxdao {
 	 * @return
 	 */
 	List<FzxBanzu> selectBzz();
+	
+	/**
+	 * 主详新增
+	 * @param fzxweixiuadd
+	 * @return
+	 */
+	int insertweixiu(@Param("fzxweixiuadd") FzxWeixiuadd fzxweixiuadd);
 	
 }

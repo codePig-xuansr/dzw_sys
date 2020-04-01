@@ -11,6 +11,7 @@
 		SELECT * FROM weixiufuwu
 	</select>
 	
+	
 	<!-- 查询班组 -->
 	<select id="selectBz" resultType="com.accp.pojo.fzx.FzxBanzu">
 		SELECT a.bzid,a.bzname,a.bztype,a.bzcost,b.guzhanginfo,b.guzhangyuanyin FROM 
@@ -21,5 +22,21 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	<select id="selectBzz" resultType="com.accp.pojo.fzx.FzxBanzu">
 		SELECT * FROM banzu
 	</select>
+	
+	
+	<!-- 新增 -->
+	<insert id="insertweixiu">
+	INSERT INTO weixiurecord
+(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc)
+VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc});
+		<!-- <if test="fzxweixiuadd.fzxweixiufuwu.size()!=0">
+			INSERT INTO weixiufuwu (fwname,fwprice,xid,vipprice) VALUES
+			<foreach collection="fzxweixiuadd.fzxweixiufuwu" item="temp"
+				separator=",">
+				(#{temp.fwname},#{temp.fwprice},#{temp.xid},#{temp.vipprice})
+			</foreach>
+			;
+		</if> -->
+	</insert>
 	
 </mapper>

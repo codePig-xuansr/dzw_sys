@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.accp.dao.fzx.fzxdao;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
@@ -51,6 +53,8 @@ public class fzxbiz {
 		return dao.selectFw();
 	}
 	
+
+	
 	
 	/**
 	 * 查询班组
@@ -65,5 +69,13 @@ public class fzxbiz {
 	 */
 	public List<FzxBanzu> selectBzz(){
 		return dao.selectBzz();
+	}
+	
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	public int insertweixiu(FzxWeixiuadd fzxweixiuadd){
+		return dao.insertweixiu(fzxweixiuadd);
 	}
 }

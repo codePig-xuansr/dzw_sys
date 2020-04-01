@@ -7,13 +7,17 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.fzx.fzxbiz;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 import com.alibaba.fastjson.JSON;
@@ -58,6 +62,8 @@ public class fzxaction {
 			return biz.selectFw();
 		}
 	  	
+
+	  	
 	  	/**
 		 * 查询班组信息
 		 * @return
@@ -67,12 +73,21 @@ public class fzxaction {
 			return biz.selectBz();
 		}
 	  	/**
-		 * 查询班组
+		 * 查询班组信息
 		 * @return
 		 */
 	  	@GetMapping("/selectBzz")
 		public List<FzxBanzu> selectBzz(){
 			return biz.selectBzz();
+		}
+	  	
+	  	@PostMapping("/insertweixiu")
+		public Map<String, String> insertweixiu(@RequestBody FzxWeixiuadd fzxweixiuadd) {
+			Map<String, String> message = new HashMap<String, String>();
+			biz.insertweixiu(fzxweixiuadd);
+			message.put("code", "200");
+			message.put("msg", "ok");
+			return message;
 		}
 	 
 }
