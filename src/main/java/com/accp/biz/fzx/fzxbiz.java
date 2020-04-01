@@ -59,4 +59,11 @@ public class fzxbiz {
 	public List<FzxBanzu> selectBz(){
 		return dao.selectBz();
 	}
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	public List<FzxBanzu> selectBzz(){
+		return dao.selectBzz();
+	}
 }

@@ -59,12 +59,20 @@ public class fzxaction {
 		}
 	  	
 	  	/**
-		 * 查询班组
+		 * 查询班组信息
 		 * @return
 		 */
 	  	@GetMapping("/selectBz")
 		public List<FzxBanzu> selectBz(){
 			return biz.selectBz();
+		}
+	  	/**
+		 * 查询班组
+		 * @return
+		 */
+	  	@GetMapping("/selectBzz")
+		public List<FzxBanzu> selectBzz(){
+			return biz.selectBzz();
 		}
 	 
 }

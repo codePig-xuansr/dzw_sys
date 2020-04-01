@@ -39,4 +39,10 @@ public interface fzxdao {
 	 */
 	List<FzxBanzu> selectBz();
 	
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	List<FzxBanzu> selectBzz();
+	
 }
