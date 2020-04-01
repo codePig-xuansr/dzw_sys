@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.zkx.ZkxFunBiz;
 import com.accp.pojo.zkx.ZkxFunction;
+import com.accp.vo.zkx.ZkxURoleVO;
 
 @RestController
 @RequestMapping("/zkx/api/funs")
@@ -21,5 +22,10 @@ public class ZkxFunAction {
 	@GetMapping("{user}/{pwd}")
 	public List<ZkxFunction> showFunByUser(@PathVariable String user,@PathVariable String pwd){
 		return biz.showFunByUser(user, pwd);
+	}
+	
+	@GetMapping("f")
+	public List<ZkxFunction> queryAllFuns(){
+		return biz.queryAllFuns();
 	}
 }

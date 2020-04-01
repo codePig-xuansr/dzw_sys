@@ -1,5 +1,7 @@
 package com.accp.biz.zkx;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -28,5 +30,9 @@ public class ZkxUserBiz {
 		QueryWrapper<ZkxUser> qw=Wrappers.query();
 		qw.eq("user", user).eq("pwd", pwd);
 		return dao.selectOne(qw);
+	}
+	
+	public List<ZkxUser> queryUserList(){
+		return dao.selectList(null);
 	}
 }

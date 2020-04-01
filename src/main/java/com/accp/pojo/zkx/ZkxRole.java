@@ -2,6 +2,8 @@ package com.accp.pojo.zkx;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ZkxRole {
     private Integer rid;
 
@@ -11,6 +13,7 @@ public class ZkxRole {
 
     private String createby;
 
+    @JSONField(format = "yyyy-MM-dd")
     private Date createdate;
 
     public Integer getRid() {

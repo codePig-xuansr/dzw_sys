@@ -1,5 +1,7 @@
 package com.accp.action.zkx;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,5 +21,10 @@ public class ZkxUserAction {
 	@GetMapping("{user}/{pwd}")
 	public ZkxUser loginUser(@PathVariable String user,@PathVariable String pwd) {
 		return biz.queryUser(user, pwd);
+	}
+	
+	@GetMapping
+	public List<ZkxUser> queryUserList(){
+		return biz.queryUserList();
 	}
 }
