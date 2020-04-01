@@ -4,14 +4,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.accp.biz.ljl.LjlFadongjiBiz;
-import com.accp.pojo.ljl.LjlFadongji;
+import com.accp.biz.ljl.*;
+import com.accp.pojo.ljl.*;
 import com.github.pagehelper.PageInfo;
 
 @SpringBootTest
 public class LjlTest01 {
 	@Autowired
-	private LjlFadongjiBiz biz;
+	private LjlFadongjiBiz fbiz;
+	
+	@Autowired
+	private LjlWeixiuxiangmuBiz wbiz;
 
 	@Test
 	void contextLoads() {
@@ -19,6 +22,13 @@ public class LjlTest01 {
 		 * PageInfo<LjlFadongji> lists = biz.selectAll(1, 5);
 		 * lists.getList().forEach(row->{ System.out.println(row); });
 		 */
-		System.out.println(biz.delete(7));
+		//System.out.println(biz.delete(7));
+		/*
+		 * wbiz.selectLeibie().forEach(row->{ System.out.println(row); });
+		 
+		wbiz.selectWeixiu(3, 1, 4).getList().forEach(r->{
+			System.out.println(r);
+		});*/
+		System.out.println(wbiz.selectTypeF(0, 3));
 	}
 }

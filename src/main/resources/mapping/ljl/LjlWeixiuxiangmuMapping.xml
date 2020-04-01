@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.dao.ljl.IWeixiuxiangmuDao">
+	<select id="selectLeibie" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype
+	</select>
+	
+	<select id="selectWeixiu" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM `weixiufuwu`,`xiangmutype`
+		WHERE xiangmutype.xid = weixiufuwu.xid
+		AND weixiufuwu.xid = '${xid}'
+	</select>
+	
+	<select id="selectTypeF" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype
+		where xfid = '${xfid}'
+		AND xid = '${xid}'
+	</select>
+</mapper>
