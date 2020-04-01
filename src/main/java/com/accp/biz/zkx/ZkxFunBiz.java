@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zkx.ZkxFunDao;
 import com.accp.pojo.zkx.ZkxFunction;
+import com.accp.vo.zkx.ZkxURoleVO;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
@@ -20,6 +21,10 @@ public class ZkxFunBiz {
 	
 	public List<ZkxFunction> showFunByUser(String user,String pwd){
 		return dao.showFunByUser(user, pwd);
+	}
+	
+	public List<ZkxFunction> queryAllFuns(){
+		return dao.selectList(null);
 	}
 
 }

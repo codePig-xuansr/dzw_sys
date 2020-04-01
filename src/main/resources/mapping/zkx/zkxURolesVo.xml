@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zkx.ZkxFunDao">
-	<resultMap type="com.accp.vo.zkx.ZkxURoleVO" id="urolemap">
-		<id column="uid" property="uid"/>
-		<result column="user" property="user"/>
-		<result column="pwd" property="pwd"/>
-		<result column="username" property="username"/>
-		<result column="comedate" property="comedate"/>
-		<result column="address" property="address"/>
-		<result column="sex" property="sex"/>
-		<result column="depid" property="depid"/>
-		<result column="rid" property="rid"/>
-		<result column="tid" property="tid"/>
-		<collection property="roles" select="queryRole" column="rid"></collection>
-	</resultMap>
-	<select id="queryRole" resultType="com.accp.pojo.zkx.ZkxFunction">
-		
-	</select>
-	<select id="queryURoles" resultMap="urolemap">
-		
+
+	<select id="queryURoles"
+		resultType="com.accp.pojo.zkx.ZkxFunction">
+		SELECT f.`fid`,f.`fcode`,f.`fname`,f.`fpid`
+		FROM `function` f
+		INNER JOIN `pa` p ON f.`fid`=p.`fid`
+		INNER JOIN `role` r ON p.`rid`=r.`rid`
+		INNER JOIN `user` u ON r.`rid`=u.`rid`
+		WHERE u.`user`='admin' AND u.`pwd`='admin'
 	</select>
 </mapper>
