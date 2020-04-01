@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
@@ -31,5 +32,11 @@ public interface fzxdao {
 	 * @return
 	 */
 	List<FzxWeixiufuwu> selectFw();
+	
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	List<FzxBanzu> selectBz();
 	
 }

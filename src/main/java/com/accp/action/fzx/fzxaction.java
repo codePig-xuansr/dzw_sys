@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.fzx.fzxbiz;
+import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.vo.fzx.FzxCtcar;
@@ -57,5 +58,13 @@ public class fzxaction {
 			return biz.selectFw();
 		}
 	  	
+	  	/**
+		 * 查询班组
+		 * @return
+		 */
+	  	@GetMapping("/selectBz")
+		public List<FzxBanzu> selectBz(){
+			return biz.selectBz();
+		}
 	 
 }
