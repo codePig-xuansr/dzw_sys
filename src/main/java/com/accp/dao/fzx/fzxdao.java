@@ -30,6 +30,12 @@ public interface fzxdao {
 	List<FzxWeixiu> selectWeixiuAll(@Param("carno") String carno);
 	
 	/**
+	 * 按车牌号查询今日维修记录
+	 * @return
+	 */
+	List<FzxWeixiu> selectWeixiuAllorder(@Param("carno") String carno);
+	
+	/**
 	 * 查询维修服务消息
 	 * @return
 	 */

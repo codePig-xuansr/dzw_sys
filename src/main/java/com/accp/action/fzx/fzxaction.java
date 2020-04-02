@@ -54,6 +54,16 @@ public class fzxaction {
 		}
 	  	
 	  	/**
+		 * 按车牌号查询今日维修记录
+		 * @return
+		 */
+	  	@GetMapping("/selectWeixiuAllorder/{carno}")
+		public List<FzxWeixiu> selectWeixiuAllorder(String carno){
+			return biz.selectWeixiuAllorder(carno);
+		}
+	  	
+	  	
+	  	/**
 		 * 查询维修服务消息
 		 * @return
 		 */

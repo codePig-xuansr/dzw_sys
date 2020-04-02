@@ -46,6 +46,14 @@ public class fzxbiz {
 	}
 	
 	/**
+	 * 按车牌号查询今日维修记录
+	 * @return
+	 */
+	public List<FzxWeixiu> selectWeixiuAllorder(String carno){
+		return dao.selectWeixiuAllorder(carno);
+	}
+	
+	/**
 	 * 查询维修服务消息
 	 * @return
 	 */

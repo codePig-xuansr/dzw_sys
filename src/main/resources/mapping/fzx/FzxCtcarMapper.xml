@@ -14,5 +14,12 @@
  ON c.recordid=d.recordid INNER JOIN jsrecord e ON c.recordid=e.recordid
  WHERE a.carno=#{carno}
 	</select>
+	<!-- 今日 -->
+	<select id="selectWeixiuAllorder" resultType="com.accp.vo.fzx.FzxWeixiu">
+		SELECT c.recordid,c.jsstatus,c.yewutype,c.carno,b.kname,b.kphone,c.danjutype,c.recorddate,c.yujidate,d.shijidate,e.jsdate FROM
+ carinfo a INNER JOIN kehu b  ON a.kid=b.kid INNER JOIN weixiurecord c ON a.carno=c.carno INNER JOIN jgrecord d
+ ON c.recordid=d.recordid INNER JOIN jsrecord e ON c.recordid=e.recordid
+ WHERE a.carno=#{carno} AND DATE(c.recorddate) = CURDATE();
+	</select>
 
 </mapper>

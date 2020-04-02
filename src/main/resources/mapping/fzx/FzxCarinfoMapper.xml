@@ -29,14 +29,14 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	INSERT INTO weixiurecord
 (recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc)
 VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc});
-		<!-- <if test="fzxweixiuadd.fzxweixiufuwu.size()!=0">
-			INSERT INTO weixiufuwu (fwname,fwprice,xid,vipprice) VALUES
-			<foreach collection="fzxweixiuadd.fzxweixiufuwu" item="temp"
+		<if test="fzxweixiuadd.fzxxiangmutype.size()!=0">
+			INSERT INTO xiangmutype (xid,fwname,fwcod) VALUES
+			<foreach collection="fzxweixiuadd.fzxxiangmutype" item="temp"
 				separator=",">
-				(#{temp.fwname},#{temp.fwprice},#{temp.xid},#{temp.vipprice})
+				(#{temp.xid},#{temp.fwname},#{temp.fwcod})
 			</foreach>
 			;
-		</if> -->
+		</if>
 	</insert>
 	
 </mapper>
