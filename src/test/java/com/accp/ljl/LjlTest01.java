@@ -29,6 +29,9 @@ public class LjlTest01 {
 		wbiz.selectWeixiu(3, 1, 4).getList().forEach(r->{
 			System.out.println(r);
 		});*/
-		System.out.println(wbiz.selectTypeF(0, 3));
+		//System.out.println(wbiz.selectTypeF(0, 3));
+		wbiz.ceshiselectWeixiu(1).forEach(e->{
+			System.out.println(e);
+		});
 	}
 }

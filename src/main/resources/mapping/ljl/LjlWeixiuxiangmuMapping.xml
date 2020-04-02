@@ -15,6 +15,12 @@
 		AND weixiufuwu.xid = '${xid}'
 	</select>
 	
+	<select id="ceshiselectWeixiu" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM weixiufuwu,xiangmutype
+		WHERE weixiufuwu.xid = xiangmutype.xid
+		AND weixiufuwu.xid IN ('${list}')
+	</select>
+	
 	<select id="selectTypeF" resultType="LjlXiangmuLeibie">
 		select * from xiangmutype
 		where xfid = '${xfid}'

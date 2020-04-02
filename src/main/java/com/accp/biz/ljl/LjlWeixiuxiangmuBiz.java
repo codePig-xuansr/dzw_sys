@@ -34,4 +34,8 @@ public class LjlWeixiuxiangmuBiz {
 	public LjlXiangmuLeibie selectTypeF(Integer xfid, Integer xid) {
 		return dao.selectTypeF(xfid, xid);
 	}
+	
+	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int xid){
+		return dao.ceshiselectWeixiu(xid);
+	}
 }
