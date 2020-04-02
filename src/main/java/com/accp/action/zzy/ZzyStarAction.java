@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -63,6 +64,24 @@ public class ZzyStarAction {
 		return biz.queryStarBySid(sid);
 	}
 	
+	/**
+	 * 根据编号删除状态信息
+	 * @param sid状态编码
+	 * @return
+	 */
+	@DeleteMapping("deleteStar/{sid}")
+	public Map<String, Object> deleteStar(@PathVariable int sid) {
+		int count=biz.deleteStar(sid);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if(count!=0) {
+			message.put("code", "200");
+			message.put("msg", "删除成功!");
+		}else {
+			message.put("code", "300");
+			message.put("msg", "删除失败!");
+		}
+		return message;
+	}
 	/**
 	 * 修改状态信息
 	 * @param star
