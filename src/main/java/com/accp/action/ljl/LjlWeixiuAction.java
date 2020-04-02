@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,4 +40,10 @@ public class LjlWeixiuAction {
 	public LjlXiangmuLeibie selectTypeF(Integer xfid, Integer xid) {
 		return biz.selectTypeF(xfid, xid);
 	}
+	
+	@GetMapping("All/weixiuxiangmu/{chkIds1}/{n}/{s}")
+	public PageInfo<LjlWeixiuXiangmuVo> selectweixiu(@PathVariable int[] chkIds1, @PathVariable Integer n, @PathVariable Integer s){
+		return biz.ceshiselectWeixiu(chkIds1, n, s);
+	}
+	
 }
