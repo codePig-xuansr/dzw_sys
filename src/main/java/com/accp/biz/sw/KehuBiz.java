@@ -33,6 +33,20 @@ public class KehuBiz {
 	}
 
 	/**
+	 * 查询不是VIP的客户分页查询
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<Kehu> findPageByVip(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		QueryWrapper<Kehu> qw = Wrappers.query();
+		qw.eq("vipcode", 0);
+		return new PageInfo<>(dao.selectList(qw));
+	}
+
+	/**
 	 * 查询最新新增的客户
 	 * 
 	 * @return
@@ -50,6 +64,7 @@ public class KehuBiz {
 	public Kehu findById(Integer id) {
 		return dao.selectById(id);
 	}
+
 	/**
 	 * 根据客户id查询vo
 	 * 
