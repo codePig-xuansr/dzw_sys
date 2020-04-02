@@ -35,7 +35,8 @@ public class LjlWeixiuxiangmuBiz {
 		return dao.selectTypeF(xfid, xid);
 	}
 	
-	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int[] xid){
-		return dao.ceshiselectWeixiu(xid);
+	public PageInfo<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int[] xid, Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlWeixiuXiangmuVo>(dao.ceshiselectWeixiu(xid));
 	}
 }
