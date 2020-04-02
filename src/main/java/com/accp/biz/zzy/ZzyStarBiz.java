@@ -63,4 +63,12 @@ public class ZzyStarBiz {
 	public int modifStar(ZzyStar star) {
 		return dao.updateById(star);
 	}
+	/**
+	 * 根据编号删除状态信息
+	 * @param sid
+	 * @return
+	 */
+	public int deleteStar(int sid) {
+		return dao.deleteById(sid);
+	}
 }
