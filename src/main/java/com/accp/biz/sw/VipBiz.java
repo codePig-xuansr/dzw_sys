@@ -10,12 +10,26 @@ import com.accp.dao.sw.IVipDao;
 import com.accp.pojo.sw.Vipcard;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class VipBiz {
 	@Autowired
 	private IVipDao dao;
+
+	/**
+	 * 会员分页查询
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<Vipcard> findPage(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.selectList(null));
+	}
 
 	/**
 	 * 查询会员卡是否重复

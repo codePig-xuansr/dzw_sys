@@ -2,6 +2,7 @@ package com.accp.action.sw;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.sw.VipBiz;
 import com.accp.pojo.sw.Vipcard;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("/api/vip")
 public class VipAction {
 	@Autowired
 	private VipBiz biz;
+
+	/**
+	 * 会员分页查询
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("/{pageNum}/{pageSize}")
+	public PageInfo<Vipcard> queryPage(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		return biz.findPage(pageNum, pageSize);
+	}
 
 	/**
 	 * 新增会员卡

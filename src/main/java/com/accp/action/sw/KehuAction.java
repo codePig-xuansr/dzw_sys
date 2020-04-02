@@ -38,6 +38,18 @@ public class KehuAction {
 	}
 
 	/**
+	 * 非vip客户分页查询
+	 * 
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("/vip/{pageNum}/{pageSize}")
+	public PageInfo<Kehu> queryPageByVip(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		return biz.findPage(pageNum, pageSize);
+	}
+
+	/**
 	 * 根据客户id查询
 	 * 
 	 * @param id
