@@ -11,12 +11,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @TableName("xiangmutype")
 public class LjlXiangmuLeibie {
 	/**
-	 * 项目类别编号
+	 * 项目类别编号1
 	 */
 	@TableId(value = "xid",type = IdType.AUTO)
 	private int xid;
 	/**
-	 * 项目类别名称
+	 * 项目类别名称1
 	 */
 	private String xname;
 	/**
