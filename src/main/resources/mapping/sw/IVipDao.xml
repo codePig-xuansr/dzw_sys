@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.sw.IVipDao">
+	<resultMap id="BaseResultMap" type="com.accp.vo.sw.VipVo">
+		<id column="vipcode" property="vipcode" jdbcType="INTEGER" />
+		<result column="vipid" property="vipid" jdbcType="INTEGER" />
+		<result column="vippwd" property="vippwd" jdbcType="VARCHAR" />
+		<result column="vipdiscount" property="vipdiscount"
+			jdbcType="FLOAT" />
+		<result column="startdate" property="startdate" jdbcType="DATE" />
+		<result column="jifen" property="jifen" jdbcType="INTEGER" />
+		<result column="kid" property="kid" jdbcType="INTEGER" />
+		<result column="kname" property="kname" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryList" resultMap="BaseResultMap">
+		SELECT vipid,v.vipcode,vippwd,vipdiscount,startdate,jifen,kid,kname
+		FROM vipcard v INNER JOIN kehu k ON k.vipcode=v.vipcode
+	</select>
+</mapper>

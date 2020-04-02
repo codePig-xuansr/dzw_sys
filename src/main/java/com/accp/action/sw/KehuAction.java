@@ -46,7 +46,7 @@ public class KehuAction {
 	 */
 	@GetMapping("/vip/{pageNum}/{pageSize}")
 	public PageInfo<Kehu> queryPageByVip(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
-		return biz.findPage(pageNum, pageSize);
+		return biz.findPageByVip(pageNum, pageSize);
 	}
 
 	/**

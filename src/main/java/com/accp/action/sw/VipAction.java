@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.sw.VipBiz;
 import com.accp.pojo.sw.Vipcard;
+import com.accp.vo.sw.VipVo;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -32,7 +34,7 @@ public class VipAction {
 	 * @return
 	 */
 	@GetMapping("/{pageNum}/{pageSize}")
-	public PageInfo<Vipcard> queryPage(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+	public PageInfo<VipVo> queryPage(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
 		return biz.findPage(pageNum, pageSize);
 	}
 
@@ -68,6 +70,26 @@ public class VipAction {
 	@GetMapping("/{vipcode}")
 	public Map<String, Object> queryRepetition(@PathVariable Integer vipcode) {
 		int i = biz.findRepetition(vipcode);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if (i > 0) {
+			message.put("code", "200");
+			message.put("msg", "ok");
+		} else {
+			message.put("code", "400");
+			message.put("msg", "no");
+		}
+		return message;
+	}
+
+	/**
+	 * 删除会员卡
+	 * 
+	 * @param vipcode
+	 * @return
+	 */
+	@DeleteMapping("/{vipcode}")
+	public Map<String, Object> del(@PathVariable Integer vipcode) {
+		int i = biz.removeVip(vipcode);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (i > 0) {
 			message.put("code", "200");

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.sw.IVipDao;
 import com.accp.pojo.sw.Vipcard;
+import com.accp.vo.sw.VipVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -26,9 +27,9 @@ public class VipBiz {
 	 * @param pageSize
 	 * @return
 	 */
-	public PageInfo<Vipcard> findPage(Integer pageNum, Integer pageSize) {
+	public PageInfo<VipVo> findPage(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		return new PageInfo<>(dao.selectList(null));
+		return new PageInfo<>(dao.queryList());
 	}
 
 	/**
@@ -52,5 +53,16 @@ public class VipBiz {
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int addVip(Vipcard vip) {
 		return dao.insert(vip);
+	}
+
+	/**
+	 * 删除会员卡
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public int removeVip(Integer id) {
+		return dao.deleteById(id);
 	}
 }

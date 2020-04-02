@@ -4,11 +4,12 @@ import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 
 public class Vipcard {
-	@TableId(value = "vipid", type = IdType.AUTO)
 	private Integer vipid;
+	@TableId(value = "vipcode")
 	private Integer vipcode;
 	private String vippwd;
 	private Float vipdiscount;
