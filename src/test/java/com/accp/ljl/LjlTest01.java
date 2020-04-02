@@ -30,7 +30,10 @@ public class LjlTest01 {
 			System.out.println(r);
 		});*/
 		//System.out.println(wbiz.selectTypeF(0, 3));
-		wbiz.ceshiselectWeixiu(1).forEach(e->{
+		int [] id = new int [3];
+		id[0] = 1;
+		id[1] = 3;
+		wbiz.ceshiselectWeixiu(id).forEach(e->{
 			System.out.println(e);
 		});
 	}

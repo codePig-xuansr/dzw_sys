@@ -22,7 +22,7 @@ public interface IWeixiuxiangmuDao extends BaseMapper<LjlWeixiuXiangmuVo>{
 	public List<LjlWeixiuXiangmuVo> selectWeixiu(@Param("xid")Integer xid);
 	
 	//测试
-	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(@Param("list")int xid);
+	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(@Param("list")int[] xid);
 	/**
 	 * 根据父id查询父级类别名称
 	 * @param xfid

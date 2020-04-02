@@ -18,7 +18,11 @@
 	<select id="ceshiselectWeixiu" resultType="LjlWeixiuXiangmuVo">
 		SELECT * FROM weixiufuwu,xiangmutype
 		WHERE weixiufuwu.xid = xiangmutype.xid
-		AND weixiufuwu.xid IN ('${list}')
+		AND weixiufuwu.xid IN (
+			<foreach collection="list" item="temp" separator=",">
+				'${temp}'
+			</foreach>
+		)
 	</select>
 	
 	<select id="selectTypeF" resultType="LjlXiangmuLeibie">

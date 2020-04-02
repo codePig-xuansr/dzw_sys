@@ -35,7 +35,7 @@ public class LjlWeixiuxiangmuBiz {
 		return dao.selectTypeF(xfid, xid);
 	}
 	
-	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int xid){
+	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int[] xid){
 		return dao.ceshiselectWeixiu(xid);
 	}
 }
