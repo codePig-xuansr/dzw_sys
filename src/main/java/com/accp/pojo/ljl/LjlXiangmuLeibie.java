@@ -16,7 +16,7 @@ public class LjlXiangmuLeibie {
 	@TableId(value = "xid",type = IdType.AUTO)
 	private int xid;
 	/**
-	 * 项目类别名称
+	 * 项目类别名称、
 	 */
 	private String xname;
 	/**
