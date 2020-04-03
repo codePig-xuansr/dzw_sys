@@ -23,17 +23,22 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 		SELECT * FROM banzu
 	</select>
 	
+	<!-- 查询服务类别 -->
+	<select id="selectFwlb" resultType="com.accp.pojo.fzx.Fzxxiangmutype">
+		SELECT * FROM xiangmutype
+	</select>
+	
 	
 	<!-- 新增 -->
 	<insert id="insertweixiu">
 	INSERT INTO weixiurecord
-(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc)
-VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc});
-		<if test="fzxweixiuadd.fzxxiangmutype.size()!=0">
-			INSERT INTO xiangmutype (xid,fwname,fwcod) VALUES
-			<foreach collection="fzxweixiuadd.fzxxiangmutype" item="temp"
+(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype)
+VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype});
+		<if test="fzxweixiuadd.fzxweixiuxm.size()!=0">
+			INSERT INTO weixiuxm (wid,recordid,fwcod) VALUES
+			<foreach collection="fzxweixiuadd.fzxweixiuxm" item="temp"
 				separator=",">
-				(#{temp.xid},#{temp.fwname},#{temp.fwcod})
+				(#{temp.wid},#{fzxweixiuadd.recordid},#{temp.fwcod})
 			</foreach>
 			;
 		</if>

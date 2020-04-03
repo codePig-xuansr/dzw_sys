@@ -20,10 +20,12 @@ public class FzxWeixiuadd {
 	private String guzhangyuanyin;//故障原因
 	private String fuwugw;//服务顾问
 	private String shigongbc;//施工班次
-	private List<Fzxxiangmutype> fzxxiangmutype=new ArrayList<Fzxxiangmutype>(0);
+	private Date bztime;
+	private List<FzxWeixiuxm> fzxweixiuxm=new ArrayList<FzxWeixiuxm>(0);
 	public FzxWeixiuadd(String recordid, String carno, String yewutype, String danjutype, Date recorddate, int bzid,
 			Date yujidate, int status, int jsstatus, String beizhu, int licheng, String guzhanginfo,
-			String guzhangyuanyin, String fuwugw, String shigongbc, List<Fzxxiangmutype> fzxxiangmutype) {
+			String guzhangyuanyin, String fuwugw, String shigongbc, Date bztime,
+			List<FzxWeixiuxm> fzxweixiuxm) {
 		super();
 		this.recordid = recordid;
 		this.carno = carno;
@@ -40,7 +42,8 @@ public class FzxWeixiuadd {
 		this.guzhangyuanyin = guzhangyuanyin;
 		this.fuwugw = fuwugw;
 		this.shigongbc = shigongbc;
-		this.fzxxiangmutype = fzxxiangmutype;
+		this.bztime = bztime;
+		this.fzxweixiuxm = fzxweixiuxm;
 	}
 	public FzxWeixiuadd() {
 		super();
@@ -135,11 +138,18 @@ public class FzxWeixiuadd {
 	public void setShigongbc(String shigongbc) {
 		this.shigongbc = shigongbc;
 	}
-	public List<Fzxxiangmutype> getFzxxiangmutype() {
-		return fzxxiangmutype;
+	public Date getBztime() {
+		return bztime;
 	}
-	public void setFzxxiangmutype(List<Fzxxiangmutype> fzxxiangmutype) {
-		this.fzxxiangmutype = fzxxiangmutype;
+	public void setBztime(Date bztime) {
+		this.bztime = bztime;
 	}
+	public List<FzxWeixiuxm> getFzxweixiuxm() {
+		return fzxweixiuxm;
+	}
+	public void setFzxweixiuxm(List<FzxWeixiuxm> fzxweixiuxm) {
+		this.fzxweixiuxm = fzxweixiuxm;
+	}
+	
 	
 }

@@ -1,25 +1,17 @@
 package com.accp.pojo.fzx;
 
 public class Fzxxiangmutype {
-	private int xxid;
 	private int xid;
-	private String fwname;
-	private int fwcod;
-	public Fzxxiangmutype(int xxid, int xid, String fwname, int fwcod) {
+	private String xname;
+	private int xfid;
+	public Fzxxiangmutype(int xid, String xname, int xfid) {
 		super();
-		this.xxid = xxid;
 		this.xid = xid;
-		this.fwname = fwname;
-		this.fwcod = fwcod;
+		this.xname = xname;
+		this.xfid = xfid;
 	}
 	public Fzxxiangmutype() {
 		super();
-	}
-	public int getXxid() {
-		return xxid;
-	}
-	public void setXxid(int xxid) {
-		this.xxid = xxid;
 	}
 	public int getXid() {
 		return xid;
@@ -27,17 +19,17 @@ public class Fzxxiangmutype {
 	public void setXid(int xid) {
 		this.xid = xid;
 	}
-	public String getFwname() {
-		return fwname;
+	public String getXname() {
+		return xname;
 	}
-	public void setFwname(String fwname) {
-		this.fwname = fwname;
+	public void setXname(String xname) {
+		this.xname = xname;
 	}
-	public int getFwcod() {
-		return fwcod;
+	public int getXfid() {
+		return xfid;
 	}
-	public void setFwcod(int fwcod) {
-		this.fwcod = fwcod;
+	public void setXfid(int xfid) {
+		this.xfid = xfid;
 	}
 	
 	
