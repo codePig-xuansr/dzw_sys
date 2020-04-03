@@ -91,6 +91,15 @@ public class fzxaction {
 			return biz.selectBzz();
 		}
 	  	
+	  	/**
+		 * 查询服务类别班组
+		 * @return
+		 */
+	  	@GetMapping("/selectFwlb")
+		public List<Fzxxiangmutype> selectFwlb(){
+			return biz.selectFwlb();
+		}
+	  	
 	  	@PostMapping("/insertweixiu")
 		public Map<String, String> insertweixiu(@RequestBody FzxWeixiuadd fzxweixiuadd) {
 			Map<String, String> message = new HashMap<String, String>();

@@ -56,6 +56,12 @@ public interface fzxdao {
 	List<FzxBanzu> selectBzz();
 	
 	/**
+	 * 查询服务类别班组
+	 * @return
+	 */
+	List<Fzxxiangmutype> selectFwlb();
+	
+	/**
 	 * 主详新增
 	 * @param fzxweixiuadd
 	 * @return

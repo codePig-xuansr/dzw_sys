@@ -80,7 +80,15 @@ public class fzxbiz {
 	}
 	
 	/**
-	 * 查询班组
+	 * 查询服务类别班组
+	 * @return
+	 */
+	public List<Fzxxiangmutype> selectFwlb(){
+		return dao.selectFwlb();
+	}
+	
+	/**
+	 * 新增
 	 * @return
 	 */
 	public int insertweixiu(FzxWeixiuadd fzxweixiuadd){
