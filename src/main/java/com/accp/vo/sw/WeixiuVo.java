@@ -4,6 +4,13 @@ import java.util.Date;
 
 public class WeixiuVo {
 	private Integer kid;
+	private Integer bzid;
+	private Integer status;
+	private Integer jstype;
+	private Integer bztime;
+	private Integer jsstatus;
+	private String kname;
+	private String bzname;
 	private String danjutype;
 	private String recordid;
 	private String carno;
@@ -19,6 +26,62 @@ public class WeixiuVo {
 
 	public void setKid(Integer kid) {
 		this.kid = kid;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Integer getJstype() {
+		return jstype;
+	}
+
+	public void setJstype(Integer jstype) {
+		this.jstype = jstype;
+	}
+
+	public Integer getBztime() {
+		return bztime;
+	}
+
+	public void setBztime(Integer bztime) {
+		this.bztime = bztime;
+	}
+
+	public Integer getBzid() {
+		return bzid;
+	}
+
+	public void setBzid(Integer bzid) {
+		this.bzid = bzid;
+	}
+
+	public Integer getJsstatus() {
+		return jsstatus;
+	}
+
+	public void setJsstatus(Integer jsstatus) {
+		this.jsstatus = jsstatus;
+	}
+
+	public String getKname() {
+		return kname;
+	}
+
+	public void setKname(String kname) {
+		this.kname = kname;
+	}
+
+	public String getBzname() {
+		return bzname;
+	}
+
+	public void setBzname(String bzname) {
+		this.bzname = bzname;
 	}
 
 	public String getDanjutype() {
