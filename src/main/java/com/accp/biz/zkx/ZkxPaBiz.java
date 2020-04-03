@@ -8,29 +8,23 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.zkx.ZkxFunDao;
-import com.accp.pojo.zkx.ZkxFunction;
-import com.accp.vo.zkx.ZkxURoleVO;
+import com.accp.dao.zkx.ZkxPaDao;
+import com.accp.pojo.zkx.ZkxPa;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class ZkxFunBiz {
-	
-	@Autowired
-	private ZkxFunDao dao;
-	
-	public List<ZkxFunction> showFunByUser(String user,String pwd){
-		return dao.showFunByUser(user, pwd);
-	}
-	
-	public List<ZkxFunction> showUFuns(String user,String pwd){
-		return dao.queryUFuns(user, pwd);
-	}
-	
-	public List<ZkxFunction> queryAllFuns(){
-		return dao.selectList(null);
-	}
-	
-	
+public class ZkxPaBiz {
 
+	@Autowired
+	private ZkxPaDao dao;
+
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer removePaByRid(Integer rid) {
+		return dao.deleteById(rid);
+	}
+	
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer addPa(List<ZkxPa> plist) {
+		return dao.addPas(plist);
+	}
 }

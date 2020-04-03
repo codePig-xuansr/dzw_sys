@@ -2,7 +2,13 @@ package com.accp.pojo.zkx;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("pa")
 public class ZkxPa {
+	@TableId(value = "pid", type = IdType.AUTO)
     private Integer pid;
 
     private Integer rid;

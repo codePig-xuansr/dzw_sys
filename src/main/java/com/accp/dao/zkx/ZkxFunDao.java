@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface ZkxFunDao extends BaseMapper<ZkxFunction>{
 
 	public List<ZkxFunction> showFunByUser(@Param("user")String user,@Param("pwd")String pwd);
+	
+	public List<ZkxFunction> queryUFuns(@Param("user")String user,@Param("pwd")String pwd);
 }
