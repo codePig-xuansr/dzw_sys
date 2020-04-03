@@ -2,11 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.sw.IWeixiuDao">
 	<resultMap id="BaseResultMap" type="com.accp.vo.sw.WeixiuVo">
-		<id column="kid" property="kid" jdbcType="INTEGER" />
+		<id column="recordid" property="recordid" jdbcType="VARCHAR" />
 		<result column="danjutype" property="danjutype"
 			jdbcType="VARCHAR" />
-		<result column="recordid" property="recordid"
-			jdbcType="VARCHAR" />
+		<result column="jsstatus" property="jsstatus"
+			jdbcType="INTEGER" />
+		<result column="bztime" property="bztime" jdbcType="INTEGER" />
+		<result column="kid" property="kid" jdbcType="INTEGER" />
+		<result column="jstype" property="jstype" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
+		<result column="kname" property="kname" jdbcType="VARCHAR" />
+		<result column="bzid" property="bzid" jdbcType="INTEGER" />
+		<result column="bzname" property="bzname" jdbcType="VARCHAR" />
 		<result column="carno" property="carno" jdbcType="VARCHAR" />
 		<result column="yewutype" property="yewutype"
 			jdbcType="VARCHAR" />
@@ -30,6 +37,25 @@
 			</if>
 			<if test="carno!=null and carno!=''">
 				w.jsstatus=1 AND c.carno=#{carno}
+			</if>
+		</where>
+	</select>
+	<select id="queryListByJsstatus" resultMap="BaseResultMap">
+		SELECT
+		danjutype,status,jstype,jsstatus,w.recordid AS recordid,w.carno
+		AS
+		carno,yewutype,recorddate,yujidate,jsdate,jsmoney,kname,c.kid,w.bzid,bzname,bztime
+		FROM weixiurecord w LEFT JOIN jsrecord j ON j.recordid=w.recordid
+		INNER JOIN carinfo c ON c.carno=w.carno
+		INNER JOIN kehu k ON
+		c.kid=k.kid
+		INNER JOIN banzu b ON b.bzid=w.bzid
+		<where>
+			<if test="status!=null">
+				w.status=1 AND w.jsstatus=#{status}
+			</if>
+			<if test="recordid!=null and recordid!=''">
+				w.status=1 AND w.recordid=#{recordid}
 			</if>
 		</where>
 	</select>
