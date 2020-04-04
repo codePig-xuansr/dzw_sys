@@ -36,10 +36,44 @@ public interface IWeixiuxiangmuDao extends BaseMapper<LjlWeixiuXiangmuVo>{
 	 */
 	public LjlXiangmuLeibie selectTypeF(@Param("xfid")Integer xfid);
 	/**
-	 * 
+	 * 按名称模糊查询
 	 * @return
 	 */
 	public List<LjlWeixiuXiangmuVo> selectLikeName(@Param("xname")String xname);
-	
+	/**
+	 * 查询当前类别表最大id值
+	 * @return
+	 */
 	public int selectId();
+	/**
+	 * 查询当前项目表最大id值
+	 * @return
+	 */
+	public int selectxiangmuId();
+	/**
+	 * 新增维修项目
+	 * @param wei
+	 * @return
+	 */
+	public int addweixiufuwu(@Param("w")LjlWeixiuFuwu wei);
+	/**
+	 * 修改维修项目
+	 * @param wei
+	 * @return
+	 */
+	public int updateweixiufuwu(@Param("w")LjlWeixiuFuwu wei);
+	/**
+	 * 删除维修项目
+	 * @param fwcod
+	 * @return
+	 */
+	public int deleteweixiufuwu(@Param("fwcod") int fwcod);
+	/**
+	 * 按照id查询要修改的维修项目
+	 */
+	public LjlWeixiuFuwu selectFuwuById(@Param("fwcod") int fwcod);
+	
+	public int addweixiutypeF(@Param("t")LjlXiangmuLeibie type);
+	
+	public List<LjlXiangmuLeibie> selectTypeFuji();
 }

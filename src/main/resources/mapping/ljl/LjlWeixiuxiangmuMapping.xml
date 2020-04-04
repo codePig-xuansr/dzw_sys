@@ -39,4 +39,44 @@
 	<select id="selectId" resultType="int">
 		SELECT MAX(xid) FROM xiangmutype
 	</select>
+	
+	<select id="selectxiangmuId" resultType="int">
+		SELECT MAX(fwcod) FROM weixiufuwu
+	</select>
+	
+	<insert id="addweixiufuwu">
+		insert into weixiufuwu(fwcod,fwname,fwprice,xid,vipprice) 
+		values('${w.fwcod}','${w.fwname}','${w.fwprice}','${w.xid}','${w.vipprice}')
+	</insert>
+	
+	<select id="selectFuwuById" resultType="LjlWeixiuFuwu">
+		SELECT * FROM weixiufuwu
+		where fwcod = '${fwcod}'
+	</select>
+	
+	<update id="updateweixiufuwu">
+		update weixiufuwu
+		<set>
+			fwname = '${w.fwname}',
+			fwprice = '${w.fwprice}',
+			xid = '${w.xid}',
+			vipprice = '${w.vipprice}'
+		</set>
+		<where>
+			and fwcod = '${w.fwcod}'
+		</where>
+	</update>
+	
+	<delete id="deleteweixiufuwu">
+		delete from weixiufuwu where fwcod = '${fwcod}'
+	</delete>
+	
+	<insert id="addweixiutypeF">
+		insert into xiangmutype(xid,xname,xfid) 
+		values('${t.xid}','${t.xname}','${t.xfid}')
+	</insert>
+	
+	<select id="selectTypeFuji" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype where xfid = 0
+	</select>
 </mapper>

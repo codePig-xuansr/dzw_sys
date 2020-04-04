@@ -48,4 +48,32 @@ public class LjlWeixiuxiangmuBiz {
 	public int selectId() {
 		return dao.selectId();
 	}
+	
+	public int selectxiangmuId() {
+		return dao.selectxiangmuId();
+	}
+	
+	public int addweixiufuwu(@Param("w")LjlWeixiuFuwu wei) {
+		return dao.addweixiufuwu(wei);
+	}
+	
+	public int updateweixiufuwu(@Param("w")LjlWeixiuFuwu wei) {
+		return dao.updateweixiufuwu(wei);
+	}
+	
+	public int deleteweixiufuwu(int fwcod) {
+		return dao.deleteweixiufuwu(fwcod);
+	}
+	
+	public LjlWeixiuFuwu selectFuwuById(@Param("fwcod") int fwcod) {
+		return dao.selectFuwuById(fwcod);
+	}
+	
+	public int addweixiutypeF(LjlXiangmuLeibie type){
+		return dao.addweixiutypeF(type);
+	}
+	
+	public List<LjlXiangmuLeibie> selectTypeFuji(){
+		return dao.selectTypeFuji();
+	}
 }
