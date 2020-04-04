@@ -27,7 +27,16 @@
 	
 	<select id="selectTypeF" resultType="LjlXiangmuLeibie">
 		select * from xiangmutype
-		where xfid = '${xfid}'
-		AND xid = '${xid}'
+		where xid = '${xfid}'
+	</select>
+	
+	<select id="selectLikeName" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM weixiufuwu,xiangmutype
+		WHERE weixiufuwu.xid = xiangmutype.xid
+		AND fwname like '%${xname}%'
+	</select>
+	
+	<select id="selectId" resultType="int">
+		SELECT MAX(xid) FROM xiangmutype
 	</select>
 </mapper>
