@@ -22,11 +22,24 @@ public interface IWeixiuxiangmuDao extends BaseMapper<LjlWeixiuXiangmuVo>{
 	public List<LjlWeixiuXiangmuVo> selectWeixiu(@Param("xid")Integer xid);
 	
 	//测试
+	/**
+	 * 结果：按多个id查询集合
+	 * @param xid
+	 * @return
+	 */
+	
 	public List<LjlWeixiuXiangmuVo> ceshiselectWeixiu(@Param("list")int[] xid);
 	/**
 	 * 根据父id查询父级类别名称
 	 * @param xfid
 	 * @return
 	 */
-	public LjlXiangmuLeibie selectTypeF(@Param("xfid")Integer xfid, @Param("xid")Integer xid);
+	public LjlXiangmuLeibie selectTypeF(@Param("xfid")Integer xfid);
+	/**
+	 * 
+	 * @return
+	 */
+	public List<LjlWeixiuXiangmuVo> selectLikeName(@Param("xname")String xname);
+	
+	public int selectId();
 }

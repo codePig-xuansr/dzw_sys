@@ -31,19 +31,35 @@ public class LjlWeixiuAction {
 		return map;
 	}
 	
-	@GetMapping("All/weixiu/{xid}/{n}/{s}")
-	public PageInfo<LjlWeixiuXiangmuVo> selectWeixiu(Integer xid, Integer n, Integer s){
-		return biz.selectWeixiu(xid, n, s);
-	}
+	/*
+	 * @GetMapping("All/weixiu/{xid}/{n}/{s}") public PageInfo<LjlWeixiuXiangmuVo>
+	 * selectWeixiu(Integer xid, Integer n, Integer s){ return biz.selectWeixiu(xid,
+	 * n, s); }
+	 */
 	
-	@GetMapping("All/typef")
-	public LjlXiangmuLeibie selectTypeF(Integer xfid, Integer xid) {
-		return biz.selectTypeF(xfid, xid);
-	}
+	/*
+	 * @GetMapping("All/typef") public LjlXiangmuLeibie selectTypeF(Integer xfid,
+	 * Integer xid) { return biz.selectTypeF(xfid, xid); }
+	 */
 	
 	@GetMapping("All/weixiuxiangmu/{chkIds1}/{n}/{s}")
 	public PageInfo<LjlWeixiuXiangmuVo> selectweixiu(@PathVariable int[] chkIds1, @PathVariable Integer n, @PathVariable Integer s){
 		return biz.ceshiselectWeixiu(chkIds1, n, s);
 	}
 	
+	@GetMapping("All/fuji/{xfid}")
+	public LjlXiangmuLeibie selectfuname(@PathVariable Integer xfid){
+		return biz.selectTypeF(xfid);
+	}
+	
+	@GetMapping("All/byname/{xname}/{n}/{s}")
+	public PageInfo<LjlWeixiuXiangmuVo> selectLikename(@PathVariable String xname, @PathVariable Integer n, @PathVariable Integer s){
+		//System.out.println("-"+xname+"-");
+		return biz.selectLikeName(xname, n, s);
+	}
+	
+	@GetMapping("All/weixiutypeMaxId")
+	public int selectId() {
+		return biz.selectId();
+	}
 }

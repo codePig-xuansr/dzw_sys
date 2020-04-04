@@ -31,12 +31,21 @@ public class LjlWeixiuxiangmuBiz {
 		return new PageInfo<LjlWeixiuXiangmuVo>(dao.selectWeixiu(xid));
 	}
 	
-	public LjlXiangmuLeibie selectTypeF(Integer xfid, Integer xid) {
-		return dao.selectTypeF(xfid, xid);
+	public LjlXiangmuLeibie selectTypeF(Integer xfid) {
+		return dao.selectTypeF(xfid);
 	}
 	
 	public PageInfo<LjlWeixiuXiangmuVo> ceshiselectWeixiu(int[] xid, Integer n, Integer s){
 		PageHelper.startPage(n, s);
 		return new PageInfo<LjlWeixiuXiangmuVo>(dao.ceshiselectWeixiu(xid));
+	}
+	
+	public PageInfo<LjlWeixiuXiangmuVo> selectLikeName(String xname, Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlWeixiuXiangmuVo>(dao.selectLikeName(xname));
+	}
+	
+	public int selectId() {
+		return dao.selectId();
 	}
 }
