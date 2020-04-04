@@ -32,7 +32,6 @@ public class WeixiuAction {
 	 */
 	@PutMapping
 	public Map<String, Object> update(@RequestBody Weixiurecord weixiu) {
-		System.out.println(JSON.toJSON(weixiu));
 		int i = biz.modifyById(weixiu);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (i > 0) {

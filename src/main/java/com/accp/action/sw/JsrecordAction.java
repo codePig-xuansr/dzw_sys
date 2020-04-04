@@ -29,7 +29,6 @@ public class JsrecordAction {
 	@PostMapping
 	public Map<String, Object> insert(@RequestBody Jsrecord jsrecord) {
 		jsrecord.setJsdate(new Date());
-		System.out.println(JSON.toJSON(jsrecord));
 		int i = biz.addJrecord(jsrecord);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (i > 0) {

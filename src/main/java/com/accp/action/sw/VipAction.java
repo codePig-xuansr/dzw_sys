@@ -29,6 +29,7 @@ import com.github.pagehelper.PageInfo;
 public class VipAction {
 	@Autowired
 	private VipBiz biz;
+
 	/**
 	 * 修改vip积分状态
 	 * 
@@ -37,7 +38,6 @@ public class VipAction {
 	 */
 	@PutMapping
 	public Map<String, Object> update(@RequestBody Vipcard vip) {
-		System.out.println(JSON.toJSON(vip));
 		int i = biz.modifyById(vip);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (i > 0) {
