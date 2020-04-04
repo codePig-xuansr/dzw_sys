@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.sw.IWeixiuDao;
+import com.accp.pojo.sw.Weixiurecord;
 import com.accp.vo.sw.WeixiuVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.github.pagehelper.PageHelper;
@@ -17,6 +18,16 @@ import com.github.pagehelper.PageInfo;
 public class WeixiuBiz {
 	@Autowired
 	private IWeixiuDao dao;
+
+	/**
+	 * 修改结算状态
+	 * 
+	 * @param weixiu
+	 * @return
+	 */
+	public int modifyById(Weixiurecord weixiu) {
+		return dao.updateById(weixiu);
+	}
 
 	/**
 	 * 根据维修单号查询

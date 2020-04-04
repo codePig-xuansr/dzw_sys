@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.sw.IFuwuDao">
+	<resultMap id="BaseResultMap" type="com.accp.vo.sw.FuwuVo">
+		<id column="recordid" property="recordid" jdbcType="VARCHAR" />
+		<result column="fwname" property="fwname"
+			jdbcType="VARCHAR" />
+		<result column="fwcod" property="fwcod" jdbcType="INTEGER" />
+		<result column="fwprice" property="fwprice" jdbcType="INTEGER" />
+	</resultMap>
+	<select id="queryList" resultMap="BaseResultMap">
+		SELECT
+		recordid,f.fwcod,fwname,fwprice FROM weixiufuwu f
+		INNER JOIN weixiuxm m ON m.fwcod=f.fwcod
+		WHERE m.recordid=#{recordid}
+	</select>
+</mapper>

@@ -21,6 +21,28 @@ public class VipBiz {
 	private IVipDao dao;
 
 	/**
+	 * 修改vip积分状态
+	 * 
+	 * @param weixiu
+	 * @return
+	 */
+	public int modifyById(Vipcard vip) {
+		return dao.updateById(vip);
+	}
+	/**
+	 * 会员登入
+	 * 
+	 * @param vipcode
+	 * @param vippwd
+	 * @return
+	 */
+	public Vipcard findLogin(Integer vipcode, String vippwd) {
+		QueryWrapper<Vipcard> qw = Wrappers.query();
+		qw.eq("vipcode", vipcode).eq("vippwd", vippwd);
+		return dao.selectOne(qw);
+	}
+
+	/**
 	 * 会员分页查询
 	 * 
 	 * @param pageNum
@@ -30,6 +52,16 @@ public class VipBiz {
 	public PageInfo<VipVo> findPage(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<>(dao.queryList());
+	}
+
+	/**
+	 * 查询具体会员
+	 * 
+	 * @param kid
+	 * @return
+	 */
+	public VipVo findById(Integer kid) {
+		return dao.queryById(kid);
 	}
 
 	/**

@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.accp.pojo.sw.Weixiurecord;
 import com.accp.vo.sw.WeixiuVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface IWeixiuDao {
+public interface IWeixiuDao extends BaseMapper<Weixiurecord> {
 	/**
 	 * 根据客户id或车牌查询消费记录
 	 * 

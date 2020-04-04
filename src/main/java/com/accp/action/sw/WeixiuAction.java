@@ -1,12 +1,19 @@
 package com.accp.action.sw;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.sw.WeixiuBiz;
+import com.accp.pojo.sw.Weixiurecord;
 import com.accp.vo.sw.WeixiuVo;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
@@ -16,6 +23,27 @@ import com.github.pagehelper.PageInfo;
 public class WeixiuAction {
 	@Autowired
 	private WeixiuBiz biz;
+
+	/**
+	 * 修改结算状态
+	 * 
+	 * @param weixiu
+	 * @return
+	 */
+	@PutMapping
+	public Map<String, Object> update(@RequestBody Weixiurecord weixiu) {
+		System.out.println(JSON.toJSON(weixiu));
+		int i = biz.modifyById(weixiu);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if (i > 0) {
+			message.put("code", "200");
+			message.put("msg", "ok");
+		} else {
+			message.put("code", "400");
+			message.put("msg", "no");
+		}
+		return message;
+	}
 
 	/**
 	 * 根据维修单号查询

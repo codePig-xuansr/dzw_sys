@@ -9,6 +9,7 @@ public class WeixiuVo {
 	private Integer jstype;
 	private Integer bztime;
 	private Integer jsstatus;
+	private Integer bzcost;
 	private String kname;
 	private String bzname;
 	private String danjutype;
@@ -26,6 +27,14 @@ public class WeixiuVo {
 
 	public void setKid(Integer kid) {
 		this.kid = kid;
+	}
+
+	public Integer getBzcost() {
+		return bzcost;
+	}
+
+	public void setBzcost(Integer bzcost) {
+		this.bzcost = bzcost;
 	}
 
 	public Integer getStatus() {
