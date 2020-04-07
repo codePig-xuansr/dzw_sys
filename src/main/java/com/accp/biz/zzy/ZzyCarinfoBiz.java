@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zzy.IZzyCarinfoDao;
+import com.accp.pojo.zzy.ZzyCarinfo;
 import com.accp.vo.zzy.ZzyCarinfoVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -26,6 +27,14 @@ public class ZzyCarinfoBiz {
 	public PageInfo<ZzyCarinfoVo> queryCarinfo(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<>(dao.queryCarinfo());
+	}
+	/**
+	 * 新增外勤车辆
+	 * @param carinfo
+	 * @return
+	 */
+	public int addCarinfo(ZzyCarinfo carinfo) {
+		return dao.insert(carinfo);
 	}
 
 }

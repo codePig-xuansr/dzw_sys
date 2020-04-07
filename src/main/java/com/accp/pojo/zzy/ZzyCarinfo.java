@@ -9,7 +9,7 @@ public class ZzyCarinfo {
 	private String carno;
 	private String carxinghao;
 	private String carpp;
-	private int bid;
+	private int bzid;
 	private int licheng;
 	public String getCarno() {
 		return carno;
@@ -29,11 +29,11 @@ public class ZzyCarinfo {
 	public void setCarpp(String carpp) {
 		this.carpp = carpp;
 	}
-	public int getBid() {
-		return bid;
+	public int getbzid() {
+		return bzid;
 	}
-	public void setBid(int bid) {
-		this.bid = bid;
+	public void setbzid(int bzid) {
+		this.bzid = bzid;
 	}
 	public int getLicheng() {
 		return licheng;
@@ -43,18 +43,18 @@ public class ZzyCarinfo {
 	}
 	@Override
 	public String toString() {
-		return "ZzyCarinfo [carno=" + carno + ", carxinghao=" + carxinghao + ", carpp=" + carpp + ", bid=" + bid
+		return "ZzyCarinfo [carno=" + carno + ", carxinghao=" + carxinghao + ", carpp=" + carpp + ", bzid=" + bzid
 				+ ", licheng=" + licheng + "]";
 	}
 	public ZzyCarinfo() {
 		super();
 	}
-	public ZzyCarinfo(String carno, String carxinghao, String carpp, int bid, int licheng) {
+	public ZzyCarinfo(String carno, String carxinghao, String carpp, int bzid, int licheng) {
 		super();
 		this.carno = carno;
 		this.carxinghao = carxinghao;
 		this.carpp = carpp;
-		this.bid = bid;
+		this.bzid = bzid;
 		this.licheng = licheng;
 	}
 }
