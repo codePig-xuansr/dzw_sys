@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.fzx.fzxbiz;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxKache;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
@@ -107,6 +108,15 @@ public class fzxaction {
 			message.put("code", "200");
 			message.put("msg", "ok");
 			return message;
+		}
+	  	
+	  	/**
+		 * 查询卡车
+		 * @return
+		 */
+	  	@GetMapping("/selectKache")
+		public List<FzxKache> selectKache(){
+			return biz.selectKache();
 		}
 	 
 }

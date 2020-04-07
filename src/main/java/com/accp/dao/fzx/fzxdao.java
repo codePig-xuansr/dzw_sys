@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxKache;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
@@ -68,4 +69,9 @@ public interface fzxdao {
 	 */
 	int insertweixiu(@Param("fzxweixiuadd") FzxWeixiuadd fzxweixiuadd);
 	
+	/**
+	 * 查询卡车
+	 * @return
+	 */
+	List<FzxKache> selectKache();
 }

@@ -44,4 +44,9 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 		</if>
 	</insert>
 	
+	<!-- 查询卡车 -->
+	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
+		SELECT * FROM kache
+	</select>
+	
 </mapper>
