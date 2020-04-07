@@ -35,4 +35,9 @@ public class ZkxUserBiz {
 	public List<ZkxUser> queryUserList(){
 		return dao.selectList(null);
 	}
+	
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer updatePwd(ZkxUser user) {
+		return dao.updateById(user);
+	}
 }
