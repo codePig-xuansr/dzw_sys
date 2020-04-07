@@ -22,6 +22,8 @@ import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 import com.alibaba.fastjson.JSON;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @RestController
 @RequestMapping("/api/fzx") // 命名空间
@@ -117,6 +119,16 @@ public class fzxaction {
 	  	@GetMapping("/selectKache")
 		public List<FzxKache> selectKache(){
 			return biz.selectKache();
+		}
+	  	
+	  	/**
+		 * 查询竣工
+		 * @return
+		 */
+	  	@GetMapping("/selectFwAll/{num}/{size}/{recorddate}/{status}/{recordid}")
+		public PageInfo<FzxWeixiuadd> selectFwAll(@PathVariable Integer num,@PathVariable Integer size,
+				@PathVariable String recorddate,@PathVariable String status,@PathVariable String recordid){
+			return biz.selectFwAll(num, size, recorddate, status, recordid);
 		}
 	 
 }

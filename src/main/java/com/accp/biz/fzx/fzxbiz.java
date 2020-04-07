@@ -15,6 +15,8 @@ import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 public class fzxbiz {
@@ -103,4 +105,14 @@ public class fzxbiz {
 	public List<FzxKache> selectKache(){
 		return dao.selectKache();
 	}
+	
+	/**
+	 * 查询竣工
+	 * @return
+	 */
+	public PageInfo<FzxWeixiuadd> selectFwAll(Integer num, Integer size,String recorddate,String status,String recordid){
+		PageHelper.startPage(num, size);
+		return new PageInfo<FzxWeixiuadd>(dao.selectFwAll(recorddate, status, recordid));
+	}
+	
 }

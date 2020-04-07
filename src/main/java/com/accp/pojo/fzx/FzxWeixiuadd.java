@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class FzxWeixiuadd {
 	private String recordid;//维修单号 格式20200325001
 	private String carno;//车牌号
 	private String yewutype;//业务类型
 	private String danjutype;//单据类型 分为金融单据、商业单据
+	@JSONField(format = "yyyy-MM-dd")
 	private Date recorddate;//开单时间
 	private int bzid;//维修班组编号
+	@JSONField(format = "yyyy-MM-dd")
 	private Date yujidate;//预计完工时间
 	private int status;//竣工状态 0：未竣工 1：已竣工
 	private int jsstatus;//结算状态 0：未结算 1：已结算
@@ -20,11 +24,11 @@ public class FzxWeixiuadd {
 	private String guzhangyuanyin;//故障原因
 	private String fuwugw;//服务顾问
 	private String shigongbc;//施工班次
-	private Date bztime;
+	private int bztime;
 	private List<FzxWeixiuxm> fzxweixiuxm=new ArrayList<FzxWeixiuxm>(0);
 	public FzxWeixiuadd(String recordid, String carno, String yewutype, String danjutype, Date recorddate, int bzid,
 			Date yujidate, int status, int jsstatus, String beizhu, int licheng, String guzhanginfo,
-			String guzhangyuanyin, String fuwugw, String shigongbc, Date bztime,
+			String guzhangyuanyin, String fuwugw, String shigongbc, int bztime,
 			List<FzxWeixiuxm> fzxweixiuxm) {
 		super();
 		this.recordid = recordid;
@@ -138,10 +142,10 @@ public class FzxWeixiuadd {
 	public void setShigongbc(String shigongbc) {
 		this.shigongbc = shigongbc;
 	}
-	public Date getBztime() {
+	public int getBztime() {
 		return bztime;
 	}
-	public void setBztime(Date bztime) {
+	public void setBztime(int bztime) {
 		this.bztime = bztime;
 	}
 	public List<FzxWeixiuxm> getFzxweixiuxm() {

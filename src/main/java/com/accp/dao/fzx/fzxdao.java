@@ -74,4 +74,12 @@ public interface fzxdao {
 	 * @return
 	 */
 	List<FzxKache> selectKache();
+	
+	/**
+	 * 查询竣工
+	 * @return
+	 */
+	List<FzxWeixiuadd> selectFwAll(@Param("recorddate") String recorddate,@Param("status")String status,
+			@Param("recordid") String recordid);
+	
 }

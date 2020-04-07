@@ -29,7 +29,7 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	</select>
 	
 	
-	<!-- 新增 -->
+	<!-- 新增 -->	
 	<insert id="insertweixiu">
 	INSERT INTO weixiurecord
 (recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype)
@@ -47,6 +47,22 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 	<!-- 查询卡车 -->
 	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
 		SELECT * FROM kache
+	</select>
+	
+	<!-- 查询竣工 -->
+	<select id="selectFwAll" resultType="com.accp.pojo.fzx.FzxWeixiuadd">
+		SELECT * FROM weixiurecord
+		<where>
+			<if test="recorddate != 'null'">
+				DATE(recorddate) = #{recorddate}
+			</if>
+			<if test="status != 'null'">
+				and status = #{status}
+			</if>
+			<if test="recordid != 'null'">
+				and recordid like '%${recordid}%'
+			</if>
+		</where>
 	</select>
 	
 </mapper>
