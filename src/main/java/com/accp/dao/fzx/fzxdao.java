@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
@@ -81,5 +82,26 @@ public interface fzxdao {
 	 */
 	List<FzxWeixiuadd> selectFwAll(@Param("recorddate") String recorddate,@Param("status")String status,
 			@Param("recordid") String recordid);
+	
+	/**
+	 * 修改竣工状态
+	 * @param status
+	 * @param recordid
+	 * @return
+	 */
+	int updatejg(@Param("status") int status,@Param("recordid") String recordid);
+	
+	/**
+	 * 查询竣工记录
+	 * @return
+	 */
+	List<FzxJgrecord> selectJgAll();
+	
+	/**
+	 * 新增竣工记录
+	 * @param fzxjgrecord
+	 * @return
+	 */
+	int addjg(@Param("fzxjgrecord") FzxJgrecord fzxjgrecord);
 	
 }

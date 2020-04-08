@@ -65,4 +65,20 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 		</where>
 	</select>
 	
+	<!-- 修改竣工状态 -->
+	<update id="updatejg">
+		UPDATE weixiurecord SET status = #{status}
+		WHERE recordid = #{recordid};
+	</update>
+	
+	<!-- 查询竣工 -->
+	<select id="selectJgAll" resultType="com.accp.pojo.fzx.FzxJgrecord">
+		SELECT * FROM jgrecord
+	</select>
+	
+	<insert id="addjg">
+    	INSERT INTO jgrecord (recordid,jgstatus,yuanyin,chufa,checkperson) 
+VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{fzxjgrecord.chufa},#{fzxjgrecord.checkperson});
+  </insert>
+	
 </mapper>

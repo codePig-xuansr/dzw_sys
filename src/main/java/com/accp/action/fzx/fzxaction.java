@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.fzx.fzxbiz;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
@@ -103,12 +105,18 @@ public class fzxaction {
 			return biz.selectFwlb();
 		}
 	  	
+	  	/**
+	  	 * 主详新增
+	  	 * @param fzxweixiuadd
+	  	 * @return
+	  	 */
 	  	@PostMapping("/insertweixiu")
 		public Map<String, String> insertweixiu(@RequestBody FzxWeixiuadd fzxweixiuadd) {
 			Map<String, String> message = new HashMap<String, String>();
-			biz.insertweixiu(fzxweixiuadd);
-			message.put("code", "200");
-			message.put("msg", "ok");
+			if (biz.insertweixiu(fzxweixiuadd)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
 			return message;
 		}
 	  	
@@ -129,6 +137,45 @@ public class fzxaction {
 		public PageInfo<FzxWeixiuadd> selectFwAll(@PathVariable Integer num,@PathVariable Integer size,
 				@PathVariable String recorddate,@PathVariable String status,@PathVariable String recordid){
 			return biz.selectFwAll(num, size, recorddate, status, recordid);
+		}
+	  	
+	  	/**
+		 * 修改竣工状态
+		 * @param weixiurecord
+		 * @return
+		 */
+	  	@PutMapping("/updatejg/{status}/{recordid}")
+		public Map<String, String> updatejg(@PathVariable int status,@PathVariable String recordid) {
+	  		Map<String, String> message = new HashMap<String, String>();
+			if (biz.updatejg(status, recordid)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
+		}
+	  	
+	  	/**
+		 * 查询竣工记录
+		 * @return
+		 */
+	  	@GetMapping("/selectJgAll/{n}/{s}")
+		public PageInfo<FzxJgrecord> selectJgAll(@PathVariable Integer n,@PathVariable Integer s){
+			return biz.selectJgAll(n, s);
+		}
+	  	
+	  	/**
+		 * 新增竣工记录
+		 * @param fzxjgrecord
+		 * @return
+		 */
+	  	@PostMapping("/addjg")
+		public Map<String, String> addjg(@RequestBody FzxJgrecord fzxjgrecord) {
+			Map<String, String> message = new HashMap<String, String>();
+			if (biz.addjg(fzxjgrecord)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
 		}
 	 
 }

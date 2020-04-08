@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.accp.dao.fzx.fzxdao;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
+import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
@@ -113,6 +114,33 @@ public class fzxbiz {
 	public PageInfo<FzxWeixiuadd> selectFwAll(Integer num, Integer size,String recorddate,String status,String recordid){
 		PageHelper.startPage(num, size);
 		return new PageInfo<FzxWeixiuadd>(dao.selectFwAll(recorddate, status, recordid));
+	}
+	
+	/**
+	 * 修改竣工状态
+	 * @param weixiurecord
+	 * @return
+	 */
+	public int updatejg(int status,String recordid) {
+		return dao.updatejg(status, recordid);
+	}
+	
+	/**
+	 * 查询竣工记录
+	 * @return
+	 */
+	public PageInfo<FzxJgrecord> selectJgAll(Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<FzxJgrecord>(dao.selectJgAll());
+	}
+	
+	/**
+	 * 新增竣工记录
+	 * @param fzxjgrecord
+	 * @return
+	 */
+	public int addjg(FzxJgrecord fzxjgrecord) {
+		return dao.addjg(fzxjgrecord);
 	}
 	
 }
