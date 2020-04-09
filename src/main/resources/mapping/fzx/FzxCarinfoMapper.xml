@@ -76,9 +76,15 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 		SELECT * FROM jgrecord
 	</select>
 	
+	<!-- 新增竣工记录 -->
 	<insert id="addjg">
     	INSERT INTO jgrecord (recordid,jgstatus,yuanyin,chufa,checkperson) 
 VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{fzxjgrecord.chufa},#{fzxjgrecord.checkperson});
   </insert>
+  
+  <!-- 查询返工次数 -->
+	<select id="selectJgcs" resultType="com.accp.pojo.fzx.FzxJgrecord">
+		SELECT COUNT(*) zicount FROM jgrecord WHERE recordid=#{recordid} AND jgstatus=2
+	</select>
 	
 </mapper>

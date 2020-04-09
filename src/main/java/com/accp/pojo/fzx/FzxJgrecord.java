@@ -12,6 +12,14 @@ public class FzxJgrecord {
 	private int chufa;
 	private String checkperson;
 	private String fuzeperson;
+	private int zicount;//返工次数
+	
+	public int getZicount() {
+		return zicount;
+	}
+	public void setZicount(int zicount) {
+		this.zicount = zicount;
+	}
 	public FzxJgrecord(int jgid, String recordid, Date shijidate, int jgstatus, String yuanyin, int chufa,
 			String checkperson, String fuzeperson) {
 		super();

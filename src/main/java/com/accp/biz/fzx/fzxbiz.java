@@ -143,4 +143,13 @@ public class fzxbiz {
 		return dao.addjg(fzxjgrecord);
 	}
 	
+	/**
+	 * 查询返工次数
+	 * @param recordid
+	 * @return
+	 */
+	public FzxJgrecord selectJgcs(String recordid){
+		return dao.selectJgcs(recordid);
+	}
+	
 }

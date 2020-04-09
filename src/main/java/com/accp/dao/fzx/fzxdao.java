@@ -104,4 +104,10 @@ public interface fzxdao {
 	 */
 	int addjg(@Param("fzxjgrecord") FzxJgrecord fzxjgrecord);
 	
+	/**
+	 * 查询返工次数
+	 * @param recordid
+	 * @return
+	 */
+	FzxJgrecord selectJgcs(@Param("recordid") String recordid);
 }

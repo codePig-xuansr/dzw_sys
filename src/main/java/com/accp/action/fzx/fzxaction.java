@@ -177,5 +177,15 @@ public class fzxaction {
 			}
 			return message;
 		}
+	  	
+	  	/**
+		 * 查询返工次数
+		 * @param recordid
+		 * @return
+		 */
+	  	@GetMapping("/selectJgcs/{recordid}")
+		public FzxJgrecord selectJgcs(@PathVariable String recordid){
+			return biz.selectJgcs(recordid);
+		}
 	 
 }
