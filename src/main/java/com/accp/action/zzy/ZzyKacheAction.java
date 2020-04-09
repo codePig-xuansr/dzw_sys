@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,7 +34,7 @@ public class ZzyKacheAction {
 	 */
 	@GetMapping("queryKache/{pageNum}/{pageSize}")
 	public PageInfo<ZzyKacheVo> queryKache(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
-		System.out.println(biz.queryKache(pageNum, pageSize));
+		//System.out.println(biz.queryKache(pageNum, pageSize));
 		return biz.queryKache(pageNum, pageSize);		
 	}
 	
@@ -71,6 +72,34 @@ public class ZzyKacheAction {
 		}else {
 			message.put("code", "300");
 			message.put("msg", "删除失败!");
+		}
+		return message;
+	}
+	/**
+	 * 根据id查看卡车信息
+	 * @param kaid
+	 * @return
+	 */
+	@GetMapping("queryKacheByid/{kaid}")
+	public ZzyKacheVo queryKacheByid(@PathVariable int kaid) {
+		return biz.queryKacheById(kaid);
+	}
+	/**
+	 * 根据id修改卡车信息
+	 * @param kache
+	 * @return
+	 */
+	@PutMapping("modifyKache/{kache}")
+	public Map<String, Object> modifyKache(@RequestBody ZzyKache kache) {
+		System.out.println(biz.modifyKache(kache));
+		int count=biz.modifyKache(kache);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if(count!=0) {
+			message.put("code", "ok");
+			message.put("msg", "修改成功!");
+		}else {
+			message.put("code", "300");
+			message.put("msg", "修改失败！");
 		}
 		return message;
 	}

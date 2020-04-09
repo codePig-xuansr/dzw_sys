@@ -1,5 +1,7 @@
 package com.accp.biz.zzy;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -27,6 +29,22 @@ public class ZzyKacheBiz {
 	public PageInfo<ZzyKacheVo> queryKache(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<>(dao.queryKache());
+	}
+	/**
+	 * 根据卡车id查看卡车信息
+	 * @param kaid
+	 * @return
+	 */
+	public ZzyKacheVo queryKacheById(int kaid) {
+		return dao.queryKacheById(kaid);
+	}
+	/**
+	 * 根据id修改卡车信息
+	 * @param kache
+	 * @return
+	 */
+	public int modifyKache(ZzyKache kache) {
+		return dao.updateById(kache);
 	}
 	/**
 	 * 新增外勤车辆

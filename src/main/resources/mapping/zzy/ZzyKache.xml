@@ -13,7 +13,13 @@
 	<select id="queryKache" resultMap="BaseResultMap">
 		SELECT `kapp`,`kano`,`katype`,`bzname`,`kalc`,`kaid` 
 		FROM kache k INNER JOIN banzu b 
-		WHERE k.`bzid`=b.`bzid`
+		WHERE k.`bzid`=b.`bzid`		
+	</select>
+	
+	<select id="queryKacheById" resultMap="BaseResultMap">
+		SELECT `kapp`,`kano`,`katype`,`kalc`,`bzname`,`kaid`,k.`bzid` 
+		FROM kache k INNER JOIN banzu b ON k.`bzid`=b.`bzid`
+		WHERE k.`kaid`=#{kaid}
 		
 	</select>
 </mapper>

@@ -42,10 +42,10 @@ public class ZzyKache {
 	public void setBzid(int bzid) {
 		this.bzid = bzid;
 	}
-	public int getkalc() {
+	public int getKalc() {
 		return kalc;
 	}
-	public void setkalc(int kalc) {
+	public void setKalc(int kalc) {
 		this.kalc = kalc;
 	}
 	public ZzyKache(int kaid, String kano, String katype, String kapp, int bzid, int kalc) {
@@ -60,10 +60,6 @@ public class ZzyKache {
 	public ZzyKache() {
 		super();
 	}
-	@Override
-	public String toString() {
-		return "ZzyCarinfo [kaid=" + kaid + ", kano=" + kano + ", katype=" + katype + ", kapp=" + kapp + ", bzid="
-				+ bzid + ", kalc=" + kalc + "]";
-	}
+
 	
 }

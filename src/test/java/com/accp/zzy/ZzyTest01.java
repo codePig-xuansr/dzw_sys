@@ -20,8 +20,12 @@ public class ZzyTest01 {
 	 */
 	@Test
 	public void show() {
-		biz.deleteKache(15);
+		System.out.println(biz.queryKacheById(1));
+		
 	}
+	/*public void show() {
+		biz.deleteKache(21);
+	}*/
 	/*public void show() {
 		biz.queryKache(1, 1).getList().forEach(action->{
 			System.out.println(action);

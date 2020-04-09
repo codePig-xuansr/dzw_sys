@@ -63,5 +63,10 @@ public class ZzyKacheVo {
 	public ZzyKacheVo() {
 		super();
 	}
+	@Override
+	public String toString() {
+		return "ZzyKacheVo [kaid=" + kaid + ", kano=" + kano + ", katype=" + katype + ", kapp=" + kapp + ", bzid="
+				+ bzid + ", bzname=" + bzname + ", kalc=" + kalc + "]";
+	}
 	
 }

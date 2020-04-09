@@ -12,5 +12,12 @@ public interface IZzyKacheDao extends BaseMapper<ZzyKache>{
 	 * @return
 	 */
 	public List<ZzyKacheVo> queryKache();
-
+	
+	/**
+	 * 根据卡车id查看卡车信息
+	 * @param kaid
+	 * @return
+	 */
+	public ZzyKacheVo queryKacheById(int kaid);
+	
 }
