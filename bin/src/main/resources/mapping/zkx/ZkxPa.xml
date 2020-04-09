@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zkx.ZkxPaDao">
+	<insert id="addPas">
+		<if test="plist.size!=0">
+			insert into `pa`(`rid`,`fid`) values
+			<foreach collection="plist" item="temp" separator=",">
+				(#{temp.rid},#{temp.fid})
+			</foreach> 
+		</if>
+	</insert>
+	
+	<delete id="deleteById">
+		delete from `pa` where `rid`=#{rid}
+	</delete>
+</mapper>

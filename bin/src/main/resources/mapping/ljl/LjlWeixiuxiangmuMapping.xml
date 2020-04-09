@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.dao.ljl.IWeixiuxiangmuDao">
+	<select id="selectLeibie" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype
+	</select>
+	
+	<select id="selectWeixiu" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM `weixiufuwu`,`xiangmutype`
+		WHERE xiangmutype.xid = weixiufuwu.xid
+		AND weixiufuwu.xid = '${xid}'
+	</select>
+	
+	<select id="ceshiselectWeixiu" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM weixiufuwu,xiangmutype
+		WHERE weixiufuwu.xid = xiangmutype.xid
+		AND weixiufuwu.xid IN (
+			<foreach collection="list" item="temp" separator=",">
+				'${temp}'
+			</foreach>
+		)
+	</select>
+	
+	<select id="selectTypeF" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype
+		where xid = '${xfid}'
+	</select>
+	
+	<select id="selectLikeName" resultType="LjlWeixiuXiangmuVo">
+		SELECT * FROM weixiufuwu,xiangmutype
+		WHERE weixiufuwu.xid = xiangmutype.xid
+		AND fwname like '%${xname}%'
+	</select>
+	
+	<select id="selectId" resultType="int">
+		SELECT MAX(xid) FROM xiangmutype
+	</select>
+	
+	<select id="selectxiangmuId" resultType="int">
+		SELECT MAX(fwcod) FROM weixiufuwu
+	</select>
+	
+	<insert id="addweixiufuwu">
+		insert into weixiufuwu(fwcod,fwname,fwprice,xid,vipprice) 
+		values('${w.fwcod}','${w.fwname}','${w.fwprice}','${w.xid}','${w.vipprice}')
+	</insert>
+	
+	<select id="selectFuwuById" resultType="LjlWeixiuFuwu">
+		SELECT * FROM weixiufuwu
+		where fwcod = '${fwcod}'
+	</select>
+	
+	<update id="updateweixiufuwu">
+		update weixiufuwu
+		<set>
+			fwname = '${w.fwname}',
+			fwprice = '${w.fwprice}',
+			xid = '${w.xid}',
+			vipprice = '${w.vipprice}'
+		</set>
+		<where>
+			and fwcod = '${w.fwcod}'
+		</where>
+	</update>
+	
+	<delete id="deleteweixiufuwu">
+		delete from weixiufuwu where fwcod = '${fwcod}'
+	</delete>
+	
+	<insert id="addweixiutypeF">
+		insert into xiangmutype(xid,xname,xfid) 
+		values('${t.xid}','${t.xname}','${t.xfid}')
+	</insert>
+	
+	<select id="selectTypeFuji" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype where xfid = 0
+	</select>
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zkx.ZkxFunDao">
+	
+	<select id="showFunByUser"
+		resultType="com.accp.pojo.zkx.ZkxFunction">
+		SELECT f.`fid`,f.`fcode`,f.`fname`,f.`fpid`
+		FROM `function` f
+		INNER JOIN `pa` p ON f.`fid`=p.`fid`
+		INNER JOIN `role` r ON p.`rid`=r.`rid`
+		INNER JOIN `user` u ON r.`rid`=u.`rid`
+		WHERE u.`user`=#{user} AND u.`pwd`=#{pwd}
+	</select>
+</mapper>

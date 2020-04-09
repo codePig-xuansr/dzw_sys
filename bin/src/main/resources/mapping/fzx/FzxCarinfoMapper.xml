@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.fzx.fzxdao">
+	<!-- 查询车牌号所有 -->
+	<select id="selectBy" resultType="com.accp.pojo.fzx.FzxCarinfo">
+		SELECT * FROM carinfo where carno like '%${carno}%'
+	</select>
+	
+	<!-- 查询服务所有 -->
+	<select id="selectFw" resultType="com.accp.pojo.fzx.FzxWeixiufuwu">
+		SELECT * FROM weixiufuwu
+	</select>
+	
+	
+	<!-- 查询班组 -->
+	<select id="selectBz" resultType="com.accp.pojo.fzx.FzxBanzu">
+		SELECT a.bzid,a.bzname,a.bztype,a.bzcost,b.guzhanginfo,b.guzhangyuanyin FROM 
+banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
+	</select>
+	
+	<!-- 查询班组 -->
+	<select id="selectBzz" resultType="com.accp.pojo.fzx.FzxBanzu">
+		SELECT * FROM banzu
+	</select>
+	
+	<!-- 查询服务类别 -->
+	<select id="selectFwlb" resultType="com.accp.pojo.fzx.Fzxxiangmutype">
+		SELECT * FROM xiangmutype
+	</select>
+	
+	
+	<!-- 新增 -->	
+	<insert id="insertweixiu">
+	INSERT INTO weixiurecord
+(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype)
+VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype});
+		<if test="fzxweixiuadd.fzxweixiuxm.size()!=0">
+			INSERT INTO weixiuxm (wid,recordid,fwcod) VALUES
+			<foreach collection="fzxweixiuadd.fzxweixiuxm" item="temp"
+				separator=",">
+				(#{temp.wid},#{fzxweixiuadd.recordid},#{temp.fwcod})
+			</foreach>
+			;
+		</if>
+	</insert>
+	
+	<!-- 查询卡车 -->
+	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
+		SELECT * FROM kache
+	</select>
+	
+	<!-- 查询竣工 -->
+	<select id="selectFwAll" resultType="com.accp.pojo.fzx.FzxWeixiuadd">
+		SELECT * FROM weixiurecord
+		<where>
+			<if test="recorddate != 'null'">
+				DATE(recorddate) = #{recorddate}
+			</if>
+			<if test="status != 'null'">
+				and status = #{status}
+			</if>
+			<if test="recordid != 'null'">
+				and recordid like '%${recordid}%'
+			</if>
+		</where>
+	</select>
+	
+	<!-- 修改竣工状态 -->
+	<update id="updatejg">
+		UPDATE weixiurecord SET status = #{status}
+		WHERE recordid = #{recordid};
+	</update>
+	
+	<!-- 查询竣工 -->
+	<select id="selectJgAll" resultType="com.accp.pojo.fzx.FzxJgrecord">
+		SELECT * FROM jgrecord
+	</select>
+	
+	<!-- 新增竣工记录 -->
+	<insert id="addjg">
+    	INSERT INTO jgrecord (recordid,jgstatus,yuanyin,chufa,checkperson) 
+VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{fzxjgrecord.chufa},#{fzxjgrecord.checkperson});
+  </insert>
+  
+  <!-- 查询返工次数 -->
+	<select id="selectJgcs" resultType="com.accp.pojo.fzx.FzxJgrecord">
+		SELECT COUNT(*) zicount FROM jgrecord WHERE recordid=#{recordid} AND jgstatus=2
+	</select>
+	
+</mapper>
