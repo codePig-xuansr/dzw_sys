@@ -24,11 +24,13 @@ public class FzxWeixiuadd {
 	private String guzhangyuanyin;//故障原因
 	private String fuwugw;//服务顾问
 	private String shigongbc;//施工班次
-	private int bztime;
+	private int bztime;//班组时间
+	private String kano;//卡车牌号
+	private int jiuyuanfy;//救援费用
 	private List<FzxWeixiuxm> fzxweixiuxm=new ArrayList<FzxWeixiuxm>(0);
 	public FzxWeixiuadd(String recordid, String carno, String yewutype, String danjutype, Date recorddate, int bzid,
 			Date yujidate, int status, int jsstatus, String beizhu, int licheng, String guzhanginfo,
-			String guzhangyuanyin, String fuwugw, String shigongbc, int bztime,
+			String guzhangyuanyin, String fuwugw, String shigongbc, int bztime, String kano, int jiuyuanfy,
 			List<FzxWeixiuxm> fzxweixiuxm) {
 		super();
 		this.recordid = recordid;
@@ -47,6 +49,8 @@ public class FzxWeixiuadd {
 		this.fuwugw = fuwugw;
 		this.shigongbc = shigongbc;
 		this.bztime = bztime;
+		this.kano = kano;
+		this.jiuyuanfy = jiuyuanfy;
 		this.fzxweixiuxm = fzxweixiuxm;
 	}
 	public FzxWeixiuadd() {
@@ -147,6 +151,18 @@ public class FzxWeixiuadd {
 	}
 	public void setBztime(int bztime) {
 		this.bztime = bztime;
+	}
+	public String getKano() {
+		return kano;
+	}
+	public void setKano(String kano) {
+		this.kano = kano;
+	}
+	public int getJiuyuanfy() {
+		return jiuyuanfy;
+	}
+	public void setJiuyuanfy(int jiuyuanfy) {
+		this.jiuyuanfy = jiuyuanfy;
 	}
 	public List<FzxWeixiuxm> getFzxweixiuxm() {
 		return fzxweixiuxm;

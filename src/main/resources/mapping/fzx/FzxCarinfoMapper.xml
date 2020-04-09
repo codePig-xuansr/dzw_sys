@@ -32,8 +32,11 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	<!-- 新增 -->	
 	<insert id="insertweixiu">
 	INSERT INTO weixiurecord
-(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype)
-VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype});
+(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype,kano,jiuyuanfy)
+VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
+#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},
+#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},
+#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype},#{fzxweixiuadd.kano},#{fzxweixiuadd.jiuyuanfy});
 		<if test="fzxweixiuadd.fzxweixiuxm.size()!=0">
 			INSERT INTO weixiuxm (wid,recordid,fwcod) VALUES
 			<foreach collection="fzxweixiuadd.fzxweixiuxm" item="temp"
