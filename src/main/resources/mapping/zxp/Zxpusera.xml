@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zxp.IZxpUserDao">
+	
+	
+	<update id="updateUser">
+		UPDATE user
+		<set>
+			
+			<if test="use.user!=null">
+				user = '${use.user}',
+			</if>
+			<if test="use.pwd!=null">
+				pwd = '${use.pwd}',
+			</if>
+			<if test="use.username!=null">
+				username = '${use.username}',
+			</if>
+			<if test="use.comedate!=null">
+				comedate = '${use.comedate}',
+			</if>
+			<if test="use.address!=null">
+				address = '${use.address}',
+			</if>
+			<if test="use.sex!=null">
+				sex = '${use.sex}',
+			</if>
+			<if test="use.depid!=null">
+				depid = '${use.depid}',
+			</if>
+			<if test="use.rid!=null">
+				rid = '${use.rid}',
+			</if>
+		</set>
+		<where>
+			AND uid = '${use.uid}'
+		</where>
+	</update>
+</mapper>

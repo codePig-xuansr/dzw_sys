@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zxp.IZxpTongxunluDao">
+	
+	<select id="findT" resultType="com.accp.pojo.zxp.tongxunlu">
+		SELECT `tid` FROM `tongxunlu` ORDER BY `tid` DESC LIMIT 0,1
+	</select>
+	
+	<update id="updateT">
+		UPDATE tongxunlu
+		<set>
+			<if test="txl.phone!=null">
+				phone = '${txl.phone}',
+			</if>
+			<if test="txl.email!=null">
+				email = '${use.email}',
+			</if>
+		</set>
+		<where>
+			AND uid = '${txl.uid}'
+		</where>
+	</update>
+</mapper>
