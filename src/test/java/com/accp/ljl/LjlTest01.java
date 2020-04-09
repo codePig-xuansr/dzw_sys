@@ -16,8 +16,19 @@ public class LjlTest01 {
 	@Autowired
 	private LjlWeixiuxiangmuBiz wbiz;
 
+	@Autowired
+	private LjlChexingBiz cbiz;
+
 	@Test
 	void contextLoads() {
+		cbiz.selectPingpaiByname("宝马").forEach(r->{
+			System.out.println(r);
+		});
+		
+		/*
+		 * cbiz.selectPingpai().forEach(r->{ System.out.println(r); });
+		 */
+		
 		/*
 		 * PageInfo<LjlFadongji> lists = biz.selectAll(1, 5);
 		 * lists.getList().forEach(row->{ System.out.println(row); });
