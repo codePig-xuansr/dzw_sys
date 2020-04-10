@@ -60,7 +60,6 @@ public class VipAction {
 	@GetMapping("getSessionVip")
 	public Vipcard getVipInfo(HttpSession session) throws Exception {
 		Vipcard vip = (Vipcard) session.getAttribute("vip");
-		System.out.println(session.getId());
 		return vip;
 	}
 
