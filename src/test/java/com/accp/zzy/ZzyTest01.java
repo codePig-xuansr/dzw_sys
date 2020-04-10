@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.accp.biz.zzy.ZzyKacheBiz;
+import com.accp.biz.zzy.ZzyProductBiz;
 import com.accp.biz.zzy.ZzyStarBiz;
 import com.accp.pojo.zzy.ZzyKache;
 
@@ -12,7 +13,7 @@ import com.accp.pojo.zzy.ZzyKache;
 public class ZzyTest01 {
 	
 	@Autowired
-	private ZzyKacheBiz biz;
+	private ZzyProductBiz biz;
 
 	//删除状态信息
 	/*
@@ -20,7 +21,7 @@ public class ZzyTest01 {
 	 */
 	@Test
 	public void show() {
-		System.out.println(biz.queryKacheById(1));
+		System.out.println(biz.queryProduct(1,1));
 		
 	}
 	/*public void show() {
