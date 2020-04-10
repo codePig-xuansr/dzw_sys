@@ -89,7 +89,7 @@ public interface fzxdao {
 	 * @param recordid
 	 * @return
 	 */
-	int updatejg(@Param("status") int status,@Param("recordid") String recordid);
+	int updatejg(@Param("status") int status,@Param("bztime") int bztime,@Param("recordid") String recordid);
 	
 	/**
 	 * 查询竣工记录

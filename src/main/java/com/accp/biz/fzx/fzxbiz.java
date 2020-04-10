@@ -121,8 +121,8 @@ public class fzxbiz {
 	 * @param weixiurecord
 	 * @return
 	 */
-	public int updatejg(int status,String recordid) {
-		return dao.updatejg(status, recordid);
+	public int updatejg(int status,int bztime,String recordid) {
+		return dao.updatejg(status,bztime, recordid);
 	}
 	
 	/**

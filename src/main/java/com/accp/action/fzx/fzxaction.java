@@ -144,10 +144,10 @@ public class fzxaction {
 		 * @param weixiurecord
 		 * @return
 		 */
-	  	@PutMapping("/updatejg/{status}/{recordid}")
-		public Map<String, String> updatejg(@PathVariable int status,@PathVariable String recordid) {
+	  	@PutMapping("/updatejg/{status}/{bztime}/{recordid}")
+		public Map<String, String> updatejg(@PathVariable int status,@PathVariable int bztime,@PathVariable String recordid) {
 	  		Map<String, String> message = new HashMap<String, String>();
-			if (biz.updatejg(status, recordid)>0) {
+			if (biz.updatejg(status,bztime, recordid)>0) {
 				message.put("code", "200");
 				message.put("msg", "ok");
 			}

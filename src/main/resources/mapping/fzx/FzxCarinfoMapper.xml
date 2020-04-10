@@ -66,17 +66,18 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
 				and recordid like '%${recordid}%'
 			</if>
 		</where>
+		order by recorddate desc
 	</select>
 	
 	<!-- 修改竣工状态 -->
 	<update id="updatejg">
-		UPDATE weixiurecord SET status = #{status}
+		UPDATE weixiurecord SET status = #{status},bztime=#{bztime}
 		WHERE recordid = #{recordid};
 	</update>
 	
-	<!-- 查询竣工 -->
+	<!-- 查询竣工记录 -->
 	<select id="selectJgAll" resultType="com.accp.pojo.fzx.FzxJgrecord">
-		SELECT * FROM jgrecord
+		SELECT * FROM jgrecord ORDER BY shijidate DESC
 	</select>
 	
 	<!-- 新增竣工记录 -->

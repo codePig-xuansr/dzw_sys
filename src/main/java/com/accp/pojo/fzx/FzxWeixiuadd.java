@@ -11,7 +11,6 @@ public class FzxWeixiuadd {
 	private String carno;//车牌号
 	private String yewutype;//业务类型
 	private String danjutype;//单据类型 分为金融单据、商业单据
-	@JSONField(format = "yyyy-MM-dd")
 	private Date recorddate;//开单时间
 	private int bzid;//维修班组编号
 	@JSONField(format = "yyyy-MM-dd")
