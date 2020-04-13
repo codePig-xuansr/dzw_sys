@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zzy.IZzyJigongDao">
+	<resultMap id="BaseResultMap" type="com.accp.vo.zzy.ZzyJigongVo">
+		<id column="jid" property="jid" jdbcType="INTEGER" />
+		<result column="jname" property="jname" jdbcType="VARCHAR" />
+		<result column="bzid" property="bzid" jdbcType="INTEGER" />
+		<result column="worktime" property="worktime" jdbcType="INTEGER" />
+		<result column="truename" property="truename" jdbcType="VARCHAR" />
+		<result column="jsex" property="jsex" jdbcType="VARCHAR" />
+		<result column="jphone" property="jphone" jdbcType="VARCHAR" />
+		<result column="jaddress" property="jaddress" jdbcType="VARCHAR" />
+		<result column="jidcard" property="jidcard" jdbcType="VARCHAR" />
+		<result column="bzname" property="bzname" jdbcType="VARCHAR" />
+		<result column="depname" property="depname" jdbcType="VARCHAR" />
+		<result column="sname" property="sname" jdbcType="VARCHAR" />
+		<result column="depid" property="depid" jdbcType="INTEGER" />
+		<result column="sid" property="sid" jdbcType="INTEGER" />
+		
+	</resultMap>
+	<select id="queryJigong" resultMap="BaseResultMap">
+		SELECT j.`jid`,j.`jname`,j.`bzid`,j.`worktime`,j.`truename`,j.`jsex`,j.`jphone`,j.`jaddress`,j.`jidcard`,b.`bzname`,d.`depname`,s.`sname`,d.`depid`,s.`sid`
+		FROM jigong j INNER JOIN banzu b ON j.`bzid`=b.`bzid` INNER JOIN department d ON j.`depid`=d.`depid` INNER JOIN star s ON j.`sid`=s.`sid`
+	</select>
+	<select id="queryJigongById" resultMap="BaseResultMap">
+	SELECT j.`jid`,j.`jname`,j.`bzid`,j.`worktime`,j.`truename`,j.`jsex`,j.`jphone`,j.`jaddress`,j.`jidcard`,b.`bzname`,d.`depname`,s.`sname`
+	FROM jigong j INNER JOIN banzu b ON j.`bzid`=b.`bzid` INNER JOIN department d ON j.`depid`=d.`depid` INNER JOIN star s ON j.`sid`=s.`sid`
+	WHERE j.`jid`=#{jid}
+</select>
+</mapper>
