@@ -6,33 +6,26 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("banzu")
 public class ZzyBanzu {
-	@TableId(value = "bid", type = IdType.AUTO)
-	private int bid;
+	@TableId(value = "bzid", type = IdType.AUTO)
+	private int bzid;
 	private String bzname;
 	private String bztype;
-	private String bzpp;
 	private int bzcost;
-	@Override
-	public String toString() {
-		return "ZzyBanzu [bid=" + bid + ", bzname=" + bzname + ", bztype=" + bztype + ", bzpp=" + bzpp + ", bzcost="
-				+ bzcost + "]";
+	public ZzyBanzu(int bzid, String bzname, String bztype, int bzcost) {
+		super();
+		this.bzid = bzid;
+		this.bzname = bzname;
+		this.bztype = bztype;
+		this.bzcost = bzcost;
 	}
 	public ZzyBanzu() {
 		super();
 	}
-	public ZzyBanzu(int bid, String bzname, String bztype, String bzpp, int bzcost) {
-		super();
-		this.bid = bid;
-		this.bzname = bzname;
-		this.bztype = bztype;
-		this.bzpp = bzpp;
-		this.bzcost = bzcost;
+	public int getBzid() {
+		return bzid;
 	}
-	public int getBid() {
-		return bid;
-	}
-	public void setBid(int bid) {
-		this.bid = bid;
+	public void setBzid(int bzid) {
+		this.bzid = bzid;
 	}
 	public String getBzname() {
 		return bzname;
@@ -46,16 +39,16 @@ public class ZzyBanzu {
 	public void setBztype(String bztype) {
 		this.bztype = bztype;
 	}
-	public String getBzpp() {
-		return bzpp;
-	}
-	public void setBzpp(String bzpp) {
-		this.bzpp = bzpp;
-	}
 	public int getBzcost() {
 		return bzcost;
 	}
 	public void setBzcost(int bzcost) {
 		this.bzcost = bzcost;
 	}
+	@Override
+	public String toString() {
+		return "ZzyBanzu [bzid=" + bzid + ", bzname=" + bzname + ", bztype=" + bztype + ", bzcost=" + bzcost + "]";
+	}
+	
+	
 }
