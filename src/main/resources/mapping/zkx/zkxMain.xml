@@ -20,4 +20,11 @@
 	<select id="querySumMoney" resultType="float">
 		SELECT SUM(`jsmoney`) AS sumMoney FROM `jsrecord`;
 	</select>
+	
+	<!-- 查询过去七天每天的总收入 -->
+	<select id="queryWeek">
+		SELECT SUM(`jsmoney`)AS summ,DATE_FORMAT(`jsdate`,'%m-%d') ddate FROM `jsrecord` 
+		WHERE <![CDATA[ DATE_SUB(CURDATE(), INTERVAL 7 DAY) <= `jsdate` ]]> 
+		GROUP BY DATE_FORMAT(`jsdate`, '%Y-%m-%d');
+	</select>
 </mapper>

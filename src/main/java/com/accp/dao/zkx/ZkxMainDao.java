@@ -1,5 +1,9 @@
 package com.accp.dao.zkx;
 
+import java.util.List;
+
+import com.accp.vo.zkx.ZkxWeek;
+
 public interface ZkxMainDao {
 
 	/**
@@ -25,4 +29,10 @@ public interface ZkxMainDao {
 	 * @return
 	 */
 	public Float querySumMoney();
+	
+	/**
+	 * 查询过去七天每天的总收入
+	 * @return
+	 */
+	public List<ZkxWeek> queryWeek();
 }
