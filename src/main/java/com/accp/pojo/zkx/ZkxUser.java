@@ -29,8 +29,18 @@ public class ZkxUser {
     private Integer rid;
 
     private Integer tid;
+    
+    private Integer ustatus;
 
-    public Integer getUid() {
+    public Integer getUstatus() {
+		return ustatus;
+	}
+
+	public void setUstatus(Integer ustatus) {
+		this.ustatus = ustatus;
+	}
+
+	public Integer getUid() {
         return uid;
     }
 

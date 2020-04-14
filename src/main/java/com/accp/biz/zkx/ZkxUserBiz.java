@@ -10,8 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zkx.ZkxUserDao;
 import com.accp.pojo.zkx.ZkxUser;
+import com.accp.vo.zkx.ZkxTongXunVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
@@ -34,6 +37,11 @@ public class ZkxUserBiz {
 	
 	public List<ZkxUser> queryUserList(){
 		return dao.selectList(null);
+	}
+	
+	public PageInfo<ZkxTongXunVO> queryUserVo(Integer pageNum, Integer pageSize){
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryUserList());
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zkx.ZkxUserDao">
+
+	<resultMap type="com.accp.vo.zkx.ZkxTongXunVO" id="txmap">
+		<id column="uid" property="uid"/>
+		<result column="user" property="user"/>
+		<result column="pwd" property="pwd"/>
+		<result column="username" property="username"/>
+		<result column="comedate" property="comedate"/>
+		<result column="address" property="address"/>
+		<result column="sex" property="sex"/>
+		<result column="depid" property="depid"/>
+		<result column="rid" property="rid"/>
+		<result column="tid" property="tid"/>
+		<result column="ustatus" property="ustatus"/>
+		<result column="rname" property="rname"/>
+		<result column="depname" property="depname"/>
+	</resultMap>
+	<select id="queryUserList" resultMap="txmap">
+		SELECT *
+		FROM `user` u INNER JOIN `role` r
+		ON u.`rid`=r.`rid`
+		INNER JOIN `department` d
+		ON u.`depid`=d.`depid`
+		AND u.`ustatus`=0
+	</select>
+</mapper>
