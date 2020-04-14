@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.dao.ljl.ILjlGonghuoDao">
+	<select id="selectAll" resultType="LjlGonghuoDanwei">
+		select * from gonghuo
+	</select>
+	
+	<select id="selectAllByName" resultType="LjlGonghuoDanwei">
+		select * from gonghuo
+		<if test="ghname!='null'">
+			<where>
+				and ghname like '%${ghname}%'
+			</where>
+		</if>
+	</select>
+	
+	<insert id="insertGonghuo">
+		insert into gonghuo(ghname,ghaddress,ghphone,ghemail)
+		values('${g.ghname}','${g.ghaddress}','${g.ghphone}','${g.ghemail}')
+	</insert>
+	
+	<delete id="deleteGonghuo">
+		delete from gonghuo
+		where ghid = #{ghid}
+	</delete>
+	
+	<update id="updateGonghuo">
+		update gonghuo
+		<set>
+			<if test="g.ghname!=null">
+				ghname = '${g.ghname}',
+			</if>
+			<if test="g.ghaddress!=null">
+				ghaddress = '${g.ghaddress}',
+			</if>
+			<if test="g.ghphone!=null">
+				ghphone = '${g.ghphone}',
+			</if>
+			<if test="g.ghemail!=null">
+				ghemail = '${g.ghemail}',
+			</if>
+		</set>
+		<where>
+			and ghid = #{g.ghid}
+		</where>
+	</update>
+	
+	<select id="selectById" resultType="LjlGonghuoDanwei">
+		select * from gonghuo
+		where ghid = #{ghid}
+	</select>
+</mapper>
