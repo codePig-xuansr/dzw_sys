@@ -11,6 +11,7 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
@@ -150,6 +151,22 @@ public class fzxbiz {
 	 */
 	public FzxJgrecord selectJgcs(String recordid){
 		return dao.selectJgcs(recordid);
+	}
+	/**
+	 * 查询服务顾问
+	 * @return
+	 */
+	public List<FzxUser> selectgw(){
+		return dao.selectgw();
+	}
+	
+	/**
+	 * 修改卡车状态1
+	 * @param kano
+	 * @return
+	 */
+	public int updatekc(String kano) {
+		return dao.updatekc(kano);
 	}
 	
 }
