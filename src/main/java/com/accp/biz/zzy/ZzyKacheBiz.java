@@ -31,6 +31,49 @@ public class ZzyKacheBiz {
 		return new PageInfo<>(dao.queryKache());
 	}
 	/**
+	 * 查看外勤车辆信息状态为0
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<ZzyKacheVo> queryKacheByStaro(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryKacheByStaro());
+	}
+	/**
+	 * 查看外勤车辆信息状态为1
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<ZzyKacheVo> queryKacheByStarl(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryKacheByStarl());
+	}
+	/**
+	 * 查看外勤车辆信息收车
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<ZzyKacheVo> queryKacheByStarc(Integer pageNum, Integer pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryKacheByStarc());
+	}
+	/**
+	 * 修改卡车状态，收车
+	 * @param kaid
+	 * @param kastatus
+	 * @return
+	 */
+	public int modifyKahceStarEqo(int kastatus,int kaid) {
+		return dao.modifyKahceStarEqo(kaid, kastatus);
+	}
+	
+	public int modifyKacheStar(ZzyKache kache) {
+		return dao.updateById(kache);
+	}
+	/**
 	 * 根据卡车id查看卡车信息
 	 * @param kaid
 	 * @return

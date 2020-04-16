@@ -14,7 +14,7 @@ import com.accp.pojo.zzy.ZzyKache;
 public class ZzyTest01 {
 	
 	@Autowired
-	private ZzyBanzuBiz biz;
+	private ZzyKacheBiz biz;
 
 	//删除状态信息
 	/*
@@ -22,7 +22,7 @@ public class ZzyTest01 {
 	 */
 	@Test
 	public void show() {
-		System.out.println(biz.queryBanzuList());
+		System.out.println(biz.queryKacheByStaro(1, 2));
 		
 	}
 	/*public void show() {
