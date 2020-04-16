@@ -41,8 +41,8 @@
 		WHERE k.`bzid`=b.`bzid` AND k.`kastatus`=1 AND w.`status`=1
 	</select>
 	<update id="modifyKahceStarEqo">
-	update kache set kastatus = #{kastatus}
-    where kaid = ${kaid} 
+	update kache set kastatus = 0
+    where kaid = #{kaid} 
 	</update>
 	
 	

@@ -43,5 +43,5 @@ public interface IZzyKacheDao extends BaseMapper<ZzyKache>{
 	 * @param kastatus
 	 * @return
 	 */
-	public int modifyKahceStarEqo(int kastatus,int kaid);
+	public int modifyKahceStarEqo(int kaid);
 }

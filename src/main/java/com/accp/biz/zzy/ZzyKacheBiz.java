@@ -66,13 +66,10 @@ public class ZzyKacheBiz {
 	 * @param kastatus
 	 * @return
 	 */
-	public int modifyKahceStarEqo(int kastatus,int kaid) {
-		return dao.modifyKahceStarEqo(kaid, kastatus);
+	public int modifyKahceStarEqo(int kaid) {
+		return dao.modifyKahceStarEqo(kaid);
 	}
 	
-	public int modifyKacheStar(ZzyKache kache) {
-		return dao.updateById(kache);
-	}
 	/**
 	 * 根据卡车id查看卡车信息
 	 * @param kaid

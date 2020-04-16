@@ -22,7 +22,7 @@ public class ZzyTest01 {
 	 */
 	@Test
 	public void show() {
-		System.out.println(biz.queryKacheByStaro(1, 2));
+		biz.modifyKahceStarEqo(4);
 		
 	}
 	/*public void show() {

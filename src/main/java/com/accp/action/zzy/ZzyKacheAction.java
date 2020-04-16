@@ -141,9 +141,10 @@ public class ZzyKacheAction {
 	 * @param kastatus
 	 * @return
 	 */
-	@PutMapping("modifyKahceStarEqo/{kastatus}/{kaid}")
-	public Map<String, Object> modifyKahceStarEqo(@PathVariable int kastatus,@PathVariable int kaid) {
-		int count=biz.modifyKahceStarEqo(0, kaid);
+	@GetMapping("modifyKahceStarEqo/{kaid}")
+	public Map<String, Object> modifyKahceStarEqo(@PathVariable int kaid) {
+		System.out.println("这是编号：");
+		int count=biz.modifyKahceStarEqo(kaid);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if(count!=0) {
 			message.put("code", "ok");
@@ -155,19 +156,4 @@ public class ZzyKacheAction {
 		return message;
 	}
 	
-	@PutMapping("modifyKahceStar/{kache}")
-	public Map<String, Object> modifyKahceStar(@RequestBody ZzyKache kache) {
-		kache.setKastatus(0);
-		System.out.println(biz.modifyKacheStar(kache));
-		int count=biz.modifyKacheStar(kache);
-		Map<String, Object> message = new HashMap<String, Object>();
-		if(count!=0) {
-			message.put("code", "ok");
-			message.put("msg", "修改成功!");
-		}else {
-			message.put("code", "300");
-			message.put("msg", "修改失败！");
-		}
-		return message;
-	}
 }
