@@ -1,6 +1,7 @@
 package com.accp.action.zzy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,15 @@ public class ZzyBanzuAction {
 	public PageInfo<ZzyBanzu> queryStarAll(@PathVariable Integer n,@PathVariable Integer s) {		
 		return biz.queryStarAll(n,s);
 	}
-	
+	/**
+	 * 查询班组所有信息
+	 * @return
+	 */
+	@GetMapping("queryBanzuList")
+	public List<ZzyBanzu> queryBanzuList(){
+		System.out.println(biz.queryBanzuList());
+		return biz.queryBanzuList();
+	}
 	/**
 	 * 新增班组表信息
 	 * @param star 班组表对象

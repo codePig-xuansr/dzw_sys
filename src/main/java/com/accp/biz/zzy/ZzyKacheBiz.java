@@ -55,7 +55,7 @@ public class ZzyKacheBiz {
 		return dao.insert(kache);
 	}
 	/**
-	 * 根据车牌号新增车辆
+	 * 根据车牌号删除车辆
 	 * @param kano车牌号
 	 * @return
 	 */

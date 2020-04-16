@@ -33,7 +33,13 @@ public class ZzyBanzuBiz {
 		//System.out.println(pageInfo);
 		return pageInfo;
 	}
-	
+	/**
+	 * 查询班组
+	 * @return
+	 */
+	public List<ZzyBanzu> queryBanzuList(){
+		return dao.selectList(null);
+	}
 	/**
 	 * 新增班组表信息
 	 * @param banzu

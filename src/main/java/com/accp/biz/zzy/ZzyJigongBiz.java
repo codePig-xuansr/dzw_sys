@@ -38,11 +38,27 @@ public class ZzyJigongBiz {
 		return dao.queryJigongById(jid);
 	}
 	/**
+	 * 修改技工
+	 * @param jigong
+	 * @return
+	 */
+	public int modifyJigong(ZzyJigong jigong) {
+		return dao.updateById(jigong);
+	}
+	/**
 	 * 新增技工信息
 	 * @param jigong
 	 * @return
 	 */
 	public int addJigong(ZzyJigong jigong) {
 		return dao.insert(jigong);
+	}
+	/**
+	 * 删除技工
+	 * @param jid
+	 * @return
+	 */
+	public int deleteJigong(int jid) {
+		return dao.deleteById(jid);
 	}
 }
