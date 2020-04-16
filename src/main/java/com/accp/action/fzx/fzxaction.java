@@ -18,6 +18,7 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
@@ -186,6 +187,15 @@ public class fzxaction {
 	  	@GetMapping("/selectJgcs/{recordid}")
 		public FzxJgrecord selectJgcs(@PathVariable String recordid){
 			return biz.selectJgcs(recordid);
+		}
+	  	
+	  	/**
+		 * 查询服务顾问
+		 * @return
+		 */
+	  	@GetMapping("/selectgw")
+		public List<FzxUser> selectgw(){
+			return biz.selectgw();
 		}
 	 
 }
