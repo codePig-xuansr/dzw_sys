@@ -160,4 +160,13 @@ public class fzxbiz {
 		return dao.selectgw();
 	}
 	
+	/**
+	 * 修改卡车状态1
+	 * @param kano
+	 * @return
+	 */
+	public int updatekc(String kano) {
+		return dao.updatekc(kano);
+	}
+	
 }

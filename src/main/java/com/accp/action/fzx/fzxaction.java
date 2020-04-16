@@ -197,5 +197,20 @@ public class fzxaction {
 		public List<FzxUser> selectgw(){
 			return biz.selectgw();
 		}
+	  	
+	  	/**
+		 * 修改卡车状态1
+		 * @param kano
+		 * @return
+		 */
+	  	@PutMapping("/updatekc/{kano}")
+		public Map<String, String> updatekc(@PathVariable String kano) {
+	  		Map<String, String> message = new HashMap<String, String>();
+			if (biz.updatekc(kano)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
+		}
 	 
 }

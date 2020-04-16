@@ -118,4 +118,11 @@ public interface fzxdao {
 	 * @return
 	 */
 	List<FzxUser> selectgw();
+	
+	/**
+	 * 修改卡车状态1
+	 * @param kano
+	 * @return
+	 */
+	int updatekc(@Param("kano") String kano);
 }
