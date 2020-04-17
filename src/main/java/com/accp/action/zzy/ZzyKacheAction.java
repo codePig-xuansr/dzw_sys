@@ -37,7 +37,39 @@ public class ZzyKacheAction {
 		//System.out.println(biz.queryKache(pageNum, pageSize));
 		return biz.queryKache(pageNum, pageSize);		
 	}
-	
+	/**
+	 * 分页查询外勤车辆状态为0
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("queryKacheByStaro/{pageNum}/{pageSize}")
+	public PageInfo<ZzyKacheVo> queryKacheByStaro(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		//System.out.println(biz.queryKacheByStaro(pageNum, pageSize));
+		return biz.queryKacheByStaro(pageNum, pageSize);		
+	}
+	/**
+	 * 分页查询外勤车辆状态为1
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("queryKacheByStarl/{pageNum}/{pageSize}")
+	public PageInfo<ZzyKacheVo> queryKacheByStarl(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		//System.out.println(biz.queryKacheByStarl(pageNum, pageSize));
+		return biz.queryKacheByStarl(pageNum, pageSize);		
+	}
+	/**
+	 * 分页查询外勤车辆收车
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("queryKacheByStarc/{pageNum}/{pageSize}")
+	public PageInfo<ZzyKacheVo> queryKacheByStarc(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		//System.out.println(biz.queryKacheByStarl(pageNum, pageSize));
+		return biz.queryKacheByStarc(pageNum, pageSize);		
+	}
 	/**
 	 * 新增外勤车辆
 	 * @param carinfo
@@ -103,4 +135,25 @@ public class ZzyKacheAction {
 		}
 		return message;
 	}
+	/**
+	 * 修改卡车状态信息
+	 * @param kaid
+	 * @param kastatus
+	 * @return
+	 */
+	@GetMapping("modifyKahceStarEqo/{kaid}")
+	public Map<String, Object> modifyKahceStarEqo(@PathVariable int kaid) {
+		System.out.println("这是编号：");
+		int count=biz.modifyKahceStarEqo(kaid);
+		Map<String, Object> message = new HashMap<String, Object>();
+		if(count!=0) {
+			message.put("code", "ok");
+			message.put("msg", "修改成功!");
+		}else {
+			message.put("code", "300");
+			message.put("msg", "修改失败！");
+		}
+		return message;
+	}
+	
 }

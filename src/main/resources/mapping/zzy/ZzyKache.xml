@@ -9,6 +9,7 @@
 		<result column="kapp" property="kapp" jdbcType="VARCHAR" />
 		<result column="bzname" property="bzname" jdbcType="VARCHAR" />
 		<result column="kalc" property="kalc" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="INTEGER" />
 	</resultMap>
 	<select id="queryKache" resultMap="BaseResultMap">
 		SELECT `kapp`,`kano`,`katype`,`bzname`,`kalc`,`kaid` 
@@ -17,9 +18,32 @@
 	</select>
 	
 	<select id="queryKacheById" resultMap="BaseResultMap">
-		SELECT `kapp`,`kano`,`katype`,`kalc`,`bzname`,`kaid`,k.`bzid` 
+		SELECT `kapp`,`kano`,`katype`,`kalc`,`bzname`,`kaid`,k.`bzid`,k.`kastatus`
 		FROM kache k INNER JOIN banzu b ON k.`bzid`=b.`bzid`
-		WHERE k.`kaid`=#{kaid}
-		
+		WHERE k.`kaid`=#{kaid}		
 	</select>
+	<!-- 查询卡车状态为0 -->
+	<select id="queryKacheByStaro" resultMap="BaseResultMap">
+		SELECT `kapp`,`kano`,`katype`,`kalc`,`bzname`,`kaid`,k.`bzid`,k.`kastatus` 
+		FROM kache k INNER JOIN banzu b ON k.`bzid`=b.`bzid`
+		WHERE k.`bzid`=b.`bzid` and k.`kastatus`=0
+	</select>
+		<!-- 查询卡车状态为1 -->
+	<select id="queryKacheByStarl" resultMap="BaseResultMap">
+		SELECT `kapp`,k.`kano`,`katype`,`kalc`,`bzname`,`kaid`,k.`bzid`,k.`kastatus`,w.`kano`
+		FROM kache k INNER JOIN banzu b ON k.`bzid`=b.`bzid` INNER JOIN weixiurecord w ON k.`kano`=w.`kano`
+		WHERE k.`bzid`=b.`bzid` AND k.`kastatus`=1 AND w.`status`=0	
+	</select>
+	<!-- 查询待收车信息 -->
+	<select id="queryKacheByStarc" resultMap="BaseResultMap">
+		SELECT k.`kapp`,k.`kano`,k.`katype`,k.`kalc`,b.`bzname`,k.`kaid`,k.`bzid`,k.`kastatus`
+		FROM kache k INNER JOIN banzu b ON k.`bzid`=b.`bzid` INNER JOIN weixiurecord w ON k.`kano`=w.`kano`
+		WHERE k.`bzid`=b.`bzid` AND k.`kastatus`=1 AND w.`status`=1
+	</select>
+	<update id="modifyKahceStarEqo">
+	update kache set kastatus = 0
+    where kaid = #{kaid} 
+	</update>
+	
+	
 </mapper>

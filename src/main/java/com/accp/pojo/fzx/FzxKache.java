@@ -8,11 +8,10 @@ public class FzxKache {
 	private int kaprice;
 	private String kano;
 	private String kapp;
-	private int kalicheng;
+	private int kalc;
 	private int bzid;
-	private String katype;
 	public FzxKache(int kaid, String kacode, int kastatus, int kazaizhong, int kaprice, String kano, String kapp,
-			int kalicheng, int bzid, String katype) {
+			int kalc, int bzid) {
 		super();
 		this.kaid = kaid;
 		this.kacode = kacode;
@@ -21,9 +20,8 @@ public class FzxKache {
 		this.kaprice = kaprice;
 		this.kano = kano;
 		this.kapp = kapp;
-		this.kalicheng = kalicheng;
+		this.kalc = kalc;
 		this.bzid = bzid;
-		this.katype = katype;
 	}
 	public FzxKache() {
 		super();
@@ -70,11 +68,11 @@ public class FzxKache {
 	public void setKapp(String kapp) {
 		this.kapp = kapp;
 	}
-	public int getKalicheng() {
-		return kalicheng;
+	public int getKalc() {
+		return kalc;
 	}
-	public void setKalicheng(int kalicheng) {
-		this.kalicheng = kalicheng;
+	public void setKalc(int kalc) {
+		this.kalc = kalc;
 	}
 	public int getBzid() {
 		return bzid;
@@ -82,11 +80,6 @@ public class FzxKache {
 	public void setBzid(int bzid) {
 		this.bzid = bzid;
 	}
-	public String getKatype() {
-		return katype;
-	}
-	public void setKatype(String katype) {
-		this.katype = katype;
-	}
+	
 	
 }

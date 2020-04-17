@@ -34,6 +34,13 @@ public class ZzyStarBiz {
 		System.out.println(pageInfo);
 		return pageInfo;
 	}
+	/**
+	 * 查看状态信息
+	 * @return
+	 */
+	public List<ZzyStar> queryStarList(){
+		return dao.selectList(null);
+	}
 	
 	/**
 	 * 新增状态表信息

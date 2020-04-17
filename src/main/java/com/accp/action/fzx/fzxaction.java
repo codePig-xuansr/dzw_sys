@@ -18,6 +18,7 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
@@ -186,6 +187,30 @@ public class fzxaction {
 	  	@GetMapping("/selectJgcs/{recordid}")
 		public FzxJgrecord selectJgcs(@PathVariable String recordid){
 			return biz.selectJgcs(recordid);
+		}
+	  	
+	  	/**
+		 * 查询服务顾问
+		 * @return
+		 */
+	  	@GetMapping("/selectgw")
+		public List<FzxUser> selectgw(){
+			return biz.selectgw();
+		}
+	  	
+	  	/**
+		 * 修改卡车状态1
+		 * @param kano
+		 * @return
+		 */
+	  	@PutMapping("/updatekc/{kano}")
+		public Map<String, String> updatekc(@PathVariable String kano) {
+	  		Map<String, String> message = new HashMap<String, String>();
+			if (biz.updatekc(kano)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
 		}
 	 
 }

@@ -1,6 +1,7 @@
 package com.accp.action.zzy;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ZzyStarAction {
 	@Autowired
 	private ZzyStarBiz biz;
 	 /**
-	  * 查询状态信息
+	  * 分页查询状态信息
 	  * @param n
 	  * @param s
 	  * @return
@@ -35,7 +36,14 @@ public class ZzyStarAction {
 	public PageInfo<ZzyStar> queryStarAll(@PathVariable Integer n,@PathVariable Integer s) {		
 		return biz.queryStarAll(n,s);
 	}
-	
+	/**
+	 * 查看状态信息
+	 * @return
+	 */
+	@GetMapping("queryStarList")
+	public List<ZzyStar> queryStarList(){
+		return biz.queryStarList();
+	}
 	/**
 	 * 新增状态表信息
 	 * @param star 状态表对象

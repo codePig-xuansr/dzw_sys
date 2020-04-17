@@ -91,4 +91,15 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 		SELECT COUNT(*) zicount FROM jgrecord WHERE recordid=#{recordid} AND jgstatus=2
 	</select>
 	
+	<!-- 查询服务顾问 -->
+	<select id="selectgw" resultType="com.accp.pojo.fzx.FzxUser">
+		SELECT * FROM user WHERE rid=6 and ustatus=0
+	</select>
+	
+	<!-- 修改卡车状态1 -->
+	<update id="updatekc">
+		UPDATE kache SET kastatus = 1
+		WHERE kano = #{kano};
+	</update>
+	
 </mapper>

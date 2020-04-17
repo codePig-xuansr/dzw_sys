@@ -20,7 +20,7 @@ public class ZzyJigongBiz {
 	private IZzyJigongDao dao;
 	
 	/**
-	 * 查看外勤车辆信息
+	 * 查看技工信息
 	 * @param pageNum
 	 * @param pageSize
 	 * @return
@@ -30,7 +30,7 @@ public class ZzyJigongBiz {
 		return new PageInfo<>(dao.queryJigong());
 	}
 	/**
-	 * 根据卡车id查看卡车信息
+	 * 根据卡车id查看技工信息
 	 * @param kaid
 	 * @return
 	 */

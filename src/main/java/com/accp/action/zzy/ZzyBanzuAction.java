@@ -39,7 +39,7 @@ public class ZzyBanzuAction {
 	 */
 	@GetMapping("queryBanzuList")
 	public List<ZzyBanzu> queryBanzuList(){
-		System.out.println(biz.queryBanzuList());
+		//System.out.println(biz.queryBanzuList());
 		return biz.queryBanzuList();
 	}
 	/**
