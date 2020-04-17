@@ -12,4 +12,6 @@ public interface ZkxPaDao extends BaseMapper<ZkxPa>{
 	public Integer addPas(@Param("plist")List<ZkxPa> plist);
 	
 	public Integer deleteById(@Param("rid")Integer rid);
+	
+	public Integer queryPa(@Param("rid")Integer rid);
 }

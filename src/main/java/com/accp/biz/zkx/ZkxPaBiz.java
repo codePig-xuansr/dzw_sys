@@ -2,6 +2,7 @@ package com.accp.biz.zkx;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -26,5 +27,10 @@ public class ZkxPaBiz {
 	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public Integer addPa(List<ZkxPa> plist) {
 		return dao.addPas(plist);
+	}
+	
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
+	public Integer queryPa(Integer rid) {
+		return dao.queryPa(rid);
 	}
 }
