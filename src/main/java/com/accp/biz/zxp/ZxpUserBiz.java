@@ -33,10 +33,10 @@ public class ZxpUserBiz {
 	@Autowired
 	private IZxpDepartmentDao ddao;
 	
-	public PageInfo<zxpp> queryUserAll(Integer n,Integer s){
+	public PageInfo<zxpp> queryUserAll(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
 		QueryWrapper<zxpp> qw = Wrappers.query();
-		qw.eq("ustatus", 0);
+		qw.eq("ustatus", 0).like("username",  name);
 		List<zxpp> list = dao.selectList(qw);
 		PageInfo<zxpp> pageInfo=new PageInfo<zxpp>(list);
 		return pageInfo;
@@ -91,9 +91,9 @@ public class ZxpUserBiz {
 		return tdao.updateT(txl);
 	}
 	
-	public PageInfo<ZxpUserVO> finds(Integer n,Integer s){
+	public PageInfo<ZxpUserVO> finds(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
-		return new PageInfo<ZxpUserVO> (dao.findUser());
+		return new PageInfo<ZxpUserVO> (dao.findUser(name));
 	}
 	
 	public zxpp find1(String username) {

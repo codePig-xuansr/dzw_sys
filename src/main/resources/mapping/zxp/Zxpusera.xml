@@ -6,7 +6,13 @@
 		<collection property="txl" column="uid" select="selecttongxunlu" />
 	</resultMap>
 	<select id="findUser" resultMap="ZxpUserVO">
-		SELECT * FROM user where ustatus = 0
+		SELECT * FROM user 
+		<where>
+		ustatus = 0 
+			<if test="name!=null">
+				and username like '%${name}%'
+			</if>
+		</where>
 	</select>
 	<select id="selectuser" resultType="com.accp.pojo.zxp.zxpp">
 		SELECT * FROM user where uid=#{0} 

@@ -36,7 +36,6 @@ public class ZxpLeaveBiz {
 		PageHelper.startPage(n,s);
 		QueryWrapper<zxpp> qw=Wrappers.query();
 		qw.eq("ustatus", 1);
-		QueryWrapper<ZxpLeave> qq=Wrappers.query();
 		 List<ZxpLeave> use=ldao.selectList(null);
 		 List<ZxpLeaveVO> uvo=new ArrayList<ZxpLeaveVO>();
 		  for (ZxpLeave zxp : use) { zxpp
@@ -62,8 +61,8 @@ public class ZxpLeaveBiz {
 		return ldao.insert(leave);
 	}
 	
-	public PageInfo<ZxpLeaveVO> findLeave(Integer n,Integer s){
+	public PageInfo<ZxpLeaveVO> findLeave(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
-		return new PageInfo<ZxpLeaveVO> (ldao.findLeave());
+		return new PageInfo<ZxpLeaveVO> (ldao.findLeave(name));
 	}
 }

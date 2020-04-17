@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zxp.*;
 import com.accp.pojo.zxp.*;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -20,9 +22,11 @@ public class ZxpRoleBiz {
 	@Autowired
 	private IZxpRoleDao dao;
 	
-	public PageInfo<ZxpRole> queryRoleAll(Integer n,Integer s){
+	public PageInfo<ZxpRole> queryRoleAll(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
-		List<ZxpRole> list = dao.selectList(null);
+		QueryWrapper<ZxpRole> qw = Wrappers.query();
+		qw.like("rname", name);
+		List<ZxpRole> list = dao.selectList(qw);
 		PageInfo<ZxpRole> pageInfo=new PageInfo<ZxpRole>(list);
 		return pageInfo;
 	}

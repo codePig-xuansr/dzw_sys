@@ -30,8 +30,8 @@ public class ZxpTongxunluAction {
 	@Autowired
 	private ZxpUserBiz ubiz;
 	
-	@GetMapping("queryTxlAll/{n}/{s}")
-	public PageInfo<ZxpUserVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s) {		
-		return ubiz.finds(n, s);
+	@GetMapping("queryTxlAll/{n}/{s}/{name}")
+	public PageInfo<ZxpUserVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {		
+		return ubiz.finds(n, s,"null".equals(name)?"":name);
 	}
 }

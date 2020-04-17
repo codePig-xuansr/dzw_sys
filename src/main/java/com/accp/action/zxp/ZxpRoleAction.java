@@ -31,9 +31,9 @@ public class ZxpRoleAction {
 	@Autowired
 	private ZxpRoleBiz biz;
 	
-	@GetMapping("queryRoleAll/{n}/{s}")
-	public PageInfo<ZxpRole> queryUserAll(@PathVariable Integer n,@PathVariable Integer s) {		
-		return biz.queryRoleAll(n, s);
+	@GetMapping("queryRoleAll/{n}/{s}/{name}")
+	public PageInfo<ZxpRole> queryUserAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {		
+		return biz.queryRoleAll(n, s,"null".equals(name)?"":name);
 	}
 	
 	@PostMapping("add")

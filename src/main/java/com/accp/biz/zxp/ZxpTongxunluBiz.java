@@ -25,9 +25,9 @@ public class ZxpTongxunluBiz {
 	@Autowired
 	private IZxpTongxunluDao tdao;
 	
-	public PageInfo<ZxpUserVO> finds(Integer n,Integer s){
+	public PageInfo<ZxpUserVO> finds(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
-		return new PageInfo<ZxpUserVO> (dao.findUser());
+		return new PageInfo<ZxpUserVO> (dao.findUser(name));
 	}
 	
 	

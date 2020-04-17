@@ -41,9 +41,9 @@ public class ZxpUserAction {
 	 * @param s
 	 * @return
 	 */
-	@GetMapping("queryUserAll/{n}/{s}")
-	public PageInfo<zxpp> queryUserAll(@PathVariable Integer n,@PathVariable Integer s) {		
-		return biz.queryUserAll(n, s);
+	@GetMapping("queryUserAll/{n}/{s}/{name}")
+	public PageInfo<zxpp> queryUserAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {	
+		return biz.queryUserAll(n, s,"null".equals(name)?"":name);
 	}
 
 

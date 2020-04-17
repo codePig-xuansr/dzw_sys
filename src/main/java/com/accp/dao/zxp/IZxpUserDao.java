@@ -13,5 +13,5 @@ public interface IZxpUserDao extends BaseMapper<zxpp>{
 	public int deleteuser(@Param("uid")Integer uid);
 	public int updateUser(@Param("use")zxpp use);
 	public zxpp find(@Param("username")String username);
-	public List<ZxpUserVO> findUser();
+	public List<ZxpUserVO> findUser(@Param("name") String name);
 }

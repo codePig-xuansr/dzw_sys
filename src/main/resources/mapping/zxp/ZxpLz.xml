@@ -7,7 +7,13 @@
 		<association property="leave" column="uid" select="selectleave" />
 	</resultMap>
 	<select id="findLeave" resultMap="ZxpLeaveVO">
-		SELECT * FROM user where ustatus = 1
+		SELECT * FROM user 
+		<where>
+		ustatus = 1
+			<if test="name!=null">
+				and rname like '%${name}%'
+			</if>
+		</where>
 	</select>
 	<select id="selectuser" resultType="com.accp.pojo.zxp.zxpp">
 		SELECT * FROM user where uid=#{0} 

@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 public interface IZxpLeaveDao extends BaseMapper<ZxpLeave>{
 	public int updateLeave(@Param("use")zxpp use);
-	public List<ZxpLeaveVO> findLeave();
+	public List<ZxpLeaveVO> findLeave(@Param("name") String name);
 }
