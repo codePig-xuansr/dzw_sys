@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.accp.dao.zxp.*;
 import com.accp.dao.zzy.IZzyStarDao;
 import com.accp.pojo.ljl.LjlFadongji;
+import com.accp.pojo.zkx.ZkxPa;
 import com.accp.pojo.zkx.ZkxUser;
 import com.accp.pojo.zxp.*;
 import com.accp.pojo.zzy.ZzyStar;
+import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -42,6 +44,15 @@ public class ZxpUserBiz {
 		return pageInfo;
 	}
 	
+	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public Integer addU(List<zxpp> ulist) {
+		return dao.addUser(ulist);
+	}
+	
+	public zxpp finduid() {
+		return dao.finduid();
+	}
+	
 	public int addUser(zxpp user) {
 		return dao.insert(user);
 	}
@@ -65,7 +76,9 @@ public class ZxpUserBiz {
 		}
 		return us;
 	}
-	
+	public int insertUser(zxpp user) {
+		return dao.insert(user);
+	}
 	  public tongxunlu find () {
 		  return tdao.findT();
 	  }
@@ -75,8 +88,11 @@ public class ZxpUserBiz {
 		return dao.deleteById(uid);
 	}
 	
-	public zxpp selectById(Integer uid) {
-		return dao.selectById(uid);
+	public ZxpUVO selectById(Integer uid) {
+		zxpp user=dao.selectById(uid);
+		ZxpRole role=rdao.selectById(user.getRid());
+		ZxpDepartment department=ddao.selectById(user.getDepid());
+		return new ZxpUVO(user,role,department);
 	}
 	
 	public int updateUser(zxpp use) {
@@ -100,11 +116,13 @@ public class ZxpUserBiz {
 		return dao.find(username);
 	}
 	
-	public List<ZxpRole> findRole() {
-		return rdao.selectList(null);
+	public PageInfo<ZxpRole> findRole(Integer n,Integer s) {
+		PageHelper.startPage(n,s);
+		return new PageInfo <ZxpRole> (rdao.selectList(null));
 	}
 	
-	public List<ZxpDepartment> findDepartment() {
-		return ddao.selectList(null);
+	public PageInfo<ZxpDepartment> findDepartment(Integer n,Integer s) {
+		PageHelper.startPage(n,s);
+		return new PageInfo <ZxpDepartment> (ddao.selectList(null));
 	}
 }

@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.omg.CosNaming.IstringHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,6 +27,7 @@ import com.accp.biz.zzy.ZzyStarBiz;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
 import com.accp.pojo.zzy.ZzyStar;
+import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
 
@@ -58,6 +60,18 @@ public class ZxpUserAction {
 		}
 		return map;
 	}
+	
+	@PostMapping("add1")
+	public Map<Object, Object> addUser1(@RequestBody List<zxpp> user){
+		Map<Object, Object> map = new HashMap<Object, Object>();
+		int a=biz.addU(user);
+		if(a>0) {
+			map.put("code", "200");
+		}else {
+			map.put("code", "300");
+		}
+		return map;
+	}
 
 
 	@DeleteMapping("delete/{uid}")
@@ -79,6 +93,11 @@ public class ZxpUserAction {
 		return biz.selectByIdt(uid);
 	}
 	
+	@GetMapping("finduid")
+	public zxpp finduid() {
+		return biz.finduid();
+	}
+	
 	@PutMapping("updatetxl")
 	public Map<Object, Object> updateTxl(@RequestBody tongxunlu txl) throws ParseException{
 		Map<Object, Object> map = new HashMap<Object, Object>();
@@ -96,7 +115,7 @@ public class ZxpUserAction {
 	}
 	
 	@GetMapping("selectById/{uid}")
-	public zxpp selectById(@PathVariable Integer uid) {
+	public ZxpUVO selectById(@PathVariable Integer uid) {
 		return biz.selectById(uid);
 	}
 	
@@ -117,13 +136,13 @@ public class ZxpUserAction {
 		return map;
 	}
 	
-	@GetMapping("queryDepartment")
-	public List<ZxpDepartment> queryDepartment(){
-		return biz.findDepartment();
+	@GetMapping("queryDepartment/{n}/{s}")
+	public PageInfo<ZxpDepartment> queryDepartment(@PathVariable Integer n,@PathVariable Integer s){
+		return biz.findDepartment(n,s);
 	}
 	
-	@GetMapping("queryRole")
-	public List<ZxpRole> queryRole(){
-		return biz.findRole();
+	@GetMapping("queryRole/{n}/{s}")
+	public PageInfo<ZxpRole> queryRole(@PathVariable Integer n,@PathVariable Integer s){
+		return biz.findRole(n,s);
 	}
 }
