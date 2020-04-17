@@ -19,9 +19,10 @@
 		<result column="yewutype" property="yewutype"
 			jdbcType="VARCHAR" />
 		<result column="recorddate" property="recorddate"
-			jdbcType="DATE" />
+			jdbcType="TIMESTAMP" />
 		<result column="yujidate" property="yujidate" jdbcType="DATE" />
-		<result column="jsdate" property="jsdate" jdbcType="DATE" />
+		<result column="jsdate" property="jsdate" jdbcType="TIMESTAMP" />
+		<result column="shijidate" property="shijidate" jdbcType="TIMESTAMP" />
 		<result column="jsmoney" property="jsmoney" jdbcType="FLOAT" />
 		<result column="jiuyuanfy" property="jiuyuanfy"
 			jdbcType="INTEGER" />
@@ -43,23 +44,27 @@
 			</if>
 		</where>
 	</select>
+	<!--销售单结算状态查询并降序排序 -->
 	<select id="queryListByJsstatus" resultMap="BaseResultMap">
 		SELECT
 		danjutype,status,jstype,jsstatus,w.recordid AS recordid,w.carno
 		AS
-		carno,yewutype,recorddate,yujidate,jsdate,jsmoney,kname,c.kid,w.bzid,bzname,bztime,bzcost,jiuyuanfy
+		carno,yewutype,recorddate,yujidate,jsdate,jsmoney,kname,c.kid,w.bzid,bzname,bztime,bzcost,jiuyuanfy,shijidate
 		FROM weixiurecord w LEFT JOIN jsrecord j ON j.recordid=w.recordid
 		INNER JOIN carinfo c ON c.carno=w.carno
 		INNER JOIN kehu k ON
 		c.kid=k.kid
 		INNER JOIN banzu b ON b.bzid=w.bzid
+		INNER JOIN jgrecord jg
+		ON jg.recordid=w.recordid
 		<where>
 			<if test="status!=null">
-				w.status=1 AND w.jsstatus=#{status}
+				jg.jgstatus=1  AND w.jsstatus=#{status}
 			</if>
 			<if test="recordid!=null and recordid!=''">
-				w.status=1 AND w.recordid=#{recordid}
+				jg.jgstatus=1  AND w.recordid=#{recordid}
 			</if>
 		</where>
+		ORDER BY recorddate DESC
 	</select>
 </mapper>

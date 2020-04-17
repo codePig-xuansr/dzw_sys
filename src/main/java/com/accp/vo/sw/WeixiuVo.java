@@ -20,8 +20,18 @@ public class WeixiuVo {
 	private Date yujidate;
 	private Date jsdate;
 	private Float jsmoney;
+	private Date shijidate;
+
+	public Date getShijidate() {
+		return shijidate;
+	}
+
+	public void setShijidate(Date shijidate) {
+		this.shijidate = shijidate;
+	}
+
 	private Integer jiuyuanfy;
-	
+
 	public Integer getJiuyuanfy() {
 		return jiuyuanfy;
 	}
