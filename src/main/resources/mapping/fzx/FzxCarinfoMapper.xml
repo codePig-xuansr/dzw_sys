@@ -3,7 +3,9 @@
 <mapper namespace="com.accp.dao.fzx.fzxdao">
 	<!-- 查询车牌号所有 -->
 	<select id="selectBy" resultType="com.accp.pojo.fzx.FzxCarinfo">
-		SELECT * FROM carinfo where carno like '%${carno}%'
+		SELECT c.`carpp`, c.`carxinghao`, c.`carno`, c.`driver`, c.`driverphone`, c.`carguishu`, c.`fadongjiid`, c.`jszlostdate`, c.`ranyoutype`, c.`kid`
+		FROM carinfo c INNER JOIN kehu k ON k.kid=c.kid INNER JOIN fadongji f ON f.fadongjiid=c.fadongjiid
+		and carno like '%${carno}%'
 	</select>
 	
 	<!-- 查询服务所有 -->
