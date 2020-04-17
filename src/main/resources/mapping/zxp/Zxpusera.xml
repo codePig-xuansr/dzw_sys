@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.zxp.IZxpUserDao">
-	
-	
+	<resultMap id="ZxpUserVO" type="com.accp.vo.zxp.ZxpUserVO">
+		<association property="user" select="selectuser" column="uid" />
+		<collection property="txl" column="uid" select="selecttongxunlu" />
+	</resultMap>
+	<select id="findUser" resultMap="ZxpUserVO">
+		SELECT * FROM user where ustatus = 0
+	</select>
+	<select id="selectuser" resultType="com.accp.pojo.zxp.zxpp">
+		SELECT * FROM user where uid=#{0} 
+	</select>
+	<select id="selecttongxunlu" resultType="com.accp.pojo.zxp.tongxunlu">
+		SELECT * FROM tongxunlu where uid=#{0}
+	</select>
+
+
+
+
+
+
 	<update id="updateUser">
 		UPDATE user
 		<set>
-			
+
 			<if test="use.user!=null">
 				user = '${use.user}',
 			</if>
@@ -31,9 +48,17 @@
 			<if test="use.rid!=null">
 				rid = '${use.rid}',
 			</if>
+			<if test="use.ustatus!=null">
+				ustatus = '${use.ustatus}',
+			</if>
 		</set>
 		<where>
 			AND uid = '${use.uid}'
 		</where>
 	</update>
+
+	<select id="find" resultType="zxpp">
+		select uid from user where username
+		= #{username}
+	</select>
 </mapper>

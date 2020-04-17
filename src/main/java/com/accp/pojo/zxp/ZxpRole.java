@@ -2,6 +2,8 @@ package com.accp.pojo.zxp;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -13,6 +15,7 @@ public class ZxpRole {
 	private String rcode;
 	private String rname;
 	private String createby;
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createdate;
 	
 	@Override

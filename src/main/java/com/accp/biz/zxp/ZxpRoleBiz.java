@@ -26,4 +26,20 @@ public class ZxpRoleBiz {
 		PageInfo<ZxpRole> pageInfo=new PageInfo<ZxpRole>(list);
 		return pageInfo;
 	}
+	
+	public int addRole(ZxpRole role) {
+		return dao.insert(role);
+	}
+	
+	public int delete(Integer rid) {
+		return dao.deleteById(rid);
+	}
+	
+	public ZxpRole selectByIdt(Integer uid) {
+		return dao.selectById(uid);
+	}
+	
+	public int update(ZxpRole role) {
+		return dao.updateById(role);
+	}
 }

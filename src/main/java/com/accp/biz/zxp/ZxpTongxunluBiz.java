@@ -1,5 +1,6 @@
 package com.accp.biz.zxp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zxp.*;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpUserVO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -17,13 +21,13 @@ import com.github.pagehelper.PageInfo;
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class ZxpTongxunluBiz {
 	@Autowired
-	private IZxpTongxunluDao dao;
+	private  IZxpUserDao dao;
+	@Autowired
+	private IZxpTongxunluDao tdao;
 	
-	public PageInfo<tongxunlu> queryRoleAll(Integer n,Integer s){
+	public PageInfo<ZxpUserVO> finds(Integer n,Integer s){
 		PageHelper.startPage(n,s);
-		List<tongxunlu> list = dao.selectList(null);
-		PageInfo<tongxunlu> pageInfo=new PageInfo<tongxunlu>(list);
-		return pageInfo;
+		return new PageInfo<ZxpUserVO> (dao.findUser());
 	}
 	
 	

@@ -1,15 +1,17 @@
 package com.accp.vo.zxp;
 
+import java.util.List;
+
 import com.accp.pojo.zxp.tongxunlu;
 import com.accp.pojo.zxp.zxpp;
 
 public class ZxpUserVO {
-	private tongxunlu txl;
+	private List<tongxunlu> txl;
 	private zxpp user;
-	public tongxunlu getTxl() {
+	public List<tongxunlu> getTxl() {
 		return txl;
 	}
-	public void setTxl(tongxunlu txl) {
+	public void setTxl(List<tongxunlu> txl) {
 		this.txl = txl;
 	}
 	public zxpp getUser() {
@@ -21,7 +23,7 @@ public class ZxpUserVO {
 	public ZxpUserVO() {
 		// TODO Auto-generated constructor stub
 	}
-	public ZxpUserVO(tongxunlu txl, zxpp user) {
+	public ZxpUserVO(List<tongxunlu> txl, zxpp user) {
 		super();
 		this.txl = txl;
 		this.user = user;

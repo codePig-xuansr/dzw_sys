@@ -28,10 +28,16 @@ public class ZxpUserBiz {
 	private  IZxpUserDao dao;
 	@Autowired
 	private IZxpTongxunluDao tdao;
+	@Autowired
+	private IZxpRoleDao rdao;
+	@Autowired
+	private IZxpDepartmentDao ddao;
 	
 	public PageInfo<zxpp> queryUserAll(Integer n,Integer s){
 		PageHelper.startPage(n,s);
-		List<zxpp> list = dao.selectList(null);
+		QueryWrapper<zxpp> qw = Wrappers.query();
+		qw.eq("ustatus", 0);
+		List<zxpp> list = dao.selectList(qw);
 		PageInfo<zxpp> pageInfo=new PageInfo<zxpp>(list);
 		return pageInfo;
 	}
@@ -44,6 +50,21 @@ public class ZxpUserBiz {
 		return tdao.insert(tong);
 	}
 	
+	public int addUser(ZxpUserVO use) {
+		int us=dao.insert(use.getUser());
+		/*
+		 * int
+		 * us=dao.insert(use.getUser().getUid(),use.getUser().getUser(),use.getUser().
+		 * getPwd(),use.getUser().getUsername(),use.getUser().getComedate(),use.getUser(
+		 * ).getAddress(),use.getUser().getSex(),use.getUser().getDepid(),use.getUser().
+		 * getRid());
+		 */
+		for (tongxunlu tx : use.getTxl()) {
+			tx.setUid(use.getUser().getUid());
+			tdao.insert(tx);
+		}
+		return us;
+	}
 	
 	  public tongxunlu find () {
 		  return tdao.findT();
@@ -72,18 +93,18 @@ public class ZxpUserBiz {
 	
 	public PageInfo<ZxpUserVO> finds(Integer n,Integer s){
 		PageHelper.startPage(n,s);
-		QueryWrapper<zxpp> qw=Wrappers.query();
-		QueryWrapper<tongxunlu> qq=Wrappers.query();
-		 List<zxpp> use=dao.selectList(qw);
-		 List<ZxpUserVO> uvo=new ArrayList<ZxpUserVO>();
-		 for (zxpp zxp : use) {
-			 tongxunlu tx=tdao.selectById(zxp.getTid());
-			 uvo.add(new ZxpUserVO(tx,zxp));
-		}
-		return new PageInfo<ZxpUserVO> (uvo);
+		return new PageInfo<ZxpUserVO> (dao.findUser());
 	}
 	
-	/*
-	 * public tongxunlu findss() { return tdao.selectById(2); }
-	 */
+	public zxpp find1(String username) {
+		return dao.find(username);
+	}
+	
+	public List<ZxpRole> findRole() {
+		return rdao.selectList(null);
+	}
+	
+	public List<ZxpDepartment> findDepartment() {
+		return ddao.selectList(null);
+	}
 }

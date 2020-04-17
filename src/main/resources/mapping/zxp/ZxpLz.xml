@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zxp.IZxpLeaveDao">
+	
+	<resultMap id="ZxpLeaveVO" type="com.accp.vo.zxp.ZxpLeaveVO">
+		<association property="user" select="selectuser" column="uid" />
+		<association property="leave" column="uid" select="selectleave" />
+	</resultMap>
+	<select id="findLeave" resultMap="ZxpLeaveVO">
+		SELECT * FROM user where ustatus = 1
+	</select>
+	<select id="selectuser" resultType="com.accp.pojo.zxp.zxpp">
+		SELECT * FROM user where uid=#{0} 
+	</select>
+	<select id="selectleave" resultType="com.accp.pojo.zxp.ZxpLeave">
+		SELECT * FROM lz where uid=#{0}
+	</select>
+</mapper>

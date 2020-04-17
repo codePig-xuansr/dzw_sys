@@ -1,6 +1,7 @@
 package com.accp.pojo.zxp;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,27 +29,7 @@ public class zxpp {
 	private String email;
 	@TableField(exist=false)
 	private String phone;
-	
-	
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-	@Override
-	public String toString() {
-		return "zxpp [uid=" + uid + ", user=" + user + ", pwd=" + pwd + ", username=" + username + ", comedate=" + comedate + ", address=" + address + ", sex=" + sex + ", depid=" + depid + ", rid=" + rid + ", tid=" + tid + ", phone=" + phone + ", email=" + email + "]";
-	}
-	public zxpp() {
-		// TODO Auto-generated constructor stub
-	}
+	private Integer ustatus;
 	public Integer getUid() {
 		return uid;
 	}
@@ -109,8 +90,29 @@ public class zxpp {
 	public void setTid(Integer tid) {
 		this.tid = tid;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public Integer getUstatus() {
+		return ustatus;
+	}
+	public void setUstatus(Integer ustatus) {
+		this.ustatus = ustatus;
+	}
+	public zxpp() {
+		// TODO Auto-generated constructor stub
+	}
 	public zxpp(Integer uid, String user, String pwd, String username, Date comedate, String address, String sex,
-			Integer depid, Integer rid, Integer tid) {
+			Integer depid, Integer rid, Integer tid, Integer ustatus) {
 		super();
 		this.uid = uid;
 		this.user = user;
@@ -122,7 +124,12 @@ public class zxpp {
 		this.depid = depid;
 		this.rid = rid;
 		this.tid = tid;
+		this.ustatus = ustatus;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "zxpp [uid=" + uid + ", user=" + user + ", pwd=" + pwd + ", username=" + username + ", comedate="
+				+ comedate + ", address=" + address + ", sex=" + sex + ", depid=" + depid + ", rid=" + rid + ", tid="
+				+ tid + ", ustatus=" + ustatus + "]";
+	}
 }

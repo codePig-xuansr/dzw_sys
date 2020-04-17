@@ -1,5 +1,6 @@
 package com.accp.biz.zxp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zxp.*;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpLeaveVO;
+import com.accp.vo.zxp.ZxpUserVO;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -17,12 +22,48 @@ import com.github.pagehelper.PageInfo;
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class ZxpLeaveBiz {
 	@Autowired
-	private IZxpLeaveDao dao;
+	private  IZxpUserDao dao;
+	@Autowired
+	private IZxpLeaveDao ldao;
 	
-	public PageInfo<ZxpLeave> queryRoleAll(Integer n,Integer s){
+	/*
+	 * public PageInfo<ZxpLeave> queryRoleAll(Integer n,Integer s){
+	 * PageHelper.startPage(n,s); List<ZxpLeave> list = dao.selectList(null);
+	 * PageInfo<ZxpLeave> pageInfo=new PageInfo<ZxpLeave>(list); return pageInfo; }
+	 */
+	
+	public PageInfo<ZxpLeaveVO> finds(Integer n,Integer s){
 		PageHelper.startPage(n,s);
-		List<ZxpLeave> list = dao.selectList(null);
-		PageInfo<ZxpLeave> pageInfo=new PageInfo<ZxpLeave>(list);
-		return pageInfo;
+		QueryWrapper<zxpp> qw=Wrappers.query();
+		qw.eq("ustatus", 1);
+		QueryWrapper<ZxpLeave> qq=Wrappers.query();
+		 List<ZxpLeave> use=ldao.selectList(null);
+		 List<ZxpLeaveVO> uvo=new ArrayList<ZxpLeaveVO>();
+		  for (ZxpLeave zxp : use) { zxpp
+		  lx=dao.selectById(zxp.getUid()); 
+		  uvo.add(new ZxpLeaveVO(lx,zxp)); 
+		  }
+		 
+		return new PageInfo<ZxpLeaveVO> (uvo);
+	}
+	public List<ZxpLeaveVO> finda(){
+		QueryWrapper<zxpp> qw=Wrappers.query();
+		QueryWrapper<ZxpLeave> qq=Wrappers.query();
+		 List<ZxpLeave> use=ldao.selectList(null);
+		 List<ZxpLeaveVO> uvo=new ArrayList<ZxpLeaveVO>();
+		  for (ZxpLeave zxp : use) {
+			zxpp lx=dao.selectById(zxp.getUid()); 
+			uvo.add(new ZxpLeaveVO(lx,zxp)); 
+		  }
+		 
+		return  uvo;
+	}
+	public int addLeave(ZxpLeave leave) {
+		return ldao.insert(leave);
+	}
+	
+	public PageInfo<ZxpLeaveVO> findLeave(Integer n,Integer s){
+		PageHelper.startPage(n,s);
+		return new PageInfo<ZxpLeaveVO> (ldao.findLeave());
 	}
 }

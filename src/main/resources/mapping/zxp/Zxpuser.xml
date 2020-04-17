@@ -5,7 +5,19 @@
 	<select id="findT" resultType="com.accp.pojo.zxp.tongxunlu">
 		SELECT `tid` FROM `tongxunlu` ORDER BY `tid` DESC LIMIT 0,1
 	</select>
-	
+	<resultMap id="ZxpUserVO" type="com.accp.vo.zxp.ZxpUserVO">
+		<association property="zxpp" select="selectuser" column="uid" />
+		<collection property="txl" column="uid" select="selecttongxunlu" />
+	</resultMap>
+	<select id="findUser" resultMap="ZxpUserVO">
+		SELECT * FROM user 
+	</select>
+	<select id="selectuser" resultType="com.accp.pojo.zxp.zxpp">
+		SELECT * FROM user where uid=#{0}
+	</select>
+	<select id="selecttongxunlu" resultType="com.accp.pojo.zxp.tongxunlu">
+		SELECT * FROM tongxunlu where uid=#{0}
+	</select>
 	<update id="updateT">
 		UPDATE tongxunlu
 		<set>

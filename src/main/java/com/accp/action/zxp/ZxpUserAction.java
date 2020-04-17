@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import com.accp.biz.zzy.ZzyStarBiz;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
 import com.accp.pojo.zzy.ZzyStar;
+import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -46,21 +48,13 @@ public class ZxpUserAction {
 
 
 	@PostMapping("add")
-	public Map<Object, Object> addFadongji(@RequestBody zxpp use){
+	public Map<Object, Object> addUser(@RequestBody ZxpUserVO use){
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		int uid=use.getUid();
-		String phone=use.getPhone();
-		String email=use.getEmail();
-		int sum = biz.addTongxunlu(new tongxunlu(0,uid,phone,email));
-		if(sum>0) {
-			tongxunlu txl=biz.find();
-			int tid=txl.getTid();
-			int jg=biz.addUser(new zxpp(use.getUid(), use.getUser(), use.getPwd(), use.getUsername(), use.getComedate(), use.getAddress(), use.getSex(), use.getDepid(), use.getRid(), tid));
-			if(jg>0) {
-				map.put("code", "200");
-			}else {
-				map.put("code", "300");
-			}
+		int a=biz.addUser(use);
+		if(a>0) {
+			map.put("code", "200");
+		}else {
+			map.put("code", "300");
 		}
 		return map;
 	}
@@ -78,10 +72,7 @@ public class ZxpUserAction {
 		return map;
 	}
 	
-	@GetMapping("selectById/{uid}")
-	public zxpp selectById(@PathVariable Integer uid) {
-		return biz.selectById(uid);
-	}
+	
 	
 	@GetMapping("selectByIdt/{uid}")
 	public tongxunlu selectByIdt(@PathVariable Integer uid) {
@@ -104,6 +95,11 @@ public class ZxpUserAction {
 		return map;
 	}
 	
+	@GetMapping("selectById/{uid}")
+	public zxpp selectById(@PathVariable Integer uid) {
+		return biz.selectById(uid);
+	}
+	
 	@PutMapping("update")
 	public Map<Object, Object> updateFadongji(@RequestBody zxpp use) throws ParseException{
 		Map<Object, Object> map = new HashMap<Object, Object>();
@@ -113,12 +109,21 @@ public class ZxpUserAction {
 		Date newDate =sdf.parse(strDate);
 		java.sql.Date resultDate = new java.sql.Date(newDate.getTime());
 		use.setComedate(resultDate);
-		System.out.println(use);
 		
 		 int sum = biz.updateUser(use); 
 		
 		 if (sum>0) { map.put("code", "200"); }else { map.put("code", "300"); }
 		 
 		return map;
+	}
+	
+	@GetMapping("queryDepartment")
+	public List<ZxpDepartment> queryDepartment(){
+		return biz.findDepartment();
+	}
+	
+	@GetMapping("queryRole")
+	public List<ZxpRole> queryRole(){
+		return biz.findRole();
 	}
 }

@@ -4,15 +4,27 @@ import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-@TableName("leave")
+@TableName("lz")
 public class ZxpLeave {
 	@TableId(value = "lid",type = IdType.AUTO)
 	private Integer lid;
 	private Integer uid;
+	@JSONField(format = "yyyy-MM-dd")
 	private Date leavedate;
 	private String content;
+	@TableField(exist=false)
+	private String username;
+	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public Integer getLid() {
 		return lid;
 	}
@@ -49,6 +61,6 @@ public class ZxpLeave {
 	}
 	@Override
 	public String toString() {
-		return "tongxunlu [lid=" + lid + ", uid=" + uid + ", leavedate=" + leavedate + ", content=" + content + "]";
+		return "Zxpleave [lid=" + lid + ", uid=" + uid + ", leavedate=" + leavedate + ", content=" + content + "]";
 	}
 }

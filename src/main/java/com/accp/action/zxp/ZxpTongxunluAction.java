@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.zxp.*;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -26,9 +27,11 @@ import com.github.pagehelper.PageInfo;
 public class ZxpTongxunluAction {
 	@Autowired
 	private ZxpTongxunluBiz biz;
+	@Autowired
+	private ZxpUserBiz ubiz;
 	
 	@GetMapping("queryTxlAll/{n}/{s}")
-	public PageInfo<tongxunlu> queryUserAll(@PathVariable Integer n,@PathVariable Integer s) {		
-		return biz.queryRoleAll(n, s);
+	public PageInfo<ZxpUserVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s) {		
+		return ubiz.finds(n, s);
 	}
 }
