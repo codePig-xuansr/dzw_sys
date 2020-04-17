@@ -10,28 +10,28 @@ public class ZzyStar {
 	private int sid;
 	private String sname;
 	private Float ticheng;
-	private int worktime;
+	//private int worktime;
 	@Override
 	public String toString() {
-		return "ZzyStar [sid=" + sid + ", sname=" + sname + ", ticheng=" + ticheng + ", worktime=" + worktime + "]";
+		return "ZzyStar [sid=" + sid + ", sname=" + sname + ", ticheng=" + ticheng + "]";
 	}
 	public ZzyStar() {
 		super();
 	}
-	public ZzyStar(int sid, String sname, Float ticheng, int worktime) {
+	public ZzyStar(int sid, String sname, Float ticheng) {
 		super();
 		this.sid = sid;
 		this.sname = sname;
 		this.ticheng = ticheng;
-		this.worktime = worktime;
+		//this.worktime = worktime;
 	}
 	
 	
-	public ZzyStar(String sname, Float ticheng, int worktime) {
+	public ZzyStar(String sname, Float ticheng) {
 		super();
 		this.sname = sname;
 		this.ticheng = ticheng;
-		this.worktime = worktime;
+		//this.worktime = worktime;
 	}
 	public int getSid() {
 		return sid;
@@ -51,10 +51,10 @@ public class ZzyStar {
 	public void setTicheng(Float ticheng) {
 		this.ticheng = ticheng;
 	}
-	public int getWorktime() {
-		return worktime;
-	}
-	public void setWorktime(int worktime) {
-		this.worktime = worktime;
-	}
+//	public int getWorktime() {
+//		return worktime;
+//	}
+//	public void setWorktime(int worktime) {
+//		this.worktime = worktime;
+//	}
 }
