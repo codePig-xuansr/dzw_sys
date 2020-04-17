@@ -51,7 +51,7 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
 	
 	<!-- 查询卡车 -->
 	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
-		SELECT * FROM kache
+		SELECT `kaid`,`kacode`,`kastatus`,`kazaizhong`,`kaprice`,`kano`,`katype`,`kapp`,k.`bzid`,`kalc` FROM kache k INNER JOIN banzu b WHERE k.`bzid`=b.`bzid`
 	</select>
 	
 	<!-- 查询竣工 -->
