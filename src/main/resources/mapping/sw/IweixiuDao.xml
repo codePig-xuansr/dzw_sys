@@ -23,6 +23,8 @@
 		<result column="yujidate" property="yujidate" jdbcType="DATE" />
 		<result column="jsdate" property="jsdate" jdbcType="DATE" />
 		<result column="jsmoney" property="jsmoney" jdbcType="FLOAT" />
+		<result column="jiuyuanfy" property="jiuyuanfy"
+			jdbcType="INTEGER" />
 	</resultMap>
 	<select id="queryListById" resultMap="BaseResultMap">
 		SELECT kid,danjutype,w.recordid
@@ -45,7 +47,7 @@
 		SELECT
 		danjutype,status,jstype,jsstatus,w.recordid AS recordid,w.carno
 		AS
-		carno,yewutype,recorddate,yujidate,jsdate,jsmoney,kname,c.kid,w.bzid,bzname,bztime,bzcost
+		carno,yewutype,recorddate,yujidate,jsdate,jsmoney,kname,c.kid,w.bzid,bzname,bztime,bzcost,jiuyuanfy
 		FROM weixiurecord w LEFT JOIN jsrecord j ON j.recordid=w.recordid
 		INNER JOIN carinfo c ON c.carno=w.carno
 		INNER JOIN kehu k ON

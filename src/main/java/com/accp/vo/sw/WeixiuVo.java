@@ -20,6 +20,15 @@ public class WeixiuVo {
 	private Date yujidate;
 	private Date jsdate;
 	private Float jsmoney;
+	private Integer jiuyuanfy;
+	
+	public Integer getJiuyuanfy() {
+		return jiuyuanfy;
+	}
+
+	public void setJiuyuanfy(Integer jiuyuanfy) {
+		this.jiuyuanfy = jiuyuanfy;
+	}
 
 	public Integer getKid() {
 		return kid;
