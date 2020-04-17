@@ -63,6 +63,7 @@ public class Zxpuser {
 		 * biz.updateUser(new zxpp(55, null, null, null, null, null, null, null, null,
 		 * null, 0));
 		 */
+		biz.find();
 	}
 
 }
