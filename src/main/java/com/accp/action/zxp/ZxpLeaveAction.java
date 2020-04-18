@@ -57,7 +57,10 @@ public class ZxpLeaveAction {
 	
 	@GetMapping("queryLeaAll/{n}/{s}/{name}")
 	public PageInfo<ZxpLeaveVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {
-		return biz.findLeave(n, s,"null".equals(name)?null:name);
+		if("null".equals(name)||name=="") {
+			name=null;
+		}
+		return biz.findLeave(n, s, name);
 	}
 	
 	@PostMapping("add")
