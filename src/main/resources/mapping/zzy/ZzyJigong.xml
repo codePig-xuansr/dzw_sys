@@ -21,6 +21,11 @@
 	<select id="queryJigong" resultMap="BaseResultMap">
 		SELECT j.`jid`,j.`jname`,j.`bzid`,j.`worktime`,j.`truename`,j.`jsex`,j.`jphone`,j.`jaddress`,j.`jidcard`,b.`bzname`,d.`depname`,s.`sname`,d.`depid`,s.`sid`
 		FROM jigong j INNER JOIN banzu b ON j.`bzid`=b.`bzid` INNER JOIN department d ON j.`depid`=d.`depid` INNER JOIN star s ON j.`sid`=s.`sid`
+		<where>
+			<if test="proname != 'null'">
+				and truename like '%${truename}%'
+			</if>
+		</where>
 	</select>
 	<select id="queryJigongById" resultMap="BaseResultMap">
 	SELECT j.`jid`,j.`jname`,j.`bzid`,j.`worktime`,j.`truename`,j.`jsex`,j.`jphone`,j.`jaddress`,j.`jidcard`,b.`bzname`,d.`depname`,s.`sname`,d.`depid`,s.`sid`

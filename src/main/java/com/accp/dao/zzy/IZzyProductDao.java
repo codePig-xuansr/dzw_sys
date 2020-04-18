@@ -21,4 +21,11 @@ public interface IZzyProductDao extends BaseMapper<ZzyProduct>{
 	 * @return
 	 */
 	public ZzyProductVo queryProductById(int proid);
+	
+	/**
+	 * 根据商品名称进行模糊查询
+	 * @param proname
+	 * @return
+	 */
+	public List<ZzyProductVo> queryProductByName(String proname);
 }
