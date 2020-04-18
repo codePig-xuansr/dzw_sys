@@ -29,6 +29,16 @@ public class ZzyProductBiz {
 		return new PageInfo<>(dao.queryProduct());
 	}
 	/**
+	 * 根据商品名称分页查询商品资料信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	public PageInfo<ZzyProductVo> queryProductByName(Integer pageNum, Integer pageSize,String proname) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryProductByName(proname));
+	}
+	/**
 	 * 根据id查看商品资料
 	 * @param proid
 	 * @return

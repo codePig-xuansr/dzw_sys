@@ -34,6 +34,17 @@ public class ZzyProductAction {
 	public PageInfo<ZzyProductVo> queryProduct(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
 		return biz.queryProduct(pageNum, pageSize);		
 	}
+	
+	/**
+	 * 分页查询商品资料信息
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
+	@GetMapping("queryProductName/{pageNum}/{pageSize}/{proname}")
+	public PageInfo<ZzyProductVo> queryProduct(@PathVariable Integer pageNum, @PathVariable Integer pageSize,@PathVariable String proname) {
+		return biz.queryProductByName(pageNum, pageSize, proname);
+	}
 	/**
 	 * 根据id查看商品资料
 	 * @param proid

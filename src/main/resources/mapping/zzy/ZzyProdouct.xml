@@ -24,4 +24,14 @@
 		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
 		WHERE p.`proid`=#{proid}
 	</select>
+	<select id="queryProductByName" resultMap="BaseResultMap">
+		 SELECT p.`proid`,p.`proname`,p.`propp`,p.`pronum`,p.`prodw` ,p.`proprice`,g.`ghaddress`,g.`ghname`,p.`prostar`,p.`ghid` 
+		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
+		<where>
+			p.`prostar`=0	AND p.`pronum`>0
+			<if test="proname != 'null'">
+				and proname like '%${proname}%'
+			</if>
+		</where>
+	</select>
 </mapper>

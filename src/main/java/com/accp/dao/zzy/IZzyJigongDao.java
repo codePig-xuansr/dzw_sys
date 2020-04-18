@@ -11,7 +11,7 @@ public interface IZzyJigongDao extends BaseMapper<ZzyJigong>{
 	 * 查看技工信息
 	 * @return
 	 */
-	public List<ZzyJigongVo> queryJigong();
+	public List<ZzyJigongVo> queryJigong(String truename);
 	
 	/**
 	 * 根据id查看技工信息

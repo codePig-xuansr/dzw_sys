@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.accp.dao.zxp.*;
 import com.accp.pojo.zxp.*;
 import com.accp.vo.zxp.ZxpLeaveVO;
+import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -25,6 +26,10 @@ public class ZxpLeaveBiz {
 	private  IZxpUserDao dao;
 	@Autowired
 	private IZxpLeaveDao ldao;
+	@Autowired
+	private IZxpRoleDao rdao;
+	@Autowired
+	private IZxpDepartmentDao ddao;
 	
 	/*
 	 * public PageInfo<ZxpLeave> queryRoleAll(Integer n,Integer s){
@@ -64,5 +69,21 @@ public class ZxpLeaveBiz {
 	public PageInfo<ZxpLeaveVO> findLeave(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
 		return new PageInfo<ZxpLeaveVO> (ldao.findLeave(name));
+	}
+	
+	public PageInfo<zxpp> findUser(Integer n,Integer s) {
+		PageHelper.startPage(n,s);
+		QueryWrapper<zxpp> qw = Wrappers.query();
+		qw.eq("ustatus", 0);
+		List<zxpp> list = dao.selectList(qw);
+		PageInfo<zxpp> pageInfo=new PageInfo<zxpp>(list);
+		return pageInfo;
+	}
+	
+	public ZxpUVO selectuser() {
+		zxpp user= dao.selectOne(null);
+		ZxpRole role=rdao.selectById(user.getRid());
+		ZxpDepartment department=ddao.selectById(user.getDepid());
+		return new ZxpUVO(user,role,department);
 	}
 }
