@@ -11,6 +11,11 @@
 		SELECT SUM(`jsmoney`) AS todayMoney FROM `jsrecord` WHERE DATE(`jsdate`) = CURDATE();
 	</select>
 	
+	<select id="queryToDayMoneyOne" resultType="float">
+		SELECT `jsmoney` FROM `jsrecord` WHERE DATE(`jsdate`) = CURDATE()
+		GROUP BY `jsdate` DESC LIMIT 0,1
+	</select>
+	
 	<!-- 查询今日维修车辆台次 -->
 	<select id="queryToDayWx" resultType="int">
 		SELECT COUNT(*) AS todayWx FROM `jgrecord` WHERE DATE(`shijidate`) = CURDATE() AND `jgstatus`=1;

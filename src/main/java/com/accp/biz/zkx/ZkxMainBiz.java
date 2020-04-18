@@ -26,6 +26,10 @@ public class ZkxMainBiz {
 		return dao.queryToDayMoney();
 	}
 	
+	public Float queryToDayMoneyOne() {
+		return dao.queryToDayMoneyOne();
+	}
+	
 	public Integer queryToDayWx() {
 		return dao.queryToDayWx();
 	}

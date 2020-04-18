@@ -19,6 +19,12 @@ public interface ZkxMainDao {
 	public Float queryToDayMoney();
 	
 	/**
+	 * 查询今日最近一次收入
+	 * @return
+	 */
+	public Float queryToDayMoneyOne();
+	
+	/**
 	 * 查询今日维修车辆台次
 	 * @return
 	 */

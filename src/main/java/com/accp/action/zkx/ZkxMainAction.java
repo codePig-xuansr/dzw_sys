@@ -27,6 +27,11 @@ public class ZkxMainAction {
 		return biz.queryToDayMoney();
 	}
 	
+	@GetMapping("moneyOne")
+	public Float queryToDayMoneyOne() {
+		return biz.queryToDayMoneyOne();
+	}
+	
 	@GetMapping("wx")
 	public Integer queryToDayWx() {
 		return biz.queryToDayWx();
