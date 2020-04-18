@@ -62,9 +62,9 @@ public class ZxpUserAction {
 	}
 	
 	@PostMapping("add1")
-	public Map<Object, Object> addUser1(@RequestBody List<zxpp> user){
+	public Map<Object, Object> addUser1(@RequestBody zxpp user){
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		int a=biz.addU(user);
+		int a=biz.insertUser(user);
 		if(a>0) {
 			map.put("code", "200");
 		}else {
@@ -120,18 +120,24 @@ public class ZxpUserAction {
 	}
 	
 	@PutMapping("update")
-	public Map<Object, Object> updateFadongji(@RequestBody zxpp use) throws ParseException{
+	public Map<Object, Object> updateUser(@RequestBody ZxpUVO user) throws ParseException{
 		Map<Object, Object> map = new HashMap<Object, Object>();
+		System.out.println(user);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		Date date =use.getComedate(); 
+		Date date =user.getUser().getComedate(); 
 		String strDate= sdf.format(date ); 
 		Date newDate =sdf.parse(strDate);
 		java.sql.Date resultDate = new java.sql.Date(newDate.getTime());
-		use.setComedate(resultDate);
+		user.getUser().setComedate(resultDate);
 		
-		 int sum = biz.updateUser(use); 
+		 int sum = biz.updateUser(user.getUser()); 
 		
-		 if (sum>0) { map.put("code", "200"); }else { map.put("code", "300"); }
+		 if (sum>0) { 
+			 map.put("code", "200"); 
+		 }
+		 else { 
+			 map.put("code", "300");
+			 }
 		 
 		return map;
 	}

@@ -29,8 +29,6 @@ public class Zxpuser {
 	private ZxpLeaveBiz lbiz;
 	@Autowired
 	private ZxpRoleBiz rbiz;
-	@Autowired
-	private ZxpLeaveBiz llbiz;
 	
 
 
@@ -63,7 +61,7 @@ public class Zxpuser {
 		 * biz.updateUser(new zxpp(55, null, null, null, null, null, null, null, null,
 		 * null, 0));
 		 */
-		System.out.println(biz.finduid());
+		System.out.println(lbiz.findUser(1, 5));
 	}
 
 }

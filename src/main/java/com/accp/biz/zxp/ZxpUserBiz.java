@@ -79,6 +79,9 @@ public class ZxpUserBiz {
 	public int insertUser(zxpp user) {
 		return dao.insert(user);
 	}
+	
+	
+	
 	  public tongxunlu find () {
 		  return tdao.findT();
 	  }

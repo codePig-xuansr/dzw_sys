@@ -11,7 +11,7 @@
 		<where>
 		ustatus = 1
 			<if test="name!=null">
-				and rname like '%${name}%'
+				and username like '%${name}%'
 			</if>
 		</where>
 	</select>

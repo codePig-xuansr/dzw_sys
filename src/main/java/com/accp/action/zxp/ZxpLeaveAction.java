@@ -50,6 +50,11 @@ public class ZxpLeaveAction {
 	@Autowired
 	private ZxpUserBiz ubiz;
 	
+	@GetMapping("queryUser/{n}/{s}")
+	public PageInfo<zxpp> queryUser(@PathVariable Integer n,@PathVariable Integer s){
+		return biz.findUser(n,s);
+	}
+	
 	@GetMapping("queryLeaAll/{n}/{s}/{name}")
 	public PageInfo<ZxpLeaveVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {		
 		return biz.findLeave(n, s,"null".equals(name)?"":name);
@@ -169,6 +174,12 @@ public class ZxpLeaveAction {
 			message.put("msg", "回滚失败！");
 		}
 		return message;
+	}
+	
+	
+	@GetMapping("findUser/{n}/{s}")
+	public PageInfo<zxpp> findUser(@PathVariable Integer n,@PathVariable Integer s){
+		return biz.findUser(n, s);
 	}
 
 }
