@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.accp.biz.zxp.ZxpLeaveBiz;
 import com.accp.biz.zxp.ZxpRoleBiz;
+import com.accp.biz.zxp.ZxpTongxunluBiz;
 import com.accp.biz.zxp.ZxpUserBiz;
 import com.accp.pojo.zxp.ZxpLeave;
 import com.accp.pojo.zxp.ZxpRole;
@@ -29,6 +30,8 @@ public class Zxpuser {
 	private ZxpLeaveBiz lbiz;
 	@Autowired
 	private ZxpRoleBiz rbiz;
+	@Autowired
+	private ZxpTongxunluBiz tbiz;
 	
 
 
@@ -61,7 +64,10 @@ public class Zxpuser {
 		 * biz.updateUser(new zxpp(55, null, null, null, null, null, null, null, null,
 		 * null, 0));
 		 */
-		System.out.println(lbiz.findUser(1, 5));
+		System.out.println(lbiz.deletea(12));
 	}
+	
+	
+	
 
 }

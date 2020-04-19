@@ -79,4 +79,15 @@
 			</foreach> 
 		</if>
 	</insert>
+	
+	<select id="findUVO" resultType="com.accp.vo.zxp.ZxpUV">
+		SELECT * FROM `user` AS u,`department` AS d,`role` AS r 
+		<where>
+		u.`depid`=d.`depid` AND u.`rid`=r.`rid`  and u.`ustatus`=0 
+		<if test="name!=''">
+			AND u.`username`like '%${name}%'
+		</if>
+		ORDER BY u.`uid` 
+		</where>
+	</select>
 </mapper>

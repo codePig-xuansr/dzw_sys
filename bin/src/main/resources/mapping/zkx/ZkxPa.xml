@@ -13,4 +13,8 @@
 	<delete id="deleteById">
 		delete from `pa` where `rid`=#{rid}
 	</delete>
+	
+	<select id="queryPa" resultType="int">
+		SELECT COUNT(*) FROM `pa` WHERE `rid`=#{rid}
+	</select>
 </mapper>

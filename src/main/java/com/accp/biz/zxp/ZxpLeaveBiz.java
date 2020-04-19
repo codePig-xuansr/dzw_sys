@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zxp.*;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpLVO;
 import com.accp.vo.zxp.ZxpLeaveVO;
+import com.accp.vo.zxp.ZxpUTVO;
 import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -36,6 +38,13 @@ public class ZxpLeaveBiz {
 	 * PageHelper.startPage(n,s); List<ZxpLeave> list = dao.selectList(null);
 	 * PageInfo<ZxpLeave> pageInfo=new PageInfo<ZxpLeave>(list); return pageInfo; }
 	 */
+	public PageInfo<ZxpLVO> findUR(Integer n,Integer s,String name){
+		PageHelper.startPage(n,s);
+		return new PageInfo<ZxpLVO> (ldao.findUVO(name));
+	}
+	public int deletea(int id) {
+		return ldao.deletea(id);
+	}
 	
 	public PageInfo<ZxpLeaveVO> finds(Integer n,Integer s){
 		PageHelper.startPage(n,s);

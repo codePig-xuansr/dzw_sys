@@ -16,6 +16,7 @@ import com.accp.pojo.zkx.ZkxPa;
 import com.accp.pojo.zkx.ZkxUser;
 import com.accp.pojo.zxp.*;
 import com.accp.pojo.zzy.ZzyStar;
+import com.accp.vo.zxp.ZxpUV;
 import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -113,6 +114,11 @@ public class ZxpUserBiz {
 	public PageInfo<ZxpUserVO> finds(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
 		return new PageInfo<ZxpUserVO> (dao.findUser(name));
+	}
+	
+	public PageInfo<ZxpUV> findUR(Integer n,Integer s,String name){
+		PageHelper.startPage(n,s);
+		return new PageInfo<ZxpUV> (dao.findUVO(name));
 	}
 	
 	public zxpp find1(String username) {

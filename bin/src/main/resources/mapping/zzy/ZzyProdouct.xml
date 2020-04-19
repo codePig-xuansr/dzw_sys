@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zzy.IZzyProductDao">
+	<resultMap id="BaseResultMap" type="com.accp.vo.zzy.ZzyProductVo">
+		<id column="proid" property="proid" jdbcType="INTEGER" />
+		<result column="proname" property="proname" jdbcType="VARCHAR" />
+		<result column="pronum" property="pronum" jdbcType="INTEGER" />
+		<result column="proprice" property="proprice" jdbcType="INTEGER" />
+		<result column="ghid" property="ghid" jdbcType="INTEGER" />
+		<result column="propp" property="propp" jdbcType="VARCHAR" />
+		<result column="prostar" property="prostar" jdbcType="INTEGER" />
+		<result column="prodw" property="prodw" jdbcType="VARCHAR" />
+		<result column="ghaddress" property="ghaddress" jdbcType="VARCHAR" />
+		<result column="ghname" property="ghname" jdbcType="VARCHAR" />
+		
+	</resultMap>
+	<select id="queryProduct" resultMap="BaseResultMap">
+		SELECT p.`proid`,p.`proname`,p.`propp`,p.`pronum`,p.`prodw` ,p.`proprice`,g.`ghaddress`,g.`ghname`,p.`prostar`,p.`ghid` 
+		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
+		WHERE p.`prostar`=0	and p.`pronum`>0
+	</select>
+	<select id="queryProductById" resultMap="BaseResultMap">
+		SELECT p.`proid`,p.`proname`,p.`propp`,p.`pronum`,p.`prodw` ,p.`proprice`,g.`ghaddress`,g.`ghname`,p.`prostar`,p.`ghid` 
+		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
+		WHERE p.`proid`=#{proid}
+	</select>
+	<select id="queryProductByName" resultMap="BaseResultMap">
+		 SELECT p.`proid`,p.`proname`,p.`propp`,p.`pronum`,p.`prodw` ,p.`proprice`,g.`ghaddress`,g.`ghname`,p.`prostar`,p.`ghid` 
+		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
+		<where>
+			p.`prostar`=0	AND p.`pronum`>0
+			<if test="proname != 'null'">
+				and proname like '%${proname}%'
+			</if>
+		</where>
+	</select>
+</mapper>

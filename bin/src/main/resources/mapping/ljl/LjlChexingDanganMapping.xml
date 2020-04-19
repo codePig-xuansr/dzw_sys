@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.accp.dao.ljl.LjlChexingDanganIDao">
+	<select id="selectPingpai" resultType="LjlPingpaiChexing">
+		select * from carpingpai
+		order by pdate desc
+	</select>
+	
+	<select id="selectPingpaiByid" resultType="LjlPingpaiChexing">
+		select * from carpingpai
+		where pid = #{pid}
+	</select>
+	
+	<select id="selectAllDang" resultType="LjlChexingDangan">
+		select * from cardangan
+	</select>
+	
+	<select id="selectDidMax" resultType="int">
+		select MAX(danganid) from cardangan
+	</select>
+	
+	<select id="selectPidMax" resultType="int">
+		select MAX(pid) from carpingpai
+	</select>
+	
+	<!-- <insert id="pingpaiadd">
+		insert into carpingpai(pid,pname,pzimu,pdate)
+		values('${p.pid}','${p.pname}','${p.pzimu}','${p.pdate}')
+	</insert> -->
+	
+	<insert id="pingpaiadd">
+		insert into carpingpai(pname,pzimu,pdate)
+		values('${p.pname}','${p.pzimu}','${p.pdate}')
+	</insert>
+	
+	<delete id="Pingpaidelete">
+		delete from carpingpai where pid = #{pid};
+		delete from cardangan where carid = #{pid};
+	</delete>
+	
+	<update id="Pingpaiupdate">
+		update carpingpai
+		<set>
+			<if test="p.pname!=null">
+				pname = '${p.pname}',
+			</if>
+			<if test="p.pzimu!=null">
+				pzimu = '${p.pzimu}',
+			</if>
+			<if test="p.pdate!=null">
+				pdate = '${p.pdate}',
+			</if>
+		</set>
+		<where>
+			and pid = '${p.pid}'
+		</where>
+	</update>
+	
+	<select id="selectPingpaiByname" resultType="LjlPingpaiChexing">
+		select * from carpingpai
+		<if test="pname!='null'">
+			<where>
+				and pname like '%${pname}%'
+					or pzimu like '%${pname}%'
+			</where>
+		</if>
+	</select>
+	
+	<select id="selectfadongji" resultType="LjlFadongji">
+		select * from fadongji
+	</select>
+	
+	<insert id="danganadd">
+		insert into cardangan(danganid,carid,carname,fadongjiid,cankaoprice,carniankuan,gonglv,jinkouguochan)
+		values('${d.danganid}','${d.carid}','${d.carname}','${d.fadongjiid}','${d.cankaoprice}','${d.carniankuan}','${d.gonglv}','${d.jinkouguochan}')
+	</insert>
+	
+	<update id="updatechexingdangan">
+		update cardangan
+		<set>
+			<if test="d.carid!=null">
+				carid = '${d.carid}',
+			</if>
+			<if test="d.carname!=null">
+				carname = '${d.carname}',
+			</if>
+			<if test="d.fadongjiid!=null">
+				fadongjiid = '${d.fadongjiid}',
+			</if>
+			<if test="d.cankaoprice!=null">
+				cankaoprice = '${d.cankaoprice}',
+			</if>
+			<if test="d.carniankuan!=null">
+				carniankuan = '${d.carniankuan}',
+			</if>
+			<if test="d.gonglv!=null">
+				gonglv = '${d.gonglv}',
+			</if>
+			<if test="d.jinkouguochan!=null">
+				jinkouguochan = '${d.jinkouguochan}',
+			</if>
+		</set>
+		<where>
+			and danganid = '${d.danganid}'
+		</where>
+	</update>
+	
+	<select id="selectdanganByid" resultType="LjlChexingDangan">
+		select * from cardangan
+		where danganid = '${danganid}'
+	</select>
+	
+	<delete id="deletechexingdangan">
+		delete from cardangan where danganid = #{danganid}
+	</delete>
+	
+	<select id="selectChexingByname" resultType="LjlChexingDangan">
+		select * from cardangan
+		<if test="carname!='null'">
+			<where>
+				and carname like '%${carname}%'
+			</where>
+		</if>
+	</select>
+</mapper>

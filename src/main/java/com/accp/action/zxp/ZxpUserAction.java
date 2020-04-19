@@ -27,6 +27,7 @@ import com.accp.biz.zzy.ZzyStarBiz;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
 import com.accp.pojo.zzy.ZzyStar;
+import com.accp.vo.zxp.ZxpUV;
 import com.accp.vo.zxp.ZxpUVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
@@ -44,8 +45,8 @@ public class ZxpUserAction {
 	 * @return
 	 */
 	@GetMapping("queryUserAll/{n}/{s}/{name}")
-	public PageInfo<zxpp> queryUserAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {	
-		return biz.queryUserAll(n, s,"null".equals(name)?"":name);
+	public PageInfo<ZxpUV> queryUserAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {	
+		return biz.findUR(n, s,"null".equals(name)?"":name);
 	}
 
 

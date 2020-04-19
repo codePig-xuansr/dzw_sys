@@ -21,4 +21,23 @@
 	<select id="selectleave" resultType="com.accp.pojo.zxp.ZxpLeave">
 		SELECT * FROM lz where uid=#{0}
 	</select>
+	
+	
+	
+	
+	<select id="findUVO" resultType="com.accp.vo.zxp.ZxpLVO">
+		SELECT * FROM `user` AS u,`department` AS d,`role` AS r,`lz` AS l  
+		<where>
+		 u.`depid`=d.`depid` AND u.`rid`=r.`rid` AND u.`uid`=l.`uid` AND u.`ustatus`=1
+		<if test="name!=''">
+			AND u.`username` like '%${name}%'
+		</if>
+		ORDER BY u.`uid` 
+		</where>
+	</select>
+	
+	
+	<delete id="deletea">
+		DELETE FROM lz WHERE uid=#{id}
+	</delete>
 </mapper>

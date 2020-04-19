@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.zxp.*;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpUTVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
 
@@ -30,8 +31,15 @@ public class ZxpTongxunluAction {
 	@Autowired
 	private ZxpUserBiz ubiz;
 	
-	@GetMapping("queryTxlAll/{n}/{s}/{name}")
-	public PageInfo<ZxpUserVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {		
-		return ubiz.finds(n, s,"null".equals(name)?"":name);
+	@GetMapping("queryTxlAll/{n}/{s}/{name}/{id}")
+	public PageInfo<ZxpUTVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name,@PathVariable Integer id) {		
+		return biz.findUR(n, s,"null".equals(name)?"":name,id);
 	}
+	
+	/*
+	 * @GetMapping("queryTxlAll/{n}/{s}/{name}/{id}") public PageInfo<ZxpTXL>
+	 * queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable
+	 * String name,@PathVariable Integer id) { return biz.findUR(n,
+	 * s,"null".equals(name)?"":name); }
+	 */
 }

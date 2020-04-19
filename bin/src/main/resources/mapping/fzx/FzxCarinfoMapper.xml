@@ -3,7 +3,9 @@
 <mapper namespace="com.accp.dao.fzx.fzxdao">
 	<!-- 查询车牌号所有 -->
 	<select id="selectBy" resultType="com.accp.pojo.fzx.FzxCarinfo">
-		SELECT * FROM carinfo where carno like '%${carno}%'
+		SELECT c.`carpp`, c.`carxinghao`, c.`carno`, c.`driver`, c.`driverphone`, c.`carguishu`, c.`fadongjiid`, c.`jszlostdate`, c.`ranyoutype`, c.`kid`
+		FROM carinfo c INNER JOIN kehu k ON k.kid=c.kid INNER JOIN fadongji f ON f.fadongjiid=c.fadongjiid
+		and carno like '%${carno}%'
 	</select>
 	
 	<!-- 查询服务所有 -->
@@ -32,8 +34,11 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	<!-- 新增 -->	
 	<insert id="insertweixiu">
 	INSERT INTO weixiurecord
-(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype)
-VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype});
+(recordid,carno,yewutype,bzid,yujidate,beizhu,licheng,guzhanginfo,guzhangyuanyin,fuwugw,shigongbc,danjutype,kano,jiuyuanfy)
+VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
+#{fzxweixiuadd.bzid},#{fzxweixiuadd.yujidate},#{fzxweixiuadd.beizhu},
+#{fzxweixiuadd.licheng},#{fzxweixiuadd.guzhanginfo},#{fzxweixiuadd.guzhangyuanyin},
+#{fzxweixiuadd.fuwugw},#{fzxweixiuadd.shigongbc},#{fzxweixiuadd.danjutype},#{fzxweixiuadd.kano},#{fzxweixiuadd.jiuyuanfy});
 		<if test="fzxweixiuadd.fzxweixiuxm.size()!=0">
 			INSERT INTO weixiuxm (wid,recordid,fwcod) VALUES
 			<foreach collection="fzxweixiuadd.fzxweixiuxm" item="temp"
@@ -46,7 +51,7 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 	
 	<!-- 查询卡车 -->
 	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
-		SELECT * FROM kache
+		SELECT `kaid`,`kacode`,`kastatus`,`kazaizhong`,`kaprice`,`kano`,`katype`,`kapp`,k.`bzid`,`kalc` FROM kache k INNER JOIN banzu b WHERE k.`bzid`=b.`bzid`
 	</select>
 	
 	<!-- 查询竣工 -->
@@ -63,17 +68,18 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},#
 				and recordid like '%${recordid}%'
 			</if>
 		</where>
+		order by recorddate desc
 	</select>
 	
 	<!-- 修改竣工状态 -->
 	<update id="updatejg">
-		UPDATE weixiurecord SET status = #{status}
+		UPDATE weixiurecord SET status = #{status},bztime=#{bztime}
 		WHERE recordid = #{recordid};
 	</update>
 	
-	<!-- 查询竣工 -->
+	<!-- 查询竣工记录 -->
 	<select id="selectJgAll" resultType="com.accp.pojo.fzx.FzxJgrecord">
-		SELECT * FROM jgrecord
+		SELECT * FROM jgrecord ORDER BY shijidate DESC
 	</select>
 	
 	<!-- 新增竣工记录 -->
@@ -86,5 +92,16 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 	<select id="selectJgcs" resultType="com.accp.pojo.fzx.FzxJgrecord">
 		SELECT COUNT(*) zicount FROM jgrecord WHERE recordid=#{recordid} AND jgstatus=2
 	</select>
+	
+	<!-- 查询服务顾问 -->
+	<select id="selectgw" resultType="com.accp.pojo.fzx.FzxUser">
+		SELECT * FROM user WHERE rid=6 and ustatus=0
+	</select>
+	
+	<!-- 修改卡车状态1 -->
+	<update id="updatekc">
+		UPDATE kache SET kastatus = 1
+		WHERE kano = #{kano};
+	</update>
 	
 </mapper>

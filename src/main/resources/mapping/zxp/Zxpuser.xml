@@ -5,7 +5,11 @@
 	<select id="findT" resultType="com.accp.pojo.zxp.tongxunlu">
 		SELECT `tid` FROM `tongxunlu` ORDER BY `tid` DESC LIMIT 0,1
 	</select>
-	<resultMap id="ZxpUserVO" type="com.accp.vo.zxp.ZxpUserVO">
+	
+	
+	<resultMap id="ZxpUserVO" type="com.accp.vo.zxp.ZxpTXL">
+		<association property="zxpp" select="selectuser" column="uid" />
+		<association property="zxpp" select="selectuser" column="uid" />
 		<association property="zxpp" select="selectuser" column="uid" />
 		<collection property="txl" column="uid" select="selecttongxunlu" />
 	</resultMap>
@@ -18,6 +22,8 @@
 	<select id="selecttongxunlu" resultType="com.accp.pojo.zxp.tongxunlu">
 		SELECT * FROM tongxunlu where uid=#{0}
 	</select>
+	
+	
 	<update id="updateT">
 		UPDATE tongxunlu
 		<set>
@@ -32,4 +38,62 @@
 			AND uid = '${txl.uid}'
 		</where>
 	</update>
+	
+	<resultMap id="findUTXL" type="com.accp.vo.zxp.ZxpTXL" >
+		<association property="stvo" select="findUVO" column="uid"></association>
+		<collection property="txl" select="selectTXL" column="uid"></collection>
+	</resultMap>
+	<select id="selectTXL" resultType="com.accp.pojo.zxp.tongxunlu">
+		SELECT * FROM tongxunlu where uid=#{0}
+	</select>
+	<select id="selectUSER" resultMap="findUTXL">
+		SELECT * FROM user 
+		<where>
+			<if test="name!=null">
+				username = #{name}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="findUVO" resultType="com.accp.vo.zxp.ZxpUTVO" >
+		SELECT * FROM `user` AS u,`department` AS d,`role` AS r,`tongxunlu` AS t  
+		<where>
+		 	u.`depid`=d.`depid` AND u.`rid`=r.`rid` AND u.`uid`=t.`uid` AND u.`ustatus`=0  
+		 	<if test="name!=''">
+				AND u.`username`like '%${name}%'
+			</if>
+			<if test="id!=0">
+				AND u.`uid` = #{id}
+			</if>
+		</where>
+	</select>
+	
+	
+	
+	
+	<!-- 
+	<resultMap id="findUTXL" type="com.accp.vo.zxp.ZxpTXL" >
+	<association property="stvo" select="findUVO" column="uid"></association>
+	<collection property="txl" select="selectTXL" column="uid"></collection>
+</resultMap>
+<select id="selectTXL" resultType="com.accp.pojo.zxp.tongxunlu">
+	SELECT * FROM tongxunlu where uid=#{0}
+</select>
+<select id="selectUSER" resultMap="findUTXL">
+	SELECT * FROM user 
+	<where>
+		<if test="name!=null">
+			username = #{name}
+		</if>
+	</where>
+</select>
+
+
+<select id="findUVO" resultType="com.accp.vo.zxp.ZxpUTVO" >
+	SELECT * FROM `user` AS u,`department` AS d,`role` AS r,`tongxunlu` AS t  
+	<where>
+	 	u.`depid`=d.`depid` AND u.`rid`=r.`rid` AND u.`uid`=t.`uid` AND u.`ustatus`=0  and u.`uid`=#{0}
+	</where>
+</select> -->
 </mapper>

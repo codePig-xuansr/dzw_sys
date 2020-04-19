@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.zxp.*;
 import com.accp.pojo.ljl.LjlFadongji;
 import com.accp.pojo.zxp.*;
+import com.accp.vo.zxp.ZxpLVO;
 import com.accp.vo.zxp.ZxpLeaveVO;
 import com.accp.vo.zxp.ZxpUserVO;
 import com.github.pagehelper.PageInfo;
@@ -49,73 +50,66 @@ public class ZxpLeaveAction {
 	private ZxpLeaveBiz biz;
 	@Autowired
 	private ZxpUserBiz ubiz;
-	
+
 	@GetMapping("queryUser/{n}/{s}")
-	public PageInfo<zxpp> queryUser(@PathVariable Integer n,@PathVariable Integer s){
-		return biz.findUser(n,s);
+	public PageInfo<zxpp> queryUser(@PathVariable Integer n, @PathVariable Integer s) {
+		return biz.findUser(n, s);
 	}
-	
+
 	@GetMapping("queryLeaAll/{n}/{s}/{name}")
-	public PageInfo<ZxpLeaveVO> queryTxlAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String name) {
-		if("null".equals(name)||name=="") {
-			name=null;
-		}
-		return biz.findLeave(n, s, name);
+
+	public PageInfo<ZxpLVO> queryTxlAll(@PathVariable Integer n, @PathVariable Integer s,
+			@PathVariable String name) {
+		return biz.findUR(n, s, "null".equals(name)?"":name);
 	}
-	
+
 	@PostMapping("add")
-	public Map<Object, Object> addRole(@RequestBody ZxpLeave leave){
+	public Map<Object, Object> addRole(@RequestBody ZxpLeave leave) {
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		zxpp zs=ubiz.find1(leave.getUsername());
+		zxpp zs = ubiz.find1(leave.getUsername());
 		ubiz.updateUser(new zxpp(zs.getUid(), null, null, null, null, null, null, null, null, null, 1));
 		int sum = biz.addLeave(new ZxpLeave(0, zs.getUid(), new Date(), leave.getContent()));
-		if(sum>0) {
-				map.put("code", "200");
-				
-			}else {
-				map.put("code", "300");
-			}
+		if (sum > 0) {
+			map.put("code", "200");
+
+		} else {
+			map.put("code", "300");
+		}
 		return map;
 	}
-	
+
 	@GetMapping("daochukhzl")
 	public Map<String, Object> daochukhzl() {
 		Map<String, Object> message = new HashMap<String, Object>();
-		List<ZxpLeaveVO> kehuziliao=biz.finda();
+		List<ZxpLeaveVO> kehuziliao = biz.finda();
 		List<String[]> data = new ArrayList<String[]>();
-		for(int i=0;i<kehuziliao.size();i++) {
-			data.add(new String[] {
-					String.valueOf(kehuziliao.get(i).getUser().getDepid()),
+		for (int i = 0; i < kehuziliao.size(); i++) {
+			data.add(new String[] { String.valueOf(kehuziliao.get(i).getUser().getDepid()),
 					String.valueOf(kehuziliao.get(i).getUser().getRid()),
 					String.valueOf(kehuziliao.get(i).getUser().getUid()),
 					String.valueOf(kehuziliao.get(i).getUser().getUsername()),
 					String.valueOf(kehuziliao.get(i).getUser().getSex()),
 					String.valueOf(kehuziliao.get(i).getLeave().getLeavedate()),
-					String.valueOf(kehuziliao.get(i).getLeave().getContent()),
-			});
+					String.valueOf(kehuziliao.get(i).getLeave().getContent()), });
 		}
 		String fileName = "离职登记";
 		try {
 			WritableWorkbook wbook = Workbook
-					.createWorkbook(new FileOutputStream("E:\\表格专用\\导出Excel"+"/"+fileName + ".xls")); // 建立excel文件
+					.createWorkbook(new FileOutputStream("E:\\表格专用\\导出Excel" + "/" + fileName + ".xls")); // 建立excel文件
 			WritableSheet wsheet = wbook.createSheet("导出数据", 0); // sheet名称
 			WritableCellFormat cellFormatNumber = new WritableCellFormat();
 			cellFormatNumber.setAlignment(Alignment.RIGHT);
-			WritableFont wf = new WritableFont(WritableFont.ARIAL, 12,
-					WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE,
-					jxl.format.Colour.BLACK); // 定义格式、字体、粗体、斜体、下划线、颜色
+			WritableFont wf = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD, false,
+					UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.BLACK); // 定义格式、字体、粗体、斜体、下划线、颜色
 			WritableCellFormat wcf = new WritableCellFormat(wf); // title单元格定义
 			WritableCellFormat wcfc = new WritableCellFormat(); // 一般单元格定义
 			WritableCellFormat wcfe = new WritableCellFormat(); // 一般单元格定义
 			wcf.setAlignment(jxl.format.Alignment.CENTRE); // 设置对齐方式
 			wcfc.setAlignment(jxl.format.Alignment.CENTRE); // 设置对齐方式
 
-			wcf.setBorder(jxl.format.Border.ALL,
-					jxl.format.BorderLineStyle.THIN);
-			wcfc.setBorder(jxl.format.Border.ALL,
-					jxl.format.BorderLineStyle.THIN);
-			wcfe.setBorder(jxl.format.Border.ALL,
-					jxl.format.BorderLineStyle.THIN);
+			wcf.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
+			wcfc.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
+			wcfe.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
 
 			wsheet.setColumnView(0, 20);// 设置列宽
 			wsheet.setColumnView(1, 10);
@@ -128,7 +122,7 @@ public class ZxpLeaveAction {
 				columnIndex = 0;
 				wsheet.setRowView(rowIndex, 500);// 设置标题行高
 				wsheet.addCell(new Label(columnIndex++, rowIndex, fileName, wcf));
-				wsheet.mergeCells(0, rowIndex,  7, rowIndex);// 合并标题所占单元格
+				wsheet.mergeCells(0, rowIndex, 7, rowIndex);// 合并标题所占单元格
 				rowIndex++;
 				columnIndex = 0;
 				wsheet.setRowView(rowIndex, 380);// 设置项目名行高
@@ -143,8 +137,8 @@ public class ZxpLeaveAction {
 				for (String[] array : data) { // 循环列
 					rowIndex++;
 					columnIndex = 0;
-					for(int j=0;j<7;j++) {
-						wsheet.addCell(new Label(columnIndex++, rowIndex, array[j],wcfe));
+					for (int j = 0; j < 7; j++) {
+						wsheet.addCell(new Label(columnIndex++, rowIndex, array[j], wcfe));
 					}
 				}
 				rowIndex++;
@@ -163,25 +157,24 @@ public class ZxpLeaveAction {
 			return message;
 		}
 	}
-	
-	
+
 	@GetMapping("modifyUser/{uid}")
 	public Map<String, Object> modifyUser(@PathVariable int uid) {
-		int count=ubiz.updateUser(new zxpp(uid, null, null, null, null, null, null, null, null, null, 0));
+		int count = ubiz.updateUser(new zxpp(uid, null, null, null, null, null, null, null, null, null, 0));
+		biz.deletea(uid);
 		Map<String, Object> message = new HashMap<String, Object>();
-		if(count!=0) {
+		if (count != 0) {
 			message.put("code", "ok");
 			message.put("msg", "回滚成功!");
-		}else {
+		} else {
 			message.put("code", "300");
 			message.put("msg", "回滚失败！");
 		}
 		return message;
 	}
-	
-	
+
 	@GetMapping("findUser/{n}/{s}")
-	public PageInfo<zxpp> findUser(@PathVariable Integer n,@PathVariable Integer s){
+	public PageInfo<zxpp> findUser(@PathVariable Integer n, @PathVariable Integer s) {
 		return biz.findUser(n, s);
 	}
 
