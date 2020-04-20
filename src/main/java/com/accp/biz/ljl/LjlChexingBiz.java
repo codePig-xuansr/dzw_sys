@@ -26,6 +26,11 @@ public class LjlChexingBiz {
 	public List<LjlPingpaiChexing> selectPingpai(){
 		return dao.selectPingpai();
 	}
+	
+	public PageInfo<LjlPingpaiChexing> selectPingpai2(Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlPingpaiChexing>(dao.selectPingpai());
+	}
 	public LjlPingpaiChexing selectPingpaiByid(int pid){
 		return dao.selectPingpaiByid(pid);
 	}
@@ -58,9 +63,15 @@ public class LjlChexingBiz {
 	public List<LjlPingpaiChexing> selectPingpaiByname(String pname){
 		return dao.selectPingpaiByname(pname);
 	}
-	
-	public List<LjlFadongji> selectfadongji(){
-		return dao.selectfadongji();
+	/**
+	 * 测试1
+	 * @param n
+	 * @param s
+	 * @return
+	 */
+	public PageInfo<LjlFadongji> selectfadongji(Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlFadongji>(dao.selectfadongji());
 	}
 	
 	public int danganadd(@Param("d")LjlChexingDangan dang) {

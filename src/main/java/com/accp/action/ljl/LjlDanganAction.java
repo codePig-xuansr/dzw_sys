@@ -97,18 +97,18 @@ public class LjlDanganAction {
 		return sum;
 	}
 	
-	@GetMapping("selectdangan/fadongji")
-	public Map<Object, Object> selectfadongji(){
+	@GetMapping("selectdangan/fadongji/{n}/{s}")
+	public Map<Object, Object> selectfadongji(@PathVariable Integer n, @PathVariable Integer s){
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		List<LjlFadongji> list = biz.selectfadongji();
+		PageInfo<LjlFadongji> list = biz.selectfadongji(n, s);
 		map.put("list", list);
 		return map;
 	}
 	
-	@GetMapping("selectdangan/danganpingpai")
-	public Map<Object, Object> selectdanganpingpai(){
+	@GetMapping("selectdangan/danganpingpai/{n}/{s}")
+	public Map<Object, Object> selectdanganpingpai(@PathVariable Integer n, @PathVariable Integer s){
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		List<LjlPingpaiChexing> list = biz.selectPingpai();
+		PageInfo<LjlPingpaiChexing> list = biz.selectPingpai2(n, s);
 		map.put("list", list);
 		return map;
 	}
