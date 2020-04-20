@@ -174,7 +174,7 @@ public class fzxbiz {
 	}
 	
 	/**
-	 * 查询该车是否在维修中
+	 * 查询该车是否正在维修中
 	 * @param carno
 	 * @return
 	 */
