@@ -28,6 +28,15 @@ public class ZxpTongxunluBiz {
 	@Autowired
 	private IZxpTongxunluDao tdao;
 	
+	
+	public int addUser(ZxpUserVO use) {
+		for (tongxunlu tx : use.getTxl()) {
+			tx.setUid(use.getUser().getUid());
+			tdao.insert(tx);
+		}
+		return 1;
+	}
+	
 	public PageInfo<ZxpTXL> findUR(Integer n,Integer s,String name){
 		PageHelper.startPage(n,s);
 		return new PageInfo<ZxpTXL> (tdao.selectUSER(name));
@@ -35,6 +44,18 @@ public class ZxpTongxunluBiz {
 	public PageInfo<ZxpUTVO> findUR(Integer n,Integer s,String name,Integer id){
 		PageHelper.startPage(n,s);
 		return new PageInfo<ZxpUTVO> (tdao.findUVO(name,id));
+	}
+	
+	public tongxunlu findtxl(int id){
+		return tdao.selectById(id);
+	}
+	
+	public int updateTXL(tongxunlu txl) {
+		return tdao.updateT(txl);
+	}
+	
+	public int deletetxl(int tid) {
+		return tdao.deleteById(tid);
 	}
 	
 	

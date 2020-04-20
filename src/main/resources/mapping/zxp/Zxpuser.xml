@@ -31,11 +31,11 @@
 				phone = '${txl.phone}',
 			</if>
 			<if test="txl.email!=null">
-				email = '${use.email}',
+				email = '${txl.email}',
 			</if>
 		</set>
 		<where>
-			AND uid = '${txl.uid}'
+			AND tid = '${txl.tid}'
 		</where>
 	</update>
 	
@@ -96,4 +96,7 @@
 	 	u.`depid`=d.`depid` AND u.`rid`=r.`rid` AND u.`uid`=t.`uid` AND u.`ustatus`=0  and u.`uid`=#{0}
 	</where>
 </select> -->
+
+
+
 </mapper>

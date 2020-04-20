@@ -85,9 +85,8 @@
 		<where>
 		u.`depid`=d.`depid` AND u.`rid`=r.`rid`  and u.`ustatus`=0 
 		<if test="name!=''">
-			AND u.`username`like '%${name}%'
+			AND u.`username` like '%${name}%'
 		</if>
-		ORDER BY u.`uid` 
 		</where>
 	</select>
 </mapper>

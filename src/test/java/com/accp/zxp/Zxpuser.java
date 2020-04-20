@@ -64,7 +64,7 @@ public class Zxpuser {
 		 * biz.updateUser(new zxpp(55, null, null, null, null, null, null, null, null,
 		 * null, 0));
 		 */
-		System.out.println(lbiz.deletea(12));
+		/* System.out.println(tbiz.addUser()); */
 	}
 	
 	

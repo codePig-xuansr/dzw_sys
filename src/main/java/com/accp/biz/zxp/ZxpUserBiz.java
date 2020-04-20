@@ -64,13 +64,6 @@ public class ZxpUserBiz {
 	
 	public int addUser(ZxpUserVO use) {
 		int us=dao.insert(use.getUser());
-		/*
-		 * int
-		 * us=dao.insert(use.getUser().getUid(),use.getUser().getUser(),use.getUser().
-		 * getPwd(),use.getUser().getUsername(),use.getUser().getComedate(),use.getUser(
-		 * ).getAddress(),use.getUser().getSex(),use.getUser().getDepid(),use.getUser().
-		 * getRid());
-		 */
 		for (tongxunlu tx : use.getTxl()) {
 			tx.setUid(use.getUser().getUid());
 			tdao.insert(tx);
