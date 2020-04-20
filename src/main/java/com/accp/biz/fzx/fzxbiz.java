@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.accp.dao.fzx.FzxWeixiuaddDao;
 import com.accp.dao.fzx.fzxdao;
 import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
@@ -17,6 +18,8 @@ import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -24,7 +27,8 @@ import com.github.pagehelper.PageInfo;
 public class fzxbiz {
 	@Autowired
 	private fzxdao dao;
-	
+	@Autowired
+	private FzxWeixiuaddDao weixiuadddao;
 	/**
 	 * 查询车牌号
 	 * @return
@@ -167,6 +171,17 @@ public class fzxbiz {
 	 */
 	public int updatekc(String kano) {
 		return dao.updatekc(kano);
+	}
+	
+	/**
+	 * 查询该车是否在维修中
+	 * @param carno
+	 * @return
+	 */
+	public Integer selectwx(String carno){
+		QueryWrapper<FzxWeixiuadd> qw=Wrappers.query();
+		qw.eq("carno", carno).eq("status", 0).eq("jsstatus", 0);
+		return weixiuadddao.selectCount(qw);
 	}
 	
 }

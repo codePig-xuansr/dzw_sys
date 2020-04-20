@@ -15,7 +15,7 @@ import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
-public interface fzxdao {
+public interface fzxdao{
 	/**
 	 * 查询车牌号
 	 * @return
@@ -125,4 +125,5 @@ public interface fzxdao {
 	 * @return
 	 */
 	int updatekc(@Param("kano") String kano);
+	
 }

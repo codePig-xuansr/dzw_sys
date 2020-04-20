@@ -5,7 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
-
+import com.baomidou.mybatisplus.annotation.TableName;
+@TableName("weixiurecord")
 public class FzxWeixiuadd {
 	private String recordid;//维修单号 格式20200325001
 	private String carno;//车牌号

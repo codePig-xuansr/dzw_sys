@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -211,6 +212,24 @@ public class fzxaction {
 				message.put("msg", "ok");
 			}
 			return message;
+		}
+	  	
+	  	/**
+		 * 查询该车是否在维修中
+		 * @param carno
+		 * @return
+		 */
+	  	@GetMapping("/selectwx/{carno}")
+		public Map<String, String> selectwx(@PathVariable String carno){
+	  		Map<String, String> message = new HashMap<String, String>();
+	  		if (biz.selectwx(carno)>0) {
+				message.put("code", "300");
+				message.put("msg", "ok");
+			}else {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+	  		return message;
 		}
 	 
 }
