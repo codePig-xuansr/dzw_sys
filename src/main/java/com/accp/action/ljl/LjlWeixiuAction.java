@@ -71,12 +71,12 @@ public class LjlWeixiuAction {
 		return biz.selectxiangmuId();
 	}
 	
-	@GetMapping("All/weixiuleibie/name")
-	public List<LjlXiangmuLeibie> selectTypeName() {
+	@GetMapping("All/weixiuleibie/name/{n}/{s}")
+	public PageInfo<LjlXiangmuLeibie> selectTypeName(@PathVariable Integer n, @PathVariable Integer s) {
 		/*
 		 * biz.selectLeibie().forEach(r->{ System.out.println(r); });
 		 */
-		return biz.selectLeibie();
+		return biz.selectLeibie(n, s);
 	}
 	@PostMapping("/All/addweixiuxiangmu")
 	public Map<Object, Object> addWeixiu(@RequestBody LjlWeixiuFuwu wei){

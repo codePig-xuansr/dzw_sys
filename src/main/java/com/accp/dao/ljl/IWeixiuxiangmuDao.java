@@ -15,6 +15,11 @@ public interface IWeixiuxiangmuDao extends BaseMapper<LjlWeixiuXiangmuVo>{
 	 */
 	public List<LjlXiangmuLeibie> selectLeibie();
 	/**
+	 * 测试
+	 * @return
+	 */
+	public List<LjlXiangmuLeibie> selectLeibie2();
+	/**
 	 * 按类别查询所有相关维修项目
 	 * @param xid
 	 * @return

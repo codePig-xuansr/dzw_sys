@@ -21,9 +21,14 @@ public class LjlWeixiuxiangmuBiz {
 
 	@Autowired
 	private IWeixiuxiangmuDao dao;
-
+	
 	public List<LjlXiangmuLeibie> selectLeibie(){
 		return dao.selectLeibie();
+	}
+
+	public PageInfo<LjlXiangmuLeibie> selectLeibie(Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlXiangmuLeibie>(dao.selectLeibie2());
 	}
 	
 	public PageInfo<LjlWeixiuXiangmuVo> selectWeixiu(Integer xid, Integer n, Integer s){

@@ -9,6 +9,11 @@
 		select * from xiangmutype
 	</select>
 	
+	<select id="selectLeibie2" resultType="LjlXiangmuLeibie">
+		select * from xiangmutype
+		where xfid > 0
+	</select>
+	
 	<select id="selectWeixiu" resultType="LjlWeixiuXiangmuVo">
 		SELECT * FROM `weixiufuwu`,`xiangmutype`
 		WHERE xiangmutype.xid = weixiufuwu.xid
