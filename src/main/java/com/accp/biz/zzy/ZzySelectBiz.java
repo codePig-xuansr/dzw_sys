@@ -1,34 +1,24 @@
 package com.accp.biz.zzy;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.zzy.IZzyGonghuoDao;
-import com.accp.pojo.zzy.ZzyBanzu;
-import com.accp.pojo.zzy.ZzyGonghuo;
+import com.accp.dao.zzy.IZzyDepartmentDao;
+import com.accp.pojo.zzy.ZzyDepartment;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class ZzyGonghuoBiz {
+public class ZzySelectBiz {
 	@Autowired
-	private IZzyGonghuoDao dao;
+	private IZzyDepartmentDao depdao;//部门
 	
-	/**
-	 * 查询供货商名称
-	 * @return
-	 */	
-	public PageInfo<ZzyGonghuo> queryGonghuo(Integer n,Integer s){
+	public PageInfo<ZzyDepartment> findDepartment(Integer n,Integer s) {
 		PageHelper.startPage(n,s);
-		List<ZzyGonghuo> list = dao.selectList(null);
-		PageInfo<ZzyGonghuo> pageInfo=new PageInfo<ZzyGonghuo>(list);
-		//System.out.println(pageInfo);
-		return pageInfo;
+		return new PageInfo <ZzyDepartment> (depdao.selectList(null));
 	}
 }

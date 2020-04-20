@@ -1,9 +1,12 @@
 package com.accp.pojo.zzy;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 @TableName("gonghuo")
 public class ZzyGonghuo {
+	@TableId(value = "ghid",type = IdType.AUTO)
 	private int ghid;
 	private	String ghname;
 	public int getGhid() {
