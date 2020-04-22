@@ -96,7 +96,7 @@ public class Main {
 		// main.test_trade_refund();
 
 		// 测试当面付2.0生成支付二维码
-		main.test_trade_precreate();
+		//main.test_trade_precreate();
 	}
 
 	// 测试系统商交易保障调度
@@ -274,9 +274,9 @@ public class Main {
 	}
 
 	// 测试当面付2.0查询订单
-	public void test_trade_query() {
+	public String test_trade_query(String payNo) {
 		// (必填) 商户订单号，通过此商户订单号查询当面付的交易状态
-		String outTradeNo = "tradepay14817938139942440181";
+		String outTradeNo = payNo;
 
 		// 创建查询请求builder，设置请求参数
 		AlipayTradeQueryRequestBuilder builder = new AlipayTradeQueryRequestBuilder().setOutTradeNo(outTradeNo);
@@ -295,19 +295,19 @@ public class Main {
 					log.info(bill.getFundChannel() + ":" + bill.getAmount());
 				}
 			}
-			break;
+			return "SUCCESS";
 
 		case FAILED:
 			log.error("查询返回该订单支付失败或被关闭!!!");
-			break;
+			return "FAILED";
 
 		case UNKNOWN:
 			log.error("系统异常，订单支付状态未知!!!");
-			break;
+			return "UNKNOWN";
 
 		default:
 			log.error("不支持的交易状态，交易返回异常!!!");
-			break;
+			return "EXCEPTION";
 		}
 	}
 
@@ -355,18 +355,17 @@ public class Main {
 	}
 
 	// 测试当面付2.0生成支付二维码
-	public String test_trade_precreate() {
-		String filePath = "";
+	public String test_trade_precreate(String weixiuno,String jsmoney) {
 		// (必填) 商户网站订单系统中唯一订单号，64个字符以内，只能包含字母、数字、下划线，
 		// 需保证商户系统端不能重复，建议通过数据库sequence生成，
-		String outTradeNo = "tradeprecreate" + System.currentTimeMillis() + (long) (Math.random() * 10000000L);
+		String outTradeNo = weixiuno;
 
 		// (必填) 订单标题，粗略描述用户的支付目的。如“xxx品牌xxx门店当面付扫码消费”
-		String subject = "xxx品牌xxx门店当面付扫码消费";
+		String subject = "德召文汽修订单"+weixiuno+"扫码支付";
 
 		// (必填) 订单总金额，单位为元，不能超过1亿元
 		// 如果同时传入了【打折金额】,【不可打折金额】,【订单总金额】三者,则必须满足如下条件:【订单总金额】=【打折金额】+【不可打折金额】
-		String totalAmount = "0.01";
+		String totalAmount = jsmoney;
 
 		// (可选) 订单不可打折金额，可以配合商家平台配置折扣活动，如果酒水不参与打折，则将对应金额填写至此字段
 		// 如果该值未传入,但传入了【订单总金额】,【打折金额】,则该值默认为【订单总金额】-【打折金额】
@@ -418,29 +417,24 @@ public class Main {
 
 			AlipayTradePrecreateResponse response = result.getResponse();
 			dumpResponse(response);
-
+			String img=String.format("qr-%s.png", response.getOutTradeNo());
 			// 需要修改为运行机器上的路径
-			filePath = String.format("D:\\alipayimg\\qr-%s.png", response.getOutTradeNo());
-			log.info("filePath:" + filePath);
-			ZxingUtils.getQRCodeImge(response.getQrCode(), 256, filePath);
-			break;
+			
+			log.info("filePath:" + "D:\\alipayimg\\"+img);
+			ZxingUtils.getQRCodeImge(response.getQrCode(), 256, "D:\\alipayimg\\"+img);
+			return img;
 
 		case FAILED:
 			log.error("支付宝预下单失败!!!");
-			break;
+			return "FAILED";
 
 		case UNKNOWN:
 			log.error("系统异常，预下单状态未知!!!");
-			break;
+			return "UNKNOWN";
 
 		default:
 			log.error("不支持的交易状态，交易返回异常!!!");
-			break;
-		}
-		if ("".equals(filePath)) {
-			return "ERROR";
-		} else {
-			return filePath;
+			return "EXCEPTION";
 		}
 	}
 }
