@@ -15,8 +15,10 @@
 		where pid = #{pid}
 	</select>
 	
-	<select id="selectAllDang" resultType="LjlChexingDangan">
-		select * from cardangan
+	<select id="selectAllDang" resultType="LjlChexingVo">
+		SELECT * FROM cardangan,fadongji,carpingpai
+ 			WHERE cardangan.fadongjiid = fadongji.fadongjiid 
+ 			AND cardangan.pid = carpingpai.pid
 	</select>
 	
 	<select id="selectDidMax" resultType="int">
@@ -39,7 +41,7 @@
 	
 	<delete id="Pingpaidelete">
 		delete from carpingpai where pid = #{pid};
-		delete from cardangan where carid = #{pid};
+		delete from cardangan where pid = #{pid};
 	</delete>
 	
 	<update id="Pingpaiupdate">
@@ -75,8 +77,8 @@
 	</select>
 	
 	<insert id="danganadd">
-		insert into cardangan(danganid,carid,carname,fadongjiid,cankaoprice,carniankuan,gonglv,jinkouguochan)
-		values('${d.danganid}','${d.carid}','${d.carname}','${d.fadongjiid}','${d.cankaoprice}','${d.carniankuan}','${d.gonglv}','${d.jinkouguochan}')
+		insert into cardangan(danganid,carid,pid,carname,fadongjiid,cankaoprice,carniankuan,gonglv,jinkouguochan)
+		values('${d.danganid}','${d.carid}','${d.pid}','${d.carname}','${d.fadongjiid}','${d.cankaoprice}','${d.carniankuan}','${d.gonglv}','${d.jinkouguochan}')
 	</insert>
 	
 	<update id="updatechexingdangan">
@@ -84,6 +86,9 @@
 		<set>
 			<if test="d.carid!=null">
 				carid = '${d.carid}',
+			</if>
+			<if test="d.pid!=null">
+				pid = '${d.pid}',
 			</if>
 			<if test="d.carname!=null">
 				carname = '${d.carname}',
@@ -109,21 +114,29 @@
 		</where>
 	</update>
 	
-	<select id="selectdanganByid" resultType="LjlChexingDangan">
-		select * from cardangan
-		where danganid = '${danganid}'
+	<select id="selectdanganByid" resultType="LjlChexingVo">
+		SELECT * FROM cardangan,fadongji,carpingpai
+ 		WHERE cardangan.fadongjiid = fadongji.fadongjiid 
+ 		AND cardangan.pid = carpingpai.pid AND danganid = '${danganid}'
 	</select>
 	
 	<delete id="deletechexingdangan">
 		delete from cardangan where danganid = #{danganid}
 	</delete>
 	
-	<select id="selectChexingByname" resultType="LjlChexingDangan">
-		select * from cardangan
+	<select id="selectChexingByname" resultType="LjlChexingVo">
+		SELECT * FROM cardangan,fadongji,carpingpai
+ 			WHERE cardangan.fadongjiid = fadongji.fadongjiid 
+ 			AND cardangan.pid = carpingpai.pid
 		<if test="carname!='null'">
-			<where>
 				and carname like '%${carname}%'
-			</where>
 		</if>
+	</select>
+	
+	<select id="selectChexingBypid" resultType="LjlChexingVo">
+		SELECT * FROM cardangan,fadongji,carpingpai
+ 			WHERE cardangan.fadongjiid = fadongji.fadongjiid 
+ 			AND cardangan.pid = carpingpai.pid
+ 			AND cardangan.pid = #{pid}
 	</select>
 </mapper>

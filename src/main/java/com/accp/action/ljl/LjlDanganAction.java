@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.ljl.*;
 import com.accp.pojo.ljl.*;
+import com.accp.vo.ljl.LjlChexingVo;
 import com.github.pagehelper.PageInfo;
 
 @RestController
@@ -43,7 +44,7 @@ public class LjlDanganAction {
 	}
 	
 	@GetMapping("All/Dang/{n}/{s}")
-	public PageInfo<LjlChexingDangan> selectAllDangan(@PathVariable Integer n, @PathVariable Integer s){
+	public PageInfo<LjlChexingVo> selectAllDangan(@PathVariable Integer n, @PathVariable Integer s){
 		return biz.selectAllDang(n, s);
 	}
 	
@@ -126,9 +127,10 @@ public class LjlDanganAction {
 	}
 	
 	@GetMapping("All/Dangan/Byid/{danganid}")
-	public LjlChexingDangan selectdanganByid(@PathVariable int danganid){
+	public LjlChexingVo selectdanganByid(@PathVariable int danganid){
 		Map<Object, Object> map = new HashMap<Object, Object>();
-		LjlChexingDangan dang = biz.selectdanganByid(danganid);
+		LjlChexingVo dang = biz.selectdanganByid(danganid);
+		System.out.println(dang);
 		return dang;
 	}
 	
@@ -157,9 +159,12 @@ public class LjlDanganAction {
 	}
 	
 	@GetMapping("All/chexing/byname/{carname}/{n}/{s}")
-	public PageInfo<LjlChexingDangan> selectChexingByname(@PathVariable String carname ,@PathVariable int n, @PathVariable int s){
+	public PageInfo<LjlChexingVo> selectChexingByname(@PathVariable String carname ,@PathVariable int n, @PathVariable int s){
 		return biz.selectChexingByname(carname, n, s);
 	}
 	
-	
+	@GetMapping("chexing/danganchaxun/bypid/{pid}/{n}/{s}")
+	public PageInfo<LjlChexingVo> selectChexingBypid(@PathVariable int pid ,@PathVariable int n, @PathVariable int s){
+		return biz.selectChexingBypid(pid, n, s);
+	}
 }

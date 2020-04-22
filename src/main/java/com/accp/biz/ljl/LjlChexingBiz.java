@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.accp.dao.ljl.*;
 import com.accp.pojo.ljl.*;
+import com.accp.vo.ljl.LjlChexingVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -35,9 +36,9 @@ public class LjlChexingBiz {
 		return dao.selectPingpaiByid(pid);
 	}
 	
-	public PageInfo<LjlChexingDangan> selectAllDang(Integer n, Integer s){
+	public PageInfo<LjlChexingVo> selectAllDang(Integer n, Integer s){
 		PageHelper.startPage(n, s);
-		return new PageInfo<LjlChexingDangan>(dao.selectAllDang());
+		return new PageInfo<LjlChexingVo>(dao.selectAllDang());
 	}
 	
 	public int selectDidMax() {
@@ -78,7 +79,7 @@ public class LjlChexingBiz {
 		return dao.danganadd(dang);
 	}
 	
-	public LjlChexingDangan selectdanganByid(int danganid) {
+	public LjlChexingVo selectdanganByid(int danganid) {
 		return dao.selectdanganByid(danganid);
 	}
 	
@@ -90,8 +91,13 @@ public class LjlChexingBiz {
 		return dao.deletechexingdangan(danganid);
 	}
 	
-	public PageInfo<LjlChexingDangan> selectChexingByname(String carname, Integer n, Integer s){
+	public PageInfo<LjlChexingVo> selectChexingByname(String carname, Integer n, Integer s){
 		PageHelper.startPage(n, s);
-		return new PageInfo<LjlChexingDangan>(dao.selectChexingByname(carname));
+		return new PageInfo<LjlChexingVo>(dao.selectChexingByname(carname));
+	}
+	
+	public PageInfo<LjlChexingVo> selectChexingBypid(int pid, Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlChexingVo>(dao.selectChexingBypid(pid));
 	}
 }

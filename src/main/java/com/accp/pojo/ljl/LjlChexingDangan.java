@@ -20,6 +20,10 @@ public class LjlChexingDangan {
 	 */
 	private String carid;
 	/**
+	 * 品牌編號
+	 */
+	private int pid;
+	/**
 	 * 车型名称
 	 */
 	private String carname;
@@ -43,6 +47,12 @@ public class LjlChexingDangan {
 	 * 进口国产
 	 */
 	private String jinkouguochan;
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
+	}
 	public int getDanganid() {
 		return danganid;
 	}
@@ -91,11 +101,12 @@ public class LjlChexingDangan {
 	public void setJinkouguochan(String jinkouguochan) {
 		this.jinkouguochan = jinkouguochan;
 	}
-	public LjlChexingDangan(int danganid, String carid, String carname, int fadongjiid, int cankaoprice,
+	public LjlChexingDangan(int danganid, String carid, int pid, String carname, int fadongjiid, int cankaoprice,
 			String carniankuan, float gonglv, String jinkouguochan) {
 		super();
 		this.danganid = danganid;
 		this.carid = carid;
+		this.pid = pid;
 		this.carname = carname;
 		this.fadongjiid = fadongjiid;
 		this.cankaoprice = cankaoprice;
@@ -108,8 +119,8 @@ public class LjlChexingDangan {
 	}
 	@Override
 	public String toString() {
-		return "LjlChexingDangan [danganid=" + danganid + ", carid=" + carid + ", carname=" + carname + ", fadongjiid="
-				+ fadongjiid + ", cankaoprice=" + cankaoprice + ", carniankuan=" + carniankuan + ", gonglv=" + gonglv
-				+ ", jinkouguochan=" + jinkouguochan + "]";
+		return "LjlChexingDangan [danganid=" + danganid + ", carid=" + carid + ", pid=" + pid + ", carname=" + carname
+				+ ", fadongjiid=" + fadongjiid + ", cankaoprice=" + cankaoprice + ", carniankuan=" + carniankuan
+				+ ", gonglv=" + gonglv + ", jinkouguochan=" + jinkouguochan + "]";
 	}
 }

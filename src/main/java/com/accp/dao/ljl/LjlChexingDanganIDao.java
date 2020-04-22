@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.accp.pojo.ljl.*;
+import com.accp.vo.ljl.LjlChexingVo;
 import com.github.pagehelper.PageInfo;
 
 public interface LjlChexingDanganIDao {
@@ -20,7 +21,7 @@ public interface LjlChexingDanganIDao {
 	/**
 	 * 查询所有型号车辆
 	 */
-	public List<LjlChexingDangan> selectAllDang();
+	public List<LjlChexingVo> selectAllDang();
 	
 	public int selectDidMax();
 	
@@ -40,12 +41,14 @@ public interface LjlChexingDanganIDao {
 	
 	public List<LjlFadongji> selectfadongji();
 	
-	public LjlChexingDangan selectdanganByid(@Param("danganid")int danganid);
+	public LjlChexingVo selectdanganByid(@Param("danganid")int danganid);
 	
 	public int updatechexingdangan(@Param("d")LjlChexingDangan dang);
 	
 	public int deletechexingdangan(int danganid);
 	
-	public List<LjlChexingDangan> selectChexingByname(@Param("carname")String carname);
+	public List<LjlChexingVo> selectChexingByname(@Param("carname")String carname);
+
+	public List<LjlChexingVo> selectChexingBypid(@Param("pid")int pid);
 	
 }
