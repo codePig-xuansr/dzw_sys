@@ -72,18 +72,75 @@
 		    <groupId>net.sourceforge.jexcelapi</groupId>
 		    <artifactId>jxl</artifactId>
 		    <version>2.6.12</version>
-		</dependency>
-        <dependency>
-		    <groupId>com.aliyun</groupId>
-		    <artifactId>ccp-client</artifactId>
-		    <version>RELEASE</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-easysdk -->
-		<dependency>
+		</dependency>	
+	<!--  沙盒-->	
+<!-- https://mvnrepository.com/artifact/com.alipay.sdk/alipay-sdk-java -->
+
+<!-- <dependency>
+    <groupId>com.pentahohub.nexus</groupId>
+    <artifactId>alipay-sdk-java</artifactId>
+    <version>20150820220052</version>
+</dependency> -->
+<dependency>
+    <groupId>com.alipay.sdk</groupId>
+    <artifactId>alipay-sdk-java</artifactId>
+    <version>3.7.4.ALL</version>
+</dependency>
+<dependency>
+    <groupId>com.alipay.sdk</groupId>
+    <artifactId>alipay-sdk-java</artifactId>
+    <version>3.1.0</version>
+</dependency>
+    
+<dependency>
+    <groupId>com.alipay.sdk</groupId>
+    <artifactId>alipay-easysdk</artifactId>
+    <version>Use the version shown in the maven badge</version>
+</dependency>
+ 	<dependency>
 		    <groupId>com.alipay.sdk</groupId>
 		    <artifactId>alipay-easysdk</artifactId>
 		    <version>1.1.3</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+<dependency>
+    <groupId>com.google.zxing</groupId>
+    <artifactId>core</artifactId>
+    <version>3.3.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest-core</artifactId>
+    <version>1.3</version>
+    <scope>test</scope>
+</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.5</version>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+<dependency>
+    <groupId>commons-configuration</groupId>
+    <artifactId>commons-configuration</artifactId>
+    <version>1.10</version>
+</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-lang/commons-lang -->
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+<dependency>
+    <groupId>commons-codec</groupId>
+    <artifactId>commons-codec</artifactId>
+    <version>1.10</version>
+</dependency>
+		
 	</dependencies>
 
 	<build>
