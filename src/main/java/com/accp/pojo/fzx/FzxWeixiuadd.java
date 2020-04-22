@@ -28,10 +28,11 @@ public class FzxWeixiuadd {
 	private String kano;//卡车牌号
 	private int jiuyuanfy;//救援费用
 	private List<FzxWeixiuxm> fzxweixiuxm=new ArrayList<FzxWeixiuxm>(0);
+	private List<FzxWeixiucl> fzxweixiucl=new ArrayList<FzxWeixiucl>(0);
 	public FzxWeixiuadd(String recordid, String carno, String yewutype, String danjutype, Date recorddate, int bzid,
 			Date yujidate, int status, int jsstatus, String beizhu, int licheng, String guzhanginfo,
 			String guzhangyuanyin, String fuwugw, String shigongbc, int bztime, String kano, int jiuyuanfy,
-			List<FzxWeixiuxm> fzxweixiuxm) {
+			List<FzxWeixiuxm> fzxweixiuxm, List<FzxWeixiucl> fzxweixiucl) {
 		super();
 		this.recordid = recordid;
 		this.carno = carno;
@@ -52,6 +53,7 @@ public class FzxWeixiuadd {
 		this.kano = kano;
 		this.jiuyuanfy = jiuyuanfy;
 		this.fzxweixiuxm = fzxweixiuxm;
+		this.fzxweixiucl = fzxweixiucl;
 	}
 	public FzxWeixiuadd() {
 		super();
@@ -169,6 +171,12 @@ public class FzxWeixiuadd {
 	}
 	public void setFzxweixiuxm(List<FzxWeixiuxm> fzxweixiuxm) {
 		this.fzxweixiuxm = fzxweixiuxm;
+	}
+	public List<FzxWeixiucl> getFzxweixiucl() {
+		return fzxweixiucl;
+	}
+	public void setFzxweixiucl(List<FzxWeixiucl> fzxweixiucl) {
+		this.fzxweixiucl = fzxweixiucl;
 	}
 	
 	

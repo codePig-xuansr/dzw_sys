@@ -10,7 +10,7 @@
 	
 	<!-- 查询服务所有 -->
 	<select id="selectFw" resultType="com.accp.pojo.fzx.FzxWeixiufuwu">
-		SELECT * FROM weixiufuwu
+		SELECT * FROM weixiufuwu where xid=#{xid}
 	</select>
 	
 	
@@ -21,8 +21,11 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	</select>
 	
 	<!-- 查询班组 -->
-	<select id="selectBzz" resultType="com.accp.pojo.fzx.FzxBanzu">
-		SELECT * FROM banzu
+	<select id="selectBzz" resultType="com.accp.vo.fzx.FzxBz">
+		SELECT b.`bzid`,b.`bzname`,SUM(s.`ticheng`) AS ticheng FROM `banzu` b
+		INNER JOIN `jigong` j ON b.`bzid`=j.`bzid`
+		INNER JOIN `star` s ON s.`sid`=j.`sid`
+		GROUP BY `bzid`
 	</select>
 	
 	<!-- 查询服务类别 -->
@@ -47,11 +50,19 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
 			</foreach>
 			;
 		</if>
+		<if test="fzxweixiuadd.fzxweixiucl.size()!=0">
+			INSERT INTO weixiucl (cid,recordid,proid) VALUES
+			<foreach collection="fzxweixiuadd.fzxweixiucl" item="temp"
+				separator=",">
+				(#{temp.cid},#{fzxweixiuadd.recordid},#{temp.proid})
+			</foreach>
+			;
+		</if>
 	</insert>
 	
 	<!-- 查询卡车 -->
 	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
-		SELECT `kaid`,`kacode`,`kastatus`,`kazaizhong`,`kaprice`,`kano`,`katype`,`kapp`,k.`bzid`,`kalc` FROM kache k INNER JOIN banzu b WHERE k.`bzid`=b.`bzid`
+		SELECT * FROM kache WHERE kastatus=0
 	</select>
 	
 	<!-- 查询竣工 -->
@@ -103,5 +114,10 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 		UPDATE kache SET kastatus = 1
 		WHERE kano = #{kano};
 	</update>
+	
+	<!-- 查询材料 -->
+	<select id="selectcl" resultType="com.accp.pojo.fzx.FzxProduct">
+		SELECT * FROM product
+	</select>
 	
 </mapper>

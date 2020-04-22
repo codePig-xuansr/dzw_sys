@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,10 +18,13 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxProduct;
 import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
+import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
+import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 import com.alibaba.fastjson.JSON;
@@ -74,9 +76,9 @@ public class fzxaction {
 		 * 查询维修服务消息
 		 * @return
 		 */
-	  	@GetMapping("/selectFw")
-		public List<FzxWeixiufuwu> selectFw(){
-			return biz.selectFw();
+	  	@GetMapping("/selectFw/{xid}")
+		public List<FzxWeixiufuwu> selectFw(@PathVariable int xid){
+			return biz.selectFw(xid);
 		}
 	  	
 
@@ -93,18 +95,18 @@ public class fzxaction {
 		 * 查询班组信息
 		 * @return
 		 */
-	  	@GetMapping("/selectBzz")
-		public List<FzxBanzu> selectBzz(){
-			return biz.selectBzz();
+	  	@GetMapping("/selectBzz/{num}/{size}")
+		public PageInfo<FzxBz> selectBzz(@PathVariable Integer num,@PathVariable Integer size){
+			return biz.selectBzz(num, size);
 		}
 	  	
 	  	/**
 		 * 查询服务类别班组
 		 * @return
 		 */
-	  	@GetMapping("/selectFwlb")
-		public List<Fzxxiangmutype> selectFwlb(){
-			return biz.selectFwlb();
+	  	@GetMapping("/selectFwlb/{num}/{size}")
+		public PageInfo<Fzxxiangmutype> selectFwlb(@PathVariable Integer num,@PathVariable Integer size){
+			return biz.selectFwlb(num, size);
 		}
 	  	
 	  	/**
@@ -126,9 +128,9 @@ public class fzxaction {
 		 * 查询卡车
 		 * @return
 		 */
-	  	@GetMapping("/selectKache")
-		public List<FzxKache> selectKache(){
-			return biz.selectKache();
+	  	@GetMapping("/selectKache/{num}/{size}")
+		public PageInfo<FzxKache> selectKache(@PathVariable Integer num,@PathVariable Integer size){
+			return biz.selectKache(num, size);
 		}
 	  	
 	  	/**
@@ -230,6 +232,15 @@ public class fzxaction {
 				message.put("msg", "ok");
 			}
 	  		return message;
+		}
+	  	
+	  	/**
+		 * 查询材料
+		 * @return
+		 */
+	  	@GetMapping("/selectcl")
+		public List<FzxProduct> selectcl(){
+			return biz.selectcl();
 		}
 	 
 }

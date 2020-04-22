@@ -2,7 +2,6 @@ package com.accp.biz.fzx;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,13 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxProduct;
 import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
+import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
+import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -66,8 +68,8 @@ public class fzxbiz {
 	 * 查询维修服务消息
 	 * @return
 	 */
-	public List<FzxWeixiufuwu> selectFw(){
-		return dao.selectFw();
+	public List<FzxWeixiufuwu> selectFw(int xid){
+		return dao.selectFw(xid);
 	}
 	
 
@@ -84,16 +86,18 @@ public class fzxbiz {
 	 * 查询班组
 	 * @return
 	 */
-	public List<FzxBanzu> selectBzz(){
-		return dao.selectBzz();
+	public PageInfo<FzxBz> selectBzz(Integer num, Integer size){
+		PageHelper.startPage(num,size);
+		return  new PageInfo<FzxBz>(dao.selectBzz());
 	}
 	
 	/**
 	 * 查询服务类别班组
 	 * @return
 	 */
-	public List<Fzxxiangmutype> selectFwlb(){
-		return dao.selectFwlb();
+	public PageInfo<Fzxxiangmutype> selectFwlb(Integer num, Integer size){
+		PageHelper.startPage(num,size);
+		return new PageInfo<Fzxxiangmutype>(dao.selectFwlb());
 	}
 	
 	/**
@@ -108,8 +112,9 @@ public class fzxbiz {
 	 * 查询卡车
 	 * @return
 	 */
-	public List<FzxKache> selectKache(){
-		return dao.selectKache();
+	public PageInfo<FzxKache> selectKache(Integer num, Integer size){
+		PageHelper.startPage(num,size);
+		return new PageInfo<FzxKache>(dao.selectKache());
 	}
 	
 	/**
@@ -182,6 +187,14 @@ public class fzxbiz {
 		QueryWrapper<FzxWeixiuadd> qw=Wrappers.query();
 		qw.eq("carno", carno).eq("status", 0).eq("jsstatus", 0);
 		return weixiuadddao.selectCount(qw);
+	}
+	
+	/**
+	 * 查询材料
+	 * @return
+	 */
+	public List<FzxProduct> selectcl(){
+		return dao.selectcl();
 	}
 	
 }

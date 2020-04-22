@@ -8,10 +8,13 @@ import com.accp.pojo.fzx.FzxBanzu;
 import com.accp.pojo.fzx.FzxCarinfo;
 import com.accp.pojo.fzx.FzxJgrecord;
 import com.accp.pojo.fzx.FzxKache;
+import com.accp.pojo.fzx.FzxProduct;
 import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
+import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
 import com.accp.pojo.fzx.Fzxxiangmutype;
+import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
 import com.accp.vo.fzx.FzxWeixiu;
 
@@ -42,7 +45,7 @@ public interface fzxdao{
 	 * 查询维修服务消息
 	 * @return
 	 */
-	List<FzxWeixiufuwu> selectFw();
+	List<FzxWeixiufuwu> selectFw(@Param("xid") int xid);
 	
 
 	
@@ -56,7 +59,7 @@ public interface fzxdao{
 	 * 查询班组
 	 * @return
 	 */
-	List<FzxBanzu> selectBzz();
+	List<FzxBz> selectBzz();
 	
 	/**
 	 * 查询服务类别班组
@@ -125,5 +128,11 @@ public interface fzxdao{
 	 * @return
 	 */
 	int updatekc(@Param("kano") String kano);
+	
+	/**
+	 * 查询材料
+	 * @return
+	 */
+	List<FzxProduct> selectcl();
 	
 }
