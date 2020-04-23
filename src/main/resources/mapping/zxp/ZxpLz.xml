@@ -40,4 +40,13 @@
 	<delete id="deletea">
 		DELETE FROM lz WHERE uid=#{id}
 	</delete>
+	
+	
+	
+	<select id="findX" resultType="com.accp.vo.zxp.ZxpLVO">
+		SELECT * FROM `user` AS u,`department` AS d,`role` AS r,`lz` AS l  
+		<where>
+		 u.`depid`=d.`depid` AND u.`rid`=r.`rid` AND u.`uid`=l.`uid` AND u.`ustatus`=1
+		</where>
+	</select>
 </mapper>

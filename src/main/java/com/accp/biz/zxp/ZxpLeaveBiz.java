@@ -42,8 +42,16 @@ public class ZxpLeaveBiz {
 		PageHelper.startPage(n,s);
 		return new PageInfo<ZxpLVO> (ldao.findUVO(name));
 	}
+	public ZxpLVO findU(String name){
+		return  (ZxpLVO) ldao.findUVO(name);
+	}
+	
 	public int deletea(int id) {
 		return ldao.deletea(id);
+	}
+	
+	public List<ZxpLVO> findx() {
+		return ldao.findX();
 	}
 	
 	public PageInfo<ZxpLeaveVO> finds(Integer n,Integer s){

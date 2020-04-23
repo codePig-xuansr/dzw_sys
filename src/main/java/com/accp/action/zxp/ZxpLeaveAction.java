@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.FileOutputStream;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -81,16 +82,18 @@ public class ZxpLeaveAction {
 	@GetMapping("daochukhzl")
 	public Map<String, Object> daochukhzl() {
 		Map<String, Object> message = new HashMap<String, Object>();
-		List<ZxpLeaveVO> kehuziliao = biz.finda();
+		List<ZxpLVO> kehuziliao=biz.findx();
 		List<String[]> data = new ArrayList<String[]>();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		for (int i = 0; i < kehuziliao.size(); i++) {
-			data.add(new String[] { String.valueOf(kehuziliao.get(i).getUser().getDepid()),
-					String.valueOf(kehuziliao.get(i).getUser().getRid()),
-					String.valueOf(kehuziliao.get(i).getUser().getUid()),
-					String.valueOf(kehuziliao.get(i).getUser().getUsername()),
-					String.valueOf(kehuziliao.get(i).getUser().getSex()),
-					String.valueOf(kehuziliao.get(i).getLeave().getLeavedate()),
-					String.valueOf(kehuziliao.get(i).getLeave().getContent()), });
+			data.add(new String[] { String.valueOf(
+					kehuziliao.get(i).getDepname()),
+					String.valueOf(kehuziliao.get(i).getRname()),
+					String.valueOf(kehuziliao.get(i).getUid()),
+					String.valueOf(kehuziliao.get(i).getUsername()),
+					String.valueOf(kehuziliao.get(i).getSex()),
+					formatter.format(kehuziliao.get(i).getLeavedate().getTime()),
+					String.valueOf(kehuziliao.get(i).getContent()), });
 		}
 		String fileName = "离职登记";
 		try {

@@ -17,4 +17,5 @@ public interface IZxpLeaveDao extends BaseMapper<ZxpLeave>{
 	public int deletea(@Param("id")Integer id);
 	public List<ZxpLeaveVO> findLeave(@Param("name") String name);
 	public List<ZxpLVO> findUVO(@Param("name") String name);
+	public List<ZxpLVO> findX();
 }

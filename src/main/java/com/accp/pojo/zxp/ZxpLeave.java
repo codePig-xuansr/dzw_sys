@@ -13,7 +13,6 @@ public class ZxpLeave {
 	@TableId(value = "lid",type = IdType.AUTO)
 	private Integer lid;
 	private Integer uid;
-	@JSONField(format = "yyyy-MM-dd")
 	private Date leavedate;
 	private String content;
 	@TableField(exist=false)
