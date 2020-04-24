@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.sw.ICardanganDao;
 import com.accp.pojo.sw.Cardangan;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -18,14 +20,19 @@ public class CardanganBiz {
 	private ICardanganDao dao;
 
 	/**
-	 * 查询所有车型
+	 * 按照品牌编号查询所有车型
 	 * 
 	 * @param pageNum
 	 * @param pageSize
 	 * @return
 	 */
-	public PageInfo<Cardangan> findPage(Integer pageNum, Integer pageSize) {
+	public PageInfo<Cardangan> findPage(Integer pid,Integer pageNum, Integer pageSize) {
+		QueryWrapper<Cardangan> qw=Wrappers.query();
 		PageHelper.startPage(pageNum, pageSize);
+		if(pid!=0) {
+			qw.eq("pid", pid);
+			return new PageInfo<>(dao.selectList(qw));
+		}
 		return new PageInfo<>(dao.selectList(null));
 	}
 }

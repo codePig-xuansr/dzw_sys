@@ -23,8 +23,8 @@ public class CardanganAction {
 	 * @param pageSize
 	 * @return
 	 */
-	@GetMapping("/{pageNum}/{pageSize}")
-	public PageInfo<Cardangan> queryPage(@PathVariable Integer pageNum,@PathVariable Integer pageSize) {
-		return biz.findPage(pageNum, pageSize);
+	@GetMapping("/{pageNum}/{pageSize}/{pid}")
+	public PageInfo<Cardangan> queryPage(@PathVariable Integer pageNum,@PathVariable Integer pageSize,@PathVariable Integer pid) {
+		return biz.findPage(pid,pageNum, pageSize);
 	}
 }
