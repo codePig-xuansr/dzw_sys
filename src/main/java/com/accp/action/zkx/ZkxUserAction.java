@@ -44,12 +44,10 @@ public class ZkxUserAction {
 		return map;
 	}
 	
-	@GetMapping("/{pageNum}/{pageSize}")
-	public PageInfo<ZkxTongXunVO> queryUserVo(@PathVariable Integer pageNum, @PathVariable Integer pageSize){
-		return biz.queryUserVo(pageNum, pageSize);
+	@GetMapping("byRid/{pageNum}/{pageSize}/{rid}")
+	public PageInfo<ZkxTongXunVO> queryUserVo(@PathVariable Integer pageNum, @PathVariable Integer pageSize,@PathVariable Integer rid){
+		return biz.queryUserVo(pageNum, pageSize, rid);
 	}
-	
-	
 	
 	@PutMapping("u")
 	public Integer updatePwd(@RequestBody ZkxUser user) {

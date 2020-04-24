@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.accp.dao.zkx.ZkxUserDao;
 import com.accp.pojo.zkx.ZkxUser;
@@ -39,9 +40,19 @@ public class ZkxUserBiz {
 		return dao.selectList(null);
 	}
 	
-	public PageInfo<ZkxTongXunVO> queryUserVo(Integer pageNum, Integer pageSize){
+	public PageInfo<ZkxTongXunVO> queryUserVo(Integer pageNum, Integer pageSize,Integer rid){
 		PageHelper.startPage(pageNum, pageSize);
-		return new PageInfo<>(dao.queryUserList());
+		return new PageInfo<>(dao.queryUserList(rid));
+	}
+	
+	public PageInfo<ZkxUser> queryUserByRid(Integer pageNum, Integer pageSize,Integer rid){
+		QueryWrapper<ZkxUser> qw=Wrappers.query();
+		PageHelper.startPage(pageNum, pageSize);
+		if(rid!=0) {
+			qw.eq("rid", rid);
+			return new PageInfo<>(dao.selectList(qw));
+		}
+		return new PageInfo<>(dao.selectList(null));
 	}
 	
 	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)

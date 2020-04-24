@@ -23,8 +23,8 @@ public class ZkxFunBiz {
 		return dao.showFunByUser(user, pwd);
 	}
 	
-	public List<ZkxFunction> showUFuns(String user,String pwd){
-		return dao.queryUFuns(user, pwd);
+	public List<ZkxFunction> showUFuns(Integer rid){
+		return dao.queryUFuns(rid);
 	}
 	
 	public List<ZkxFunction> queryAllFuns(){

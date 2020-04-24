@@ -24,5 +24,11 @@
 		INNER JOIN `department` d
 		ON u.`depid`=d.`depid`
 		AND u.`ustatus`=0
+		<where>
+			<if test="rid!=0">
+				and u.rid=#{rid}
+			</if>
+		</where>
+		
 	</select>
 </mapper>

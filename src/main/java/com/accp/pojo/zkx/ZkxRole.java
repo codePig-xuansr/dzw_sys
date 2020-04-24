@@ -2,9 +2,13 @@ package com.accp.pojo.zkx;
 
 import java.util.Date;
 
-import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
+@TableName("role")
 public class ZkxRole {
+	@TableId(value = "rid", type = IdType.AUTO)
     private Integer rid;
 
     private String rcode;
@@ -13,7 +17,6 @@ public class ZkxRole {
 
     private String createby;
 
-    @JSONField(format = "yyyy-MM-dd")
     private Date createdate;
 
     public Integer getRid() {
