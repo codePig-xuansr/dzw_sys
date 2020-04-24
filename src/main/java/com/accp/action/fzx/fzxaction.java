@@ -235,7 +235,7 @@ public class fzxaction {
 		}
 	  	
 	  	/**
-		 * 查询材料
+		 * 查询全部材料
 		 * @return
 		 */
 	  	@GetMapping("/selectcl")
