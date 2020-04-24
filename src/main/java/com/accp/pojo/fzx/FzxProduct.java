@@ -12,8 +12,9 @@ public class FzxProduct {
 	private int prostar;//商品状态
 	private String prodw;//商品单位
 	private String propp;//商品品牌
+	private int num;
 	public FzxProduct(int proid, String proname, int pronum, int proprice, Date prodate, int ghid, int prostar,
-			String prodw, String propp) {
+			String prodw, String propp, int num) {
 		super();
 		this.proid = proid;
 		this.proname = proname;
@@ -24,6 +25,7 @@ public class FzxProduct {
 		this.prostar = prostar;
 		this.prodw = prodw;
 		this.propp = propp;
+		this.num = num;
 	}
 	public FzxProduct() {
 		super();
@@ -82,5 +84,12 @@ public class FzxProduct {
 	public void setPropp(String propp) {
 		this.propp = propp;
 	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
 	
 }

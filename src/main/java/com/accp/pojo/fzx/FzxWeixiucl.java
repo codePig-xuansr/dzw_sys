@@ -7,17 +7,17 @@ public class FzxWeixiucl {
 	private int cid;
 	private String recordid;
 	private int proid;
-	public FzxWeixiucl(int cid, String recordid, int proid) {
+	private int num;
+	public FzxWeixiucl(int cid, String recordid, int proid, int num) {
 		super();
 		this.cid = cid;
 		this.recordid = recordid;
 		this.proid = proid;
+		this.num = num;
 	}
-	
 	public FzxWeixiucl() {
 		super();
 	}
-
 	public int getCid() {
 		return cid;
 	}
@@ -36,5 +36,12 @@ public class FzxWeixiucl {
 	public void setProid(int proid) {
 		this.proid = proid;
 	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
 	
 }

@@ -51,10 +51,10 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
 			;
 		</if>
 		<if test="fzxweixiuadd.fzxweixiucl.size()!=0">
-			INSERT INTO weixiucl (cid,recordid,proid) VALUES
+			INSERT INTO weixiucl (cid,recordid,proid,num) VALUES
 			<foreach collection="fzxweixiuadd.fzxweixiucl" item="temp"
 				separator=",">
-				(#{temp.cid},#{fzxweixiuadd.recordid},#{temp.proid})
+				(#{temp.cid},#{fzxweixiuadd.recordid},#{temp.proid},#{temp.num})
 			</foreach>
 			;
 		</if>
