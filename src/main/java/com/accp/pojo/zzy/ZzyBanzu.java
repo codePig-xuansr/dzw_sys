@@ -11,6 +11,22 @@ public class ZzyBanzu {
 	private String bzname;
 	private String bztype;
 	private int bzcost;
+	private int bzstatus;
+	
+	public ZzyBanzu(int bzid, String bzname, String bztype, int bzcost, int bzstatus) {
+		super();
+		this.bzid = bzid;
+		this.bzname = bzname;
+		this.bztype = bztype;
+		this.bzcost = bzcost;
+		this.bzstatus = bzstatus;
+	}
+	public int getBzstatus() {
+		return bzstatus;
+	}
+	public void setBzstatus(int bzstatus) {
+		this.bzstatus = bzstatus;
+	}
 	public ZzyBanzu(int bzid, String bzname, String bztype, int bzcost) {
 		super();
 		this.bzid = bzid;

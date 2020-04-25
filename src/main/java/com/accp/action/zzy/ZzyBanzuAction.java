@@ -50,6 +50,7 @@ public class ZzyBanzuAction {
 	@PostMapping("addBanzu")
 	public Map<String, Object> zhuce(@RequestBody ZzyBanzu banzu) {
 		int count=biz.addStar(banzu);
+		banzu.setBzstatus(0);
 		Map<String, Object> message = new HashMap<String, Object>();
 		if(count!=0) {
 			message.put("code", "ok");
