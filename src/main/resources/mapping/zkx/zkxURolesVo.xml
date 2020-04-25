@@ -18,7 +18,6 @@
 		FROM `function` f
 		INNER JOIN `pa` p ON f.`fid`=p.`fid`
 		INNER JOIN `role` r ON p.`rid`=r.`rid`
-		INNER JOIN `user` u ON r.`rid`=u.`rid`
-		WHERE u.`user`=#{user} AND u.`pwd`=#{pwd} and f.fpid!=0
+		WHERE r.rid=#{rid} and f.fpid!=0
 	</select>
 </mapper>

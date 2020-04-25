@@ -24,9 +24,9 @@ public class ZkxFunAction {
 		return biz.showFunByUser(user, pwd);
 	}
 	
-	@GetMapping("ufuns/{user}/{pwd}")
-	public List<ZkxFunction> showFuns(@PathVariable String user,@PathVariable String pwd){
-		return biz.showUFuns(user, pwd);
+	@GetMapping("ufuns/{rid}")
+	public List<ZkxFunction> showFuns(@PathVariable Integer rid){
+		return biz.showUFuns(rid);
 	}
 	
 	@GetMapping("f")

@@ -6,6 +6,15 @@ import com.baomidou.mybatisplus.annotation.TableId;
 public class Cardangan {
 	@TableId(value = "danganid", type = IdType.AUTO)
 	private Integer danganid;
+	private Integer pid;
+	public Integer getPid() {
+		return pid;
+	}
+
+	public void setPid(Integer pid) {
+		this.pid = pid;
+	}
+
 	private String carid;
 	private String carname;
 	private Integer fadongjiid;

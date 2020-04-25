@@ -24,8 +24,9 @@ public class LjlChexingBiz {
 	@Autowired
 	private LjlChexingDanganIDao dao;
 
-	public List<LjlPingpaiChexing> selectPingpai(){
-		return dao.selectPingpai();
+	public PageInfo<LjlPingpaiChexing> selectPingpai(Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlPingpaiChexing>(dao.selectPingpai());
 	}
 	
 	public PageInfo<LjlPingpaiChexing> selectPingpai2(Integer n, Integer s){
@@ -61,8 +62,9 @@ public class LjlChexingBiz {
 		return dao.Pingpaiupdate(ping);
 	}
 	
-	public List<LjlPingpaiChexing> selectPingpaiByname(String pname){
-		return dao.selectPingpaiByname(pname);
+	public PageInfo<LjlPingpaiChexing> selectPingpaiByname(String pname, Integer n, Integer s){
+		PageHelper.startPage(n, s);
+		return new PageInfo<LjlPingpaiChexing>(dao.selectPingpaiByname(pname));
 	}
 	/**
 	 * 测试1
