@@ -5,12 +5,14 @@ public class FzxBz {
 	private int sid;
 	private String bzname;
 	private float ticheng;
-	public FzxBz(int bzid, int sid, String bzname, float ticheng) {
+	private int bzstatus;
+	public FzxBz(int bzid, int sid, String bzname, float ticheng, int bzstatus) {
 		super();
 		this.bzid = bzid;
 		this.sid = sid;
 		this.bzname = bzname;
 		this.ticheng = ticheng;
+		this.bzstatus = bzstatus;
 	}
 	public FzxBz() {
 		super();
@@ -39,5 +41,12 @@ public class FzxBz {
 	public void setTicheng(float ticheng) {
 		this.ticheng = ticheng;
 	}
+	public int getBzstatus() {
+		return bzstatus;
+	}
+	public void setBzstatus(int bzstatus) {
+		this.bzstatus = bzstatus;
+	}
+	
 	
 }

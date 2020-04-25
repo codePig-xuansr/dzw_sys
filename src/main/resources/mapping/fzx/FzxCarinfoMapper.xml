@@ -22,7 +22,7 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	
 	<!-- 查询班组 -->
 	<select id="selectBzz" resultType="com.accp.vo.fzx.FzxBz">
-		SELECT b.`bzid`,b.`bzname`,SUM(s.`ticheng`) AS ticheng FROM `banzu` b
+		SELECT b.`bzid`,b.`bzname`,b.`bzstatus`,SUM(s.`ticheng`) AS ticheng FROM `banzu` b
 		INNER JOIN `jigong` j ON b.`bzid`=j.`bzid`
 		INNER JOIN `star` s ON s.`sid`=j.`sid`
 		GROUP BY `bzid`
@@ -62,7 +62,7 @@ VALUES(#{fzxweixiuadd.recordid},#{fzxweixiuadd.carno},#{fzxweixiuadd.yewutype},
 	
 	<!-- 查询卡车 -->
 	<select id="selectKache" resultType="com.accp.pojo.fzx.FzxKache">
-		SELECT * FROM kache WHERE kastatus=0
+		SELECT * FROM kache
 	</select>
 	
 	<!-- 查询竣工 -->

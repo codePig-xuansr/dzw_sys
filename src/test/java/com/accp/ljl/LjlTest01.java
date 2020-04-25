@@ -21,9 +21,9 @@ public class LjlTest01 {
 
 	@Test
 	void contextLoads() {
-		cbiz.selectPingpaiByname("宝马").forEach(r->{
-			System.out.println(r);
-		});
+		/*
+		 * cbiz.selectPingpaiByname("宝马").forEach(r->{ System.out.println(r); });
+		 */
 		
 		/*
 		 * cbiz.selectPingpai().forEach(r->{ System.out.println(r); });
