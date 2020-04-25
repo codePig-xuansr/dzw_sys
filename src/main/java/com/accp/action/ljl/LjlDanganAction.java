@@ -24,18 +24,18 @@ public class LjlDanganAction {
 	@Autowired
 	private LjlChexingBiz biz;
 	
-	@GetMapping("All/Pingpai")
-	public List<LjlPingpaiChexing> selectPingpai(){
-		return biz.selectPingpai();
+	@GetMapping("All/Pingpai/{n}/{s}")
+	public PageInfo<LjlPingpaiChexing> selectPingpai(@PathVariable Integer n, @PathVariable Integer s){
+		return biz.selectPingpai(n, s);
 	}
 	
-	@GetMapping("All/pingpai/byname/{pname}")
-	public List<LjlPingpaiChexing> selectPingpaiByname(@PathVariable String pname){
+	@GetMapping("All/pingpai/byname/{pname}/{n}/{s}")
+	public PageInfo<LjlPingpaiChexing> selectPingpaiByname(@PathVariable String pname, @PathVariable Integer n, @PathVariable Integer s){
 		/*
 		 * if (pname==null) { System.out.println(1); }else if (pname.equals("")) {
 		 * System.out.println(2); }else { System.out.println(3); }
 		 */
-		return biz.selectPingpaiByname(pname);
+		return biz.selectPingpaiByname(pname, n, s);
 	}
 	
 	@GetMapping("All/Pingpai/Byid/{pid}")
