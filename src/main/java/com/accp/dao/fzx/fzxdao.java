@@ -13,6 +13,7 @@ import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.FzxWeixiuxm;
 import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
@@ -47,7 +48,11 @@ public interface fzxdao{
 	 */
 	List<FzxWeixiufuwu> selectFw(@Param("xid") int xid);
 	
-
+	/**
+	 * 查询维修服务消息
+	 * @return
+	 */
+	List<FzxWeixiufuwu> selectFww();
 	
 	/**
 	 * 查询班组
@@ -134,5 +139,19 @@ public interface fzxdao{
 	 * @return
 	 */
 	List<FzxProduct> selectcl();
+	
+	/**
+	 * 新增项目
+	 * @param fzxweixiuxm
+	 * @return
+	 */
+	int addxm(@Param("fzxweixiuxm") List<FzxWeixiuxm> fzxweixiuxm);
+	
+	/**
+	 * 新增材料
+	 * @param fzxweixiucl
+	 * @return
+	 */
+	int addcl(@Param("fzxweixiucl") List<FzxWeixiucl> fzxweixiucl);
 	
 }

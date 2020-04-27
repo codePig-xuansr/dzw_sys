@@ -8,9 +8,14 @@
 		and carno like '%${carno}%'
 	</select>
 	
-	<!-- 查询服务所有 -->
+	<!-- 查询服务xid-->
 	<select id="selectFw" resultType="com.accp.pojo.fzx.FzxWeixiufuwu">
 		SELECT * FROM weixiufuwu where xid=#{xid}
+	</select>
+	
+	<!-- 查询服务所有 -->
+	<select id="selectFww" resultType="com.accp.pojo.fzx.FzxWeixiufuwu">
+		SELECT * FROM weixiufuwu
 	</select>
 	
 	
@@ -119,5 +124,28 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 	<select id="selectcl" resultType="com.accp.pojo.fzx.FzxProduct">
 		SELECT * FROM product
 	</select>
+	
+	<!-- 新增项目 -->
+	<insert id="addxm">
+		<if test="fzxweixiuxm.size!=0">
+			INSERT INTO weixiuxm (wid,recordid,fwcod) VALUES
+			<foreach collection="fzxweixiuxm" item="temp"
+				separator=",">
+				(#{temp.wid},#{temp.recordid},#{temp.fwcod})
+			</foreach>
+			;
+		</if>
+	</insert>
+	<!-- 新增材料 -->
+	<insert id="addcl">
+		<if test="fzxweixiucl.size!=0">
+			INSERT INTO weixiucl (cid,recordid,proid,num) VALUES
+			<foreach collection="fzxweixiucl" item="temp"
+				separator=",">
+				(#{temp.cid},#{temp.recordid},#{temp.proid},#{temp.num})
+			</foreach>
+			;
+		</if>
+	</insert>
 	
 </mapper>

@@ -23,6 +23,7 @@ import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.FzxWeixiuxm;
 import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
@@ -80,7 +81,14 @@ public class fzxaction {
 		public List<FzxWeixiufuwu> selectFw(@PathVariable int xid){
 			return biz.selectFw(xid);
 		}
-	  	
+	  	/**
+		 * 查询维修服务消息
+		 * @return
+		 */
+	  	@GetMapping("/selectFww")
+		public List<FzxWeixiufuwu> selectFww(){
+			return biz.selectFww();
+		}
 
 	  	
 	  	/**
@@ -241,6 +249,36 @@ public class fzxaction {
 	  	@GetMapping("/selectcl")
 		public List<FzxProduct> selectcl(){
 			return biz.selectcl();
+		}
+	  	
+	  	/**
+		 * 新增项目
+		 * @param fzxweixiuxm
+		 * @return
+		 */
+	  	@PostMapping("/addxm")
+		public Map<String, String> addxm(@RequestBody List<FzxWeixiuxm> fzxweixiuxm){
+			Map<String, String> message = new HashMap<String, String>();
+			if (biz.addxm(fzxweixiuxm)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
+		}
+		
+		/**
+		 * 新增材料
+		 * @param fzxweixiucl
+		 * @return
+		 */
+	  	@PostMapping("/addcl")
+		public Map<String, String> addcl(@RequestBody List<FzxWeixiucl> fzxweixiucl){
+	  		Map<String, String> message = new HashMap<String, String>();
+			if (biz.addcl(fzxweixiucl)>0) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}
+			return message;
 		}
 	 
 }

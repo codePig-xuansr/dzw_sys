@@ -2,6 +2,7 @@ package com.accp.biz.fzx;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ import com.accp.pojo.fzx.FzxUser;
 import com.accp.pojo.fzx.FzxWeixiuadd;
 import com.accp.pojo.fzx.FzxWeixiucl;
 import com.accp.pojo.fzx.FzxWeixiufuwu;
+import com.accp.pojo.fzx.FzxWeixiuxm;
 import com.accp.pojo.fzx.Fzxxiangmutype;
 import com.accp.vo.fzx.FzxBz;
 import com.accp.vo.fzx.FzxCtcar;
@@ -72,7 +74,13 @@ public class fzxbiz {
 		return dao.selectFw(xid);
 	}
 	
-
+	/**
+	 * 查询维修服务消息
+	 * @return
+	 */
+	public List<FzxWeixiufuwu> selectFww(){
+		return dao.selectFww();
+	}
 	
 	
 	/**
@@ -195,6 +203,24 @@ public class fzxbiz {
 	 */
 	public List<FzxProduct> selectcl(){
 		return dao.selectcl();
+	}
+	
+	/**
+	 * 新增项目
+	 * @param fzxweixiuxm
+	 * @return
+	 */
+	public int addxm(List<FzxWeixiuxm> fzxweixiuxm){
+		return dao.addxm(fzxweixiuxm);
+	}
+	
+	/**
+	 * 新增材料
+	 * @param fzxweixiucl
+	 * @return
+	 */
+	public int addcl(List<FzxWeixiucl> fzxweixiucl){
+		return dao.addcl(fzxweixiucl);
 	}
 	
 }
