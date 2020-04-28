@@ -154,4 +154,10 @@ public interface fzxdao{
 	 */
 	int addcl(@Param("fzxweixiucl") List<FzxWeixiucl> fzxweixiucl);
 	
+	/**
+	 * 查询总价
+	 * @return
+	 */
+	List<FzxBz> selectzj(@Param("recordid") String recordid);
+	
 }

@@ -223,4 +223,12 @@ public class fzxbiz {
 		return dao.addcl(fzxweixiucl);
 	}
 	
+	/**
+	 * 查询总价
+	 * @return
+	 */
+	public List<FzxBz> selectzj(String recordid){
+		return dao.selectzj(recordid);
+	}
+	
 }

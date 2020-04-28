@@ -280,5 +280,14 @@ public class fzxaction {
 			}
 			return message;
 		}
+	  	
+	  	/**
+		 * 查询总价
+		 * @return
+		 */
+	  	@GetMapping("/selectzj/{recordid}")
+		public List<FzxBz> selectzj(@PathVariable String recordid){
+			return biz.selectzj(recordid);
+		}
 	 
 }

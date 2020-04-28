@@ -122,7 +122,9 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 	
 	<!-- 查询材料 -->
 	<select id="selectcl" resultType="com.accp.pojo.fzx.FzxProduct">
-		SELECT * FROM product
+		SELECT p.`proid`,p.`proname`,p.`propp`,p.`pronum`,p.`prodw` ,p.`proprice`,g.`ghaddress`,g.`ghname`,p.`prostar`,p.`ghid` 
+		FROM product p INNER JOIN gonghuo g ON p.`ghid`=g.`ghid`
+		WHERE p.`prostar`=0	and p.`pronum`>0
 	</select>
 	
 	<!-- 新增项目 -->
@@ -147,5 +149,15 @@ VALUES(#{fzxjgrecord.recordid},#{fzxjgrecord.jgstatus},#{fzxjgrecord.yuanyin},#{
 			;
 		</if>
 	</insert>
+	
+	<!-- 查询总价 -->
+	<select id="selectzj" resultType="com.accp.vo.fzx.FzxBz">
+		SELECT b.`bzid`,b.`bzname`,w.`jiuyuanfy`,SUM(s.`ticheng`) AS ticheng FROM `banzu` b
+		INNER JOIN `jigong` j ON b.`bzid`=j.`bzid`
+		INNER JOIN `star` s ON s.`sid`=j.`sid`
+		INNER JOIN `weixiurecord` w ON w.`bzid`=b.`bzid`
+		WHERE w.`recordid`=#{recordid}
+		GROUP BY `bzid`
+	</select>
 	
 </mapper>
