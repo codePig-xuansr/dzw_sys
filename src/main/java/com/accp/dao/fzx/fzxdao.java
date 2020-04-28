@@ -160,4 +160,10 @@ public interface fzxdao{
 	 */
 	List<FzxBz> selectzj(@Param("recordid") String recordid);
 	
+	/**
+	 * 查询负责人
+	 * @return
+	 */
+	List<FzxBz> selectfzr(@Param("bzid") int bzid);
+	
 }

@@ -8,7 +8,10 @@ public class FzxBz {
 	private int bzstatus;
 	private String recordid;
 	private int jiuyuanfy;
-	public FzxBz(int bzid, int sid, String bzname, float ticheng, int bzstatus, String recordid, int jiuyuanfy) {
+	private String sname;
+	private String truename;
+	public FzxBz(int bzid, int sid, String bzname, float ticheng, int bzstatus, String recordid, int jiuyuanfy,
+			String sname, String truename) {
 		super();
 		this.bzid = bzid;
 		this.sid = sid;
@@ -17,6 +20,8 @@ public class FzxBz {
 		this.bzstatus = bzstatus;
 		this.recordid = recordid;
 		this.jiuyuanfy = jiuyuanfy;
+		this.sname = sname;
+		this.truename = truename;
 	}
 	public FzxBz() {
 		super();
@@ -62,6 +67,18 @@ public class FzxBz {
 	}
 	public void setJiuyuanfy(int jiuyuanfy) {
 		this.jiuyuanfy = jiuyuanfy;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public String getTruename() {
+		return truename;
+	}
+	public void setTruename(String truename) {
+		this.truename = truename;
 	}
 	
 	

@@ -204,9 +204,9 @@ public class fzxaction {
 		 * 查询服务顾问
 		 * @return
 		 */
-	  	@GetMapping("/selectgw")
-		public List<FzxUser> selectgw(){
-			return biz.selectgw();
+	  	@GetMapping("/selectgw/{num}/{size}")
+		public PageInfo<FzxUser> selectgw(@PathVariable Integer num,@PathVariable Integer size){
+			return biz.selectgw(num, size);
 		}
 	  	
 	  	/**
@@ -288,6 +288,16 @@ public class fzxaction {
 	  	@GetMapping("/selectzj/{recordid}")
 		public List<FzxBz> selectzj(@PathVariable String recordid){
 			return biz.selectzj(recordid);
+		}
+	  	
+	  	/**
+		 * 查询负责人
+		 * @return
+		 */
+	  	@GetMapping("/selectfzr/{num}/{size}/{bzid}")
+		public PageInfo<FzxBz> selectfzr(@PathVariable Integer num,@PathVariable Integer size,@PathVariable int bzid){
+			PageHelper.startPage(num, size);
+			return biz.selectfzr(num, size, bzid);
 		}
 	 
 }

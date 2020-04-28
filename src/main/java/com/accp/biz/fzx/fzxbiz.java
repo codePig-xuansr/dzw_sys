@@ -173,8 +173,9 @@ public class fzxbiz {
 	 * 查询服务顾问
 	 * @return
 	 */
-	public List<FzxUser> selectgw(){
-		return dao.selectgw();
+	public PageInfo<FzxUser> selectgw(Integer num, Integer size){
+		PageHelper.startPage(num, size);
+		return new PageInfo<FzxUser>(dao.selectgw());
 	}
 	
 	/**
@@ -229,6 +230,15 @@ public class fzxbiz {
 	 */
 	public List<FzxBz> selectzj(String recordid){
 		return dao.selectzj(recordid);
+	}
+	
+	/**
+	 * 查询负责人
+	 * @return
+	 */
+	public PageInfo<FzxBz> selectfzr(Integer num, Integer size,int bzid){
+		PageHelper.startPage(num, size);
+		return new PageInfo<FzxBz>(dao.selectfzr(bzid));
 	}
 	
 }
