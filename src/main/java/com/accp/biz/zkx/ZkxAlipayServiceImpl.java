@@ -17,10 +17,11 @@ public class ZkxAlipayServiceImpl implements ZkxAlipayService {
 	@Override
 	public String aliPay(String order_number, String total_amount)
 			throws IOException {
-		// response.setContentType("text/html;charset=utf-8");
+		//response.setContentType("text/html;charset=utf-8");
 
 		// PrintWriter out = response.getWriter();
 		// 获得初始化的AlipayClient
+		System.out.println("sdfsfs");
 		AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id,
 				AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key,
 				AlipayConfig.sign_type);
@@ -30,7 +31,7 @@ public class ZkxAlipayServiceImpl implements ZkxAlipayService {
 		aliPayRequest.setNotifyUrl(AlipayConfig.notify_url);
 
 		// 商户订单号，后台可以写一个工具类生成一个订单号，必填//StringUtils.getStr()
-
+		System.out.println("123");
 		//String order_number = "";
 		// 付款金额，从前台获取，必填
 		//String total_amount = "";
@@ -51,7 +52,7 @@ public class ZkxAlipayServiceImpl implements ZkxAlipayService {
 		// out.print("shab");
 		// 输出
 		// System.out.println(result);
-		// out.println(result);
+		 //out.println(result);
 		return result;
 		// log.info("返回结果={}",result);
 	}

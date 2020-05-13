@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class ZkxAlipay {
 	
 	@GetMapping("getResult/{order_number}/{total_amount}")
 	public String getResult(@PathVariable String order_number, @PathVariable String total_amount) throws IOException {
-		return pay.aliPay(order_number, total_amount);
+		System.out.println(order_number+","+total_amount);
+		return pay.aliPay("15893551503972020513153319", "747");
 	}
 }
