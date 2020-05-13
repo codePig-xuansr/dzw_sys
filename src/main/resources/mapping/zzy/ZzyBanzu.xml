@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.zzy.IZzyBanzuDao">	
+	<select id="queryBanzu" resultType="ZzyBanzu">
+	SELECT bzid,bzname,bztype FROM banzu 
+	<where>
+			<if test="bzname != 'null'">
+				and bzname like '%${bzname}%'
+			</if>
+		</where>
+	</select>
+</mapper>

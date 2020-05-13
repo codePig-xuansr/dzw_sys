@@ -25,9 +25,9 @@ public class ZzyJigongBiz {
 	 * @param pageSize
 	 * @return
 	 */
-	public PageInfo<ZzyJigongVo> queryJigong(Integer pageNum, Integer pageSize,String truename) {
+	public PageInfo<ZzyJigongVo> queryJigong(Integer pageNum, Integer pageSize,Integer bzid) {
 		PageHelper.startPage(pageNum, pageSize);
-		return new PageInfo<>(dao.queryJigong(truename));
+		return new PageInfo<>(dao.queryJigong(bzid));
 	}
 	/**
 	 * 根据卡车id查看技工信息

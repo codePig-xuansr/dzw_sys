@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.accp.biz.zzy.ZzyBanzuBiz;
+import com.accp.biz.zzy.ZzyJigongBiz;
 import com.accp.biz.zzy.ZzyKacheBiz;
 import com.accp.biz.zzy.ZzyProductBiz;
 import com.accp.biz.zzy.ZzyStarBiz;
@@ -14,15 +15,16 @@ import com.accp.pojo.zzy.ZzyKache;
 public class ZzyTest01 {
 	
 	@Autowired
-	private ZzyProductBiz biz;
-
+	//private ZzyProductBiz biz;
+	//private ZzyJigongBiz biz;
+	private ZzyBanzuBiz biz;
 	//删除状态信息
 	/*
 	 * @Test public void show() { biz.queryCarinfo(1, 3); }
 	 */
 	@Test
 	public void show() {
-		System.out.println(biz.queryProductByName(1, 2, "1"));
+		System.out.println(biz.queryBanzu(1, 2, "1"));
 		
 	}
 	/*public void show() {

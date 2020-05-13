@@ -22,8 +22,8 @@
 		SELECT j.`jid`,j.`jname`,j.`bzid`,j.`worktime`,j.`truename`,j.`jsex`,j.`jphone`,j.`jaddress`,j.`jidcard`,b.`bzname`,d.`depname`,s.`sname`,d.`depid`,s.`sid`
 		FROM jigong j INNER JOIN banzu b ON j.`bzid`=b.`bzid` INNER JOIN department d ON j.`depid`=d.`depid` INNER JOIN star s ON j.`sid`=s.`sid`
 		<where>
-			<if test="proname != 'null'">
-				and truename like '%${truename}%'
+			<if test="bzid != 0">
+				and b.bzid like '%${bzid}%'
 			</if>
 		</where>
 	</select>
@@ -32,4 +32,13 @@
 	FROM jigong j INNER JOIN banzu b ON j.`bzid`=b.`bzid` INNER JOIN department d ON j.`depid`=d.`depid` INNER JOIN star s ON j.`sid`=s.`sid`
 	WHERE j.`jid`=#{jid}
 </select>
+	
+	<select id="queryBanzu">
+	SELECT bzid,bzname,bztype FROM banzu 
+	<where>
+			<if test="bzname != 'null'">
+				and bzname like '%${bzname}%'
+			</if>
+		</where>
+	</select>
 </mapper>

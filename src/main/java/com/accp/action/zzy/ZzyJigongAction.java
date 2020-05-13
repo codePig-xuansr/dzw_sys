@@ -30,10 +30,13 @@ public class ZzyJigongAction {
 	 * @param pageSize
 	 * @return
 	 */
-	@GetMapping("queryJigong/{pageNum}/{pageSize}/{truename}")
-	public PageInfo<ZzyJigongVo> queryJigong(@PathVariable Integer pageNum, @PathVariable Integer pageSize,@PathVariable String truename) {
-		//System.out.println(biz.queryKache(pageNum, pageSize));
-		return biz.queryJigong(pageNum, pageSize,truename);	
+	@GetMapping("queryJigong/{pageNum}/{pageSize}/{bzid}")
+	public PageInfo<ZzyJigongVo> queryJigong(@PathVariable Integer pageNum, @PathVariable Integer pageSize,@PathVariable Integer bzid) {
+		//System.out.println(biz.queryJigong(pageNum, pageSize,bzid));
+		if("null".equals(bzid)) {
+			bzid=null;
+		}
+		return biz.queryJigong(pageNum, pageSize,bzid);	
 	}
 	/**
 	 * 根据id查看技工信息

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.zzy.IZzyBanzuDao;
 import com.accp.pojo.zzy.ZzyBanzu;
+import com.accp.vo.zzy.ZzyJigongVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.github.pagehelper.PageHelper;
@@ -26,12 +27,17 @@ public class ZzyBanzuBiz {
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<ZzyBanzu> queryStarAll(Integer n,Integer s){
-		PageHelper.startPage(n,s);
+	public PageInfo<ZzyBanzu> queryStarAll(Integer n,Integer s,String bzname){
+		PageHelper.startPage(n,s,bzname);
 		List<ZzyBanzu> list = dao.selectList(null);
 		PageInfo<ZzyBanzu> pageInfo=new PageInfo<ZzyBanzu>(list);
 		//System.out.println(pageInfo);
 		return pageInfo;
+	}
+	
+	public PageInfo<ZzyBanzu> queryBanzu(Integer pageNum, Integer pageSize,String bzname) {
+		PageHelper.startPage(pageNum, pageSize);
+		return new PageInfo<>(dao.queryBanzu(bzname));
 	}
 	/**
 	 * 查询班组

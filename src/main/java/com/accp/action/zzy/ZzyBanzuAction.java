@@ -29,9 +29,9 @@ public class ZzyBanzuAction {
 	  * @param s
 	  * @return
 	  */
-	@GetMapping("queryBanzuAll/{n}/{s}")
-	public PageInfo<ZzyBanzu> queryStarAll(@PathVariable Integer n,@PathVariable Integer s) {		
-		return biz.queryStarAll(n,s);
+	@GetMapping("queryBanzuAll/{n}/{s}/{bzname}")
+	public PageInfo<ZzyBanzu> queryStarAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String bzname) {		
+		return biz.queryBanzu(n,s,bzname);
 	}
 	/**
 	 * 查询班组所有信息
