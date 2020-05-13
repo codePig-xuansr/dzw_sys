@@ -33,6 +33,11 @@ public class ZzyBanzuAction {
 	public PageInfo<ZzyBanzu> queryStarAll(@PathVariable Integer n,@PathVariable Integer s,@PathVariable String bzname) {		
 		return biz.queryBanzu(n,s,bzname);
 	}
+	
+	@GetMapping("queryBanzuAll2/{n}/{s}")
+	public PageInfo<ZzyBanzu> queryStarAll2(@PathVariable Integer n,@PathVariable Integer s) {		
+		return biz.queryStarAll(n,s);
+	}
 	/**
 	 * 查询班组所有信息
 	 * @return

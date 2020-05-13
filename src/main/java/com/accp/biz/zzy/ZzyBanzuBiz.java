@@ -27,8 +27,8 @@ public class ZzyBanzuBiz {
 	 * @param s
 	 * @return
 	 */
-	public PageInfo<ZzyBanzu> queryStarAll(Integer n,Integer s,String bzname){
-		PageHelper.startPage(n,s,bzname);
+	public PageInfo<ZzyBanzu> queryStarAll(Integer n,Integer s){
+		PageHelper.startPage(n,s);
 		List<ZzyBanzu> list = dao.selectList(null);
 		PageInfo<ZzyBanzu> pageInfo=new PageInfo<ZzyBanzu>(list);
 		//System.out.println(pageInfo);
