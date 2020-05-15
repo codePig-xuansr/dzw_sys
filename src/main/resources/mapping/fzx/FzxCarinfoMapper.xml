@@ -35,7 +35,7 @@ banzu a INNER JOIN weixiurecord b ON a.bzid=b.bzid
 	
 	<!-- 查询服务类别 -->
 	<select id="selectFwlb" resultType="com.accp.pojo.fzx.Fzxxiangmutype">
-		SELECT * FROM xiangmutype
+		SELECT * FROM xiangmutype where xfid=0
 	</select>
 	
 	
