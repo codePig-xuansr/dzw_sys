@@ -25,4 +25,6 @@ public interface IWeixiuDao extends BaseMapper<Weixiurecord> {
 	 * @return
 	 */
 	public List<WeixiuVo> queryListByJsstatus(@Param("status") Integer status,@Param("recordid") String recordid);
+	
+	public Integer modifyWxStatus(@Param("wxrecordid")String wxrecordid);
 }

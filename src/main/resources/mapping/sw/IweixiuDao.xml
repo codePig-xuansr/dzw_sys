@@ -67,4 +67,8 @@
 		</where>
 		ORDER BY recorddate DESC
 	</select>
+	
+	<update id="modifyWxStatus">
+		update `weixiurecord` set `jsstatus`=1 where `recordid`=#{wxrecordid}
+	</update>
 </mapper>

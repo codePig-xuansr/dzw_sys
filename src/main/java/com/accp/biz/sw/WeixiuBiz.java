@@ -28,6 +28,10 @@ public class WeixiuBiz {
 	public int modifyById(Weixiurecord weixiu) {
 		return dao.updateById(weixiu);
 	}
+	
+	public Integer modifyWxStatus(String wxrecordid) {
+		return dao.modifyWxStatus(wxrecordid);
+	}
 
 	/**
 	 * 根据维修单号查询

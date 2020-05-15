@@ -2,10 +2,13 @@ package com.accp.pojo.sw;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Jsrecord {
 	private Integer jsid;
 	private String recordid;
 	private Integer jstype;
+	@JSONField(format = "yyyy-MM-dd")
 	private Date jsdate;
 	private Float jsmoney;
 
